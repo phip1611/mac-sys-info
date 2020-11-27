@@ -90,6 +90,6 @@ fn print_complex(info: &MacSysInfo) {
 }
 
 fn print_raw(info: &MacSysInfo) {
-    println!("This list is equivalent to `$ sysctl -a`");
+    println!("This list is equivalent to `$ sysctl -a`, but it's ordered alphabetically.");
     println!("{:#?}", info.all_keys());
 }

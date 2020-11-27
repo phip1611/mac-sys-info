@@ -1,6 +1,6 @@
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use crate::error::MacSysInfoError;
 use crate::generated_sysctl_keys::SysctlKey;
 use crate::structs::cache_info::CacheInfo;
@@ -45,7 +45,7 @@ pub struct CpuInfo {
 
 impl CpuInfo {
 
-    pub fn new(sysinfo: &HashMap<String, String>) -> Result<Self, MacSysInfoError> {
+    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let x = CpuInfo {
             phys_cores: parse_sysctl_value(
                 "phys_cores",

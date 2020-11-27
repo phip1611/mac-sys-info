@@ -5,7 +5,7 @@ use crate::error::MacSysInfoError;
 use unix_exec_output_catcher::fork_exec_and_catch;
 use crate::parse::{parse_sysctl_line};
 use crate::structs::mac_sysinfo::MacSysInfo;
-use std::collections::HashMap;
+use std::collections::{BTreeMap};
 
 pub mod error;
 pub mod generated_sysctl_keys;
@@ -30,7 +30,7 @@ pub fn get_mac_sys_info() -> Result<MacSysInfo, MacSysInfoError> {
     let key_value_vector = fetch_info_from_sysctl()?;
 
     // build the raw string to string map of all supported information
-    let mut all_keys = HashMap::new();
+    let mut all_keys = BTreeMap::new();
     key_value_vector.into_iter()
         .for_each(|(sys_key, sys_value)| {
             all_keys.insert(sys_key, sys_value);

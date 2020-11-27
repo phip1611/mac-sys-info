@@ -1,6 +1,6 @@
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use crate::error::MacSysInfoError;
 use crate::parse::{parse_sysctl_value, ParseAsType};
 use crate::generated_sysctl_keys::SysctlKey;
@@ -16,7 +16,7 @@ pub enum CpuFeaturesInfo {
 }
 
 impl CpuFeaturesInfo {
-    pub fn new(sysinfo: &HashMap<String, String>) -> Result<Self, MacSysInfoError> {
+    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let arch = CpuArchitectureInfo::determine_architecture(sysinfo)?;
         if arch.is_x86_64() {
             Ok(
@@ -68,7 +68,7 @@ pub struct AppleSiCpuFeaturesInfo {
 }
 
 impl AppleSiCpuFeaturesInfo {
-    pub fn new(_sysinfo: &HashMap<String, String>) -> Result<Self, MacSysInfoError> {
+    pub fn new(_sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         Ok(AppleSiCpuFeaturesInfo {})
     }
 }
@@ -115,7 +115,7 @@ pub struct X86_64CpuFeaturesInfo {
 
 impl X86_64CpuFeaturesInfo {
 
-    pub fn new(sysinfo: &HashMap<String, String>) -> Result<Self, MacSysInfoError> {
+    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let x = X86_64CpuFeaturesInfo {
             mmx: parse_sysctl_value(
                 "mmx",

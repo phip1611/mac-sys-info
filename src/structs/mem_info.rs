@@ -1,6 +1,6 @@
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use crate::parse::{parse_sysctl_value, ParseAsType};
 use crate::error::MacSysInfoError;
 use crate::generated_sysctl_keys::SysctlKey;
@@ -14,7 +14,7 @@ pub struct MemoryInfo {
 }
 
 impl MemoryInfo {
-    pub fn new(sysinfo: &HashMap<String, String>) -> Result<Self, MacSysInfoError> {
+    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let info = MemoryInfo {
             total_memory: parse_sysctl_value(
                 "total_memory",

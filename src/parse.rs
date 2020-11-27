@@ -1,7 +1,7 @@
 //! Parse utility.
 
 use crate::error::MacSysInfoError;
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use crate::generated_sysctl_keys::SysctlKey;
 
 #[derive(Debug, PartialEq)]
@@ -57,7 +57,7 @@ impl ParsedValue {
 
 pub(crate) fn parse_sysctl_value(field_name: &str,
                                  key: SysctlKey,
-                                 raw_values: &HashMap<String, String>,
+                                 raw_values: &BTreeMap<String, String>,
                                  target: ParseAsType) -> Result<ParsedValue, MacSysInfoError> {
     let raw_value = raw_values.get(key.name())
         .ok_or_else(|| MacSysInfoError::KeyNotFound(key))?;
@@ -123,13 +123,13 @@ pub fn parse_sysctl_line(line: &str) -> (String, String) {
 
 #[cfg(test)]
 mod tests {
-    use std::collections::HashMap;
+    use std::collections::BTreeMap;
     use crate::generated_sysctl_keys::SysctlKey;
     use crate::parse::{parse_sysctl_value, ParseAsType};
 
     #[test]
     fn test() {
-        let mut raw_values = HashMap::new();
+        let mut raw_values = BTreeMap::new();
         raw_values.insert(SysctlKey::HwPhysicalcpu.name().to_string(), "4".to_string());
         let parsed = parse_sysctl_value(
             "field_foobar",

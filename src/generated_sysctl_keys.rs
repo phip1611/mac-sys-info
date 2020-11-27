@@ -13,7 +13,8 @@
 
 use derive_more::Display;
 
-// Delete below, generate code new, copy it to the location
+// If you want to change the code, change the code in `sysctl_output_keys_to_rust_code.rs`!
+// Then delete the below, generate new code, and copy it here.
 // #################################################################
 
 /// This enum was generated using the binary `sysctl_output_keys_to_rust_code.rs`

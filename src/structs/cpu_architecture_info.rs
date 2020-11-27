@@ -1,6 +1,6 @@
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use crate::error::MacSysInfoError;
 use crate::generated_sysctl_keys::SysctlKey;
 
@@ -16,11 +16,11 @@ pub enum CpuArchitectureInfo {
 #[allow(dead_code)]
 impl CpuArchitectureInfo {
 
-    pub fn new(sysinfo: &HashMap<String, String>) -> Result<Self, MacSysInfoError> {
+    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         CpuArchitectureInfo::determine_architecture(sysinfo)
     }
 
-    pub fn determine_architecture(sysinfo: &HashMap<String, String>) -> Result<CpuArchitectureInfo, MacSysInfoError> {
+    pub fn determine_architecture(sysinfo: &BTreeMap<String, String>) -> Result<CpuArchitectureInfo, MacSysInfoError> {
         let is_x86 = sysinfo.get(SysctlKey::KernVersion.name())
             .ok_or_else(|| MacSysInfoError::KeyNotFound(SysctlKey::KernVersion))?
             .to_lowercase()
