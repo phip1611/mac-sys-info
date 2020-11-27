@@ -1,0 +1,14 @@
+[package]
+name = "mac-sys-info"
+version = "0.1.0"
+authors = ["Philipp Schuster <phip1611@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# unix-exec-output-catcher = "0.1.0"
+unix-exec-output-catcher = { path = "../unix-exec-catch-output" }
+libc = "0.2.80"
+derive_more = "0.99.11"
+serde = { version = "1.0.117", features = ["derive"] }
