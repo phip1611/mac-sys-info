@@ -8,6 +8,7 @@ enum Action {
     ShowHelp,
     ShowSimple,
     ShowComplex,
+    ShowRaw,
 }
 
 fn main() {
@@ -24,7 +25,8 @@ fn main() {
     match action {
         Action::ShowHelp => { print_help() }
         Action::ShowSimple => { print_simple(&info) }
-        Action::ShowComplex => { print_full(&info) }
+        Action::ShowComplex => { print_complex(&info) }
+        Action::ShowRaw => { print_raw(&info) }
     }
 
 }
@@ -43,6 +45,10 @@ fn parse_args() -> Action {
 
     if args[1] == "-c" {
         return Action::ShowComplex;
+    }
+
+    if args[1] == "-r" {
+        return Action::ShowRaw;
     }
 
     Action::ShowSimple
@@ -69,15 +75,21 @@ fn print_simple(info: &MacSysInfo) {
 }
 
 fn print_help() {
-    println!("Simple output : '$ mac-sys-info'");
-    println!("Complex output: '$ mac-sys-info -c'");
-    println!("Help          : '$ mac-sys-info -h'");
+    println!("Simple output     : '$ mac-sys-info'");
+    println!("Complex output    : '$ mac-sys-info -c'");
+    println!("Raw (all options)): '$ mac-sys-info -r'");
+    println!("Help              : '$ mac-sys-info -h'");
 }
 
-fn print_full(info: &MacSysInfo) {
+fn print_complex(info: &MacSysInfo) {
     println!("{}", info.cpu_info());
     println!("{}", info.cpu_info().cache_info());
     println!("{}", info.mem_info());
     println!("{}", info.os_info());
     println!("{}", info.cpu_features());
+}
+
+fn print_raw(info: &MacSysInfo) {
+    println!("This list is equivalent to `$ sysctl -a`");
+    println!("{:#?}", info.all_keys());
 }
