@@ -19,5 +19,5 @@ fn main() {
     println!("L2 Cache Size in KB: {}",
              info.cpu_info().cache_info().l2_cache_size_kb()
     );
-    println!("System has {} GB of RAM", info.mem_info().total_memory_gb())
+    println!("System has {} GB of RAM", info.mem_info().total_memory_mb())
 }
