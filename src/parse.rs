@@ -123,18 +123,20 @@ pub(crate) fn parse_sysctl_value(field_name: &str,
             )
         }
         ParseAsType::Bool => {
-            let usize = parse_sysctl_value(field_name, key, raw_values, ParseAsType::Usize)
-                .map_err(|_e| {
-                    debug!("Parse Error: field_name='{}', key='{}', target='{}'", &field_name, &key, &target);
-                    MacSysInfoError::ParseError{
+            if raw_value == "1" {
+                ParsedValue::Bool(true)
+            } else if raw_value == "0" {
+                ParsedValue::Bool(false)
+            } else {
+                debug!("Parse Error: field_name='{}', key='{}', target='{}'", &field_name, &key, &target);
+                Err(
+                    MacSysInfoError::ParseError {
                         field_name: field_name.to_string(),
                         sysctl_key: key,
-                        err_msg: "Can't parse string '' as boolean. Valid values are '0' or '1'".to_owned()
+                        err_msg: format!("Can't parse string '{}' as boolean. Valid values are '0' or '1'", raw_value)
                     }
-                })?
-                .get_usize();
-            let bool = if usize == 1 { true } else { false };
-            ParsedValue::Bool(bool)
+                )? // return on error
+            }
         }
     };
     Ok(x)
