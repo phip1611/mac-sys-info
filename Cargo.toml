@@ -1,14 +1,19 @@
 [package]
 name = "mac-sys-info"
+description = "CLI + Library to get detailed information about your Mac system. Including CPU, Cache (L1-L3), Memory, and more."
 version = "0.1.0"
 authors = ["Philipp Schuster <phip1611@gmail.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+keywords = ["mac", "system", "cpu", "cache", "memory"]
+categories = [ "os::macos-apis", "development-tools", "command-line-utilities" ]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/phip1611/mac-sys-info"
+repository = "https://github.com/phip1611/mac-sys-info"
+documentation = "https://docs.rs/mac-sys-info/"
 
 [dependencies]
-# unix-exec-output-catcher = "0.1.0"
-unix-exec-output-catcher = { path = "../unix-exec-catch-output" }
+unix-exec-output-catcher = "0.1.0"
 libc = "0.2.80"
 derive_more = "0.99.11"
 serde = { version = "1.0.117", features = ["derive"] }

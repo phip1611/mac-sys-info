@@ -1,4 +1,3 @@
-/*
 MIT License
 
 Copyright (c) 2020 Philipp Schuster
@@ -20,16 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
-
-use crate::generated_sysctl_keys::SysctlKey;
-use derive_more::Display;
-
-#[derive(Debug, Display)]
-pub enum MacSysInfoError {
-    CantFetchData,
-    #[display(fmt = "Can't parse key {} for field {}", sysctl_key, field_name)]
-    ParseError{field_name: String, sysctl_key: SysctlKey, err_msg: String},
-    KeyNotFound(SysctlKey),
-    Unknown,
-}

@@ -127,6 +127,8 @@ checksum = "f7fe0bb3479651439c9112f72b6c505038574c9fbb575ed1bf3b797fa39dd564"
 [[package]]
 name = "unix-exec-output-catcher"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "97d537b1f6994271e72c0b5bb4562125609f6cf2a07499c8f0882284bb90f193"
 dependencies = [
  "derive_more",
  "errno",
