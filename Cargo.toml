@@ -1,7 +1,7 @@
 [package]
 name = "mac-sys-info"
 description = "CLI + Library to get detailed information about your Mac system. Including CPU, Cache (L1-L3), Memory, and more."
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Philipp Schuster <phip1611@gmail.com>"]
 edition = "2018"
 keywords = ["mac", "system", "cpu", "cache", "memory"]
