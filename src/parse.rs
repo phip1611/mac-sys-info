@@ -27,8 +27,9 @@ SOFTWARE.
 use crate::error::MacSysInfoError;
 use std::collections::BTreeMap;
 use crate::generated_sysctl_keys::SysctlKey;
+use derive_more::Display;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Display)]
 #[allow(dead_code)]
 pub(crate) enum ParseAsType {
     String,
@@ -84,7 +85,10 @@ pub(crate) fn parse_sysctl_value(field_name: &str,
                                  raw_values: &BTreeMap<String, String>,
                                  target: ParseAsType) -> Result<ParsedValue, MacSysInfoError> {
     let raw_value = raw_values.get(key.name())
-        .ok_or_else(|| MacSysInfoError::KeyNotFound(key))?;
+        .ok_or_else(|| {
+            debug!("KeyNotFound Error: field_name='{}', key='{}', target='{}'", &field_name, &key, &target);
+            MacSysInfoError::KeyNotFound(key)
+        })?;
 
     let x = match target {
         ParseAsType::String => {
@@ -95,30 +99,40 @@ pub(crate) fn parse_sysctl_value(field_name: &str,
         ParseAsType::Isize => {
             ParsedValue::Isize(
                 raw_value.parse::<isize>()
-                    .map_err(|e| MacSysInfoError::ParseError{
-                        field_name: field_name.to_string(),
-                        sysctl_key: key,
-                        err_msg: e.to_string(),
+                    .map_err(|e| {
+                        debug!("Parse Error: field_name='{}', key='{}', target='{}'", &field_name, &key, &target);
+                        MacSysInfoError::ParseError{
+                            field_name: field_name.to_string(),
+                            sysctl_key: key,
+                            err_msg: e.to_string(),
+                        }
                     })?
             )
         }
         ParseAsType::Usize => {
             ParsedValue::Usize(
                 raw_value.parse::<usize>()
-                    .map_err(|e| MacSysInfoError::ParseError{
-                        field_name: field_name.to_string(),
-                        sysctl_key: key,
-                        err_msg: e.to_string(),
+                    .map_err(|e| {
+                        debug!("Parse Error: field_name='{}', key='{}', target='{}'", &field_name, &key, &target);
+                        MacSysInfoError::ParseError{
+                            field_name: field_name.to_string(),
+                            sysctl_key: key,
+                            err_msg: e.to_string(),
+                        }
                     })?
             )
         }
         ParseAsType::Bool => {
-            let usize = raw_value.parse::<usize>()
-                .map_err(|e| MacSysInfoError::ParseError{
-                    field_name: field_name.to_string(),
-                    sysctl_key: key,
-                    err_msg: e.to_string(),
-                })?;
+            let usize = parse_sysctl_value(field_name, key, raw_values, ParseAsType::Usize)
+                .map_err(|_e| {
+                    debug!("Parse Error: field_name='{}', key='{}', target='{}'", &field_name, &key, &target);
+                    MacSysInfoError::ParseError{
+                        field_name: field_name.to_string(),
+                        sysctl_key: key,
+                        err_msg: "Can't parse string '' as boolean. Valid values are '0' or '1'".to_owned()
+                    }
+                })?
+                .get_usize();
             let bool = if usize == 1 { true } else { false };
             ParsedValue::Bool(bool)
         }

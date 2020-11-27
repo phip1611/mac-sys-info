@@ -36,11 +36,18 @@ enum Action {
 }
 
 fn main() {
+    // useful for development
+    // std::env::set_var("RUST_LOG", "debug");
+    env_logger::init();
+
     let info = get_mac_sys_info();
     if info.is_err() {
         // IDE may does not find the Display trait impl, but its there
         // it gets implemented during compilation by "derive_more" crate
         eprintln!("There was an error. Can't get system information. Error: {}", info.unwrap_err());
+        eprintln!("Are you running a Mac? Because this utility also compiles and runs on other UNIX platforms, like Linux distributions.");
+        eprintln!("Please feel free to add a bug report here:");
+        eprintln!("    https://github.com/phip1611/mac-sys-info");
         exit(-1);
     }
     let info = info.unwrap();

@@ -17,3 +17,5 @@ unix-exec-output-catcher = "0.1.1"
 libc = "0.2.80"
 derive_more = "0.99.11"
 serde = { version = "1.0.117", features = ["derive"] }
+log = "0.4.11"
+env_logger = "0.8.2"

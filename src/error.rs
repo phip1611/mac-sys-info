@@ -27,9 +27,12 @@ use derive_more::Display;
 
 #[derive(Debug, Display)]
 pub enum MacSysInfoError {
+    #[display(fmt = "Can't fetch system data.")]
     CantFetchData,
-    #[display(fmt = "Can't parse key {} for field {}", sysctl_key, field_name)]
+    #[display(fmt = "Can't parse key '{}' for field '{}' because of: '{}'", sysctl_key, field_name, err_msg)]
     ParseError{field_name: String, sysctl_key: SysctlKey, err_msg: String},
+    #[display(fmt = "The key '{}' can't be found in \"sysctl -a\" output.", _0)]
     KeyNotFound(SysctlKey),
+    #[display(fmt = "Unknown error occurred.")]
     Unknown,
 }

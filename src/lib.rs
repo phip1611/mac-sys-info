@@ -25,6 +25,9 @@ SOFTWARE.
 //! Library to get Mac-specific system info. The information is
 //! retrieved from the `$ sysctl -a` command.
 
+#[macro_use]
+extern crate log;
+
 use crate::error::MacSysInfoError;
 use unix_exec_output_catcher::fork_exec_and_catch;
 use crate::parse::{parse_sysctl_line};
