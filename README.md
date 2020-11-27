@@ -15,9 +15,10 @@ use mac_sys_info::get_mac_sys_info;
 use mac_sys_info::generated_sysctl_keys::SysctlKey;
 
 fn main() {
+    // get struct with all information
     let info = get_mac_sys_info().unwrap();
+    
     // even if IDE shows that the Display trait is missing:
-
     // it is there. It gets implemented during compile time
     // by "derive_macro" crate.
     println!("{}", info.cpu_info());
@@ -25,7 +26,7 @@ fn main() {
     // ...
     println!("CPU @ {} Ghz", info.cpu_info().frequency_ghz());
     
-    // IMPORTANT: Raw Access to All SysctlKeys is
+    // IMPORTANT: Raw Access to all SysctlKeys is
     // available! Keys are located in enum `SysctlKey`
     println!("L3 Cache size extracted manually: {}",
              info.all_keys().get(SysctlKey::HwL3cachesize.name()).unwrap()
@@ -49,8 +50,9 @@ $ mac-sys-info -r   # raw
 
 ## Why another tool?
 There is already a popular crate called [sys-info](https://crates.io/crates/sys-info), that's true.
-But it doesn't display information about the size of L1 cache, or cache in general.
-I need this for a task I'm working on. Therefore I created this crate.
+But it doesn't show information about the size of L1 cache, or cache in general.
+I need this information for a task I'm working on. Therefore I created this crate.
+It was also fun and as always I learned new stuff. :)
 
 ## LICENSE
 MIT License. See "LICENSE" file in repository.
