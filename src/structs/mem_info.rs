@@ -34,4 +34,8 @@ impl MemoryInfo {
     pub fn total_memory_mb(&self) -> usize {
         self.total_memory / 1024 / 1024
     }
+    /// Returns the amount of memory in GibiBytes.
+    pub fn total_memory_gb(&self) -> usize {
+        self.total_memory / 1024 / 1024 / 1024
+    }
 }

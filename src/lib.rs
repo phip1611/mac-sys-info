@@ -10,7 +10,7 @@ use std::collections::HashMap;
 pub mod error;
 pub mod generated_sysctl_keys;
 mod parse;
-mod structs;
+pub mod structs;
 
 fn fetch_info_from_sysctl() -> Result<Vec<(String, String)>, MacSysInfoError> {
     let res = fork_exec_and_catch("sysctl", vec!["sysctl", "-a"])

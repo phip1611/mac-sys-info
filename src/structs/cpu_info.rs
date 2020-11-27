@@ -131,4 +131,8 @@ impl CpuInfo {
     pub fn max_frequency_ghz(&self) -> f64 {
         self.max_frequency as f64 / (1E9 as f64)
     }
+
+    pub fn architecture(&self) -> &CpuArchitectureInfo {
+        &self.architecture
+    }
 }
