@@ -10,7 +10,7 @@ on Mac.
 mac-sys-info = "0.1.0"
 ```
 **Code:**
-```
+```rust
 use mac_sys_info::get_mac_sys_info;
 use mac_sys_info::generated_sysctl_keys::SysctlKey;
 
