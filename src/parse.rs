@@ -102,6 +102,25 @@ pub(crate) fn parse_sysctl_value(field_name: &str,
     Ok(x)
 }
 
+/// Parses a line in the form of `hw.optional.sse: 1`
+/// to `("hw.optional.sse", "1")`. The part before the
+/// first ":" is the key. The rest is the value.
+pub fn parse_sysctl_line(line: &str) -> (String, String) {
+    let str_parts = line.split(":")
+        .map(|s| s.trim())
+        .collect::<Vec<&str>>();
+
+    let key = str_parts[0].to_string();
+    let mut value = String::new();
+    for i in 1..str_parts.len() {
+        value.push_str(
+            str_parts[i]
+        )
+    }
+
+    (key, value)
+}
+
 #[cfg(test)]
 mod tests {
     use std::collections::HashMap;

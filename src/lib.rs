@@ -7,7 +7,7 @@ use unix_exec_output_catcher::fork_exec_and_catch;
 use crate::generated_sysctl_keys::SysctlKey;
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
-use crate::parse::{parse_sysctl_value, ParseAsType};
+use crate::parse::{parse_sysctl_value, ParseAsType, parse_sysctl_line};
 
 pub mod error;
 pub mod generated_sysctl_keys;
@@ -652,25 +652,6 @@ impl MacSysInfo {
         &self.mem_info
     }
 
-}
-
-/// Parses a line in the form of `hw.optional.sse: 1`
-/// to `("hw.optional.sse", "1")`. The part before the
-/// first ":" is the key. The rest is the value.
-fn parse_sysctl_line(line: &str) -> (String, String) {
-    let str_parts = line.split(":")
-        .map(|s| s.trim())
-        .collect::<Vec<&str>>();
-
-    let key = str_parts[0].to_string();
-    let mut value = String::new();
-    for i in 1..str_parts.len() {
-        value.push_str(
-            str_parts[i]
-        )
-    }
-
-    (key, value)
 }
 
 fn fetch_info_from_sysctl() -> Result<Vec<(String, String)>, MacSysInfoError> {
