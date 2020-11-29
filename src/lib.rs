@@ -74,6 +74,6 @@ mod tests {
 
     #[test]
     fn test_get_sys_info() {
-        let _res = get_mac_sys_info()?;
+        let _res = get_mac_sys_info();
     }
 }
