@@ -92,7 +92,7 @@ fn print_simple(info: &MacSysInfo) {
     // it gets implemented during compilation by "derive_more" crate
     println!("    arch     : {}", info.cpu_info().architecture());
     println!("    cores    : {}", info.cpu_info().num_cores());
-    println!("    frequency: {} GHz", info.cpu_info().frequency_ghz());
+    println!("    frequency: {}GHz", info.cpu_info().frequency_ghz());
     println!("    L1D-Cache: {}KB", info.cpu_info().cache_info().l1d_cache_size_kb());
     println!("    L1I-Cache: {}KB", info.cpu_info().cache_info().l1i_cache_size_kb());
     println!("    L2-Cache : {}KB", info.cpu_info().cache_info().l2_cache_size_kb());

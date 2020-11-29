@@ -22,19 +22,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-use unix_exec_output_catcher::fork_exec_and_catch;
+use unix_exec_output_catcher::{fork_exec_and_catch, OCatchStrategy};
 use mac_sys_info::error::MacSysInfoError;
 
 const SYSCTL_KEYS_ENUM_GEN_NAME: &str = "SysctlKey";
 
 fn main() {
 
-    let res = fork_exec_and_catch("sysctl", vec!["sysctl", "-a"])
-        .map_err(|_| MacSysInfoError::CantFetchData).unwrap();
+    let res = fork_exec_and_catch(
+        "sysctl",
+        vec!["sysctl", "-a"],
+        OCatchStrategy::StdSeparately
+    ).map_err(|_| MacSysInfoError::CantFetchData).unwrap();
 
     // list of KeyValue-Pairs. Value is the value as the key is named
     // in the output of `$ sysctl -a`. The Key is a Rust-friendly version of it.
-    let macos_sysctl_key_value_pairs = res.stdout_lines()
+    let macos_sysctl_key_value_pairs = res.stdout_lines().unwrap()
         .iter()
         .map(|s| String::from(s.as_str()))
         .map(|s| s.split(":")

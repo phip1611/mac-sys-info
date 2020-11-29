@@ -29,7 +29,7 @@ SOFTWARE.
 extern crate log;
 
 use crate::error::MacSysInfoError;
-use unix_exec_output_catcher::fork_exec_and_catch;
+use unix_exec_output_catcher::{fork_exec_and_catch, OCatchStrategy};
 use crate::parse::{parse_sysctl_line};
 use crate::structs::mac_sysinfo::MacSysInfo;
 use std::collections::{BTreeMap};
@@ -40,9 +40,9 @@ mod parse;
 pub mod structs;
 
 fn fetch_info_from_sysctl() -> Result<Vec<(String, String)>, MacSysInfoError> {
-    let res = fork_exec_and_catch("sysctl", vec!["sysctl", "-a"])
+    let res = fork_exec_and_catch("sysctl", vec!["sysctl", "-a"], OCatchStrategy::StdSeparately)
         .map_err(|_| MacSysInfoError::CantFetchData)?;
-    let res = res.stdout_lines();
+    let res = res.stdout_lines().unwrap();
     let res = res.iter().map(|s| s.as_str()).collect::<Vec<&str>>();
     let key_value_vector = res.iter()
         .map(|s| parse_sysctl_line(s))
@@ -74,6 +74,6 @@ mod tests {
 
     #[test]
     fn test_get_sys_info() {
-        get_mac_sys_info();
+        let _res = get_mac_sys_info()?;
     }
 }

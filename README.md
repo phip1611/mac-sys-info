@@ -6,8 +6,10 @@ on Mac.
 ## Usage
 ### Library
 **Cargo.toml:**
-```
-mac-sys-info = "0.1.0"
+```toml
+# please check if this is the latest version
+# maybe I forget to update the README sometime
+mac-sys-info = "0.1.6"
 ```
 **Code:**
 ```rust
@@ -39,13 +41,32 @@ fn main() {
     println!("System has {} GB of RAM", info.mem_info().total_memory_mb())
 }
 ```
-### CLI
+### run/install CLI
 ```
 $ cargo install mac-sys-info
 $ mac-sys-info      # simple
 $ mac-sys-info -h   # help
 $ mac-sys-info -c   # complex
 $ mac-sys-info -r   # raw
+```
+#### Example output
+```
+CPU:
+    name     : Intel(R) Core(TM) i5-5257U CPU @ 2.70GHz
+    arch     : X86_64
+    cores    : 4
+    frequency: 2.7 GHz
+    L1D-Cache: 32KB
+    L1I-Cache: 32KB
+    L2-Cache : 256KB
+    L3-Cache : 3072KB
+
+Memory:
+    total: 8192MB
+
+OS:
+    version: 10.15.7
+    kernel : Darwin Kernel Version 19.6.0Thu Oct 29 225645 PDT 2020; rootxnu-6153.141.2.2~1/RELEASE_X86_64
 ```
 
 ## Why another tool?

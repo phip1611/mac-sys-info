@@ -115,7 +115,7 @@ dependencies = [
 
 [[package]]
 name = "mac-sys-info"
-version = "0.1.5"
+version = "0.1.6"
 dependencies = [
  "derive_more",
  "env_logger",
@@ -224,9 +224,9 @@ checksum = "f7fe0bb3479651439c9112f72b6c505038574c9fbb575ed1bf3b797fa39dd564"
 
 [[package]]
 name = "unix-exec-output-catcher"
-version = "0.1.1"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "52a4d3e7c63c07980b0f459da2b048c42e2f765bbbb2e68302ff8726ef6c373d"
+checksum = "4be8c1ba2cf57fdbf36defe2917c0ca0235f29ed708d6f39781b0d860e5c8bae"
 dependencies = [
  "derive_more",
  "errno",
