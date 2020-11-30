@@ -55,7 +55,7 @@ impl CpuArchitectureInfo {
     /// Reads the CPU architecture from the "sysctl -a" output.
     pub(crate) fn determine_architecture(sysinfo: &BTreeMap<String, String>) -> Result<CpuArchitectureInfo, MacSysInfoError> {
         let is_x86 = sysinfo.get(SysctlKey::KernVersion.name())
-            .ok_or_else(|| MacSysInfoError::KeyNotFound(SysctlKey::KernVersion))?
+            .ok_or(MacSysInfoError::KeyNotFound(SysctlKey::KernVersion))?
             .to_lowercase()
             .contains("x86_64");
         if is_x86 {

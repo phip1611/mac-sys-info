@@ -159,15 +159,15 @@ impl CpuInfo {
     }
     /// Getter for the field `frequency` in Ghz.
     pub fn frequency_ghz(&self) -> f64 {
-        self.frequency as f64 / (1E9 as f64)
+        self.frequency as f64 / 1E9_f64
     }
     /// Getter for the field `min_frequency` in Ghz.
     pub fn min_frequency_ghz(&self) -> f64 {
-        self.min_frequency as f64 / (1E9 as f64)
+        self.min_frequency as f64 / 1E9_f64
     }
     /// Getter for the field `max_frequency` in Ghz.
     pub fn max_frequency_ghz(&self) -> f64 {
-        self.max_frequency as f64 / (1E9 as f64)
+        self.max_frequency as f64 / 1E9_f64
     }
 
     /// Getter for the field `architecture`.
