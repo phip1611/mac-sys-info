@@ -24,6 +24,7 @@ SOFTWARE.
 
 use unix_exec_output_catcher::{fork_exec_and_catch, OCatchStrategy};
 use mac_sys_info::error::MacSysInfoError;
+use std::collections::BTreeMap;
 
 const SYSCTL_KEYS_ENUM_GEN_NAME: &str = "SysctlKey";
 
@@ -64,6 +65,11 @@ fn main() {
         })
         .collect::<Vec<(String,String)>>();
 
+    let mut macos_sysctl_key_value_map = BTreeMap::new();
+    macos_sysctl_key_value_pairs.into_iter().for_each(|(key, value)| {
+        macos_sysctl_key_value_map.insert(key, value);
+    });
+
     // now transform to Rust enum
     {
         println!();
@@ -80,7 +86,7 @@ fn main() {
             print!("{}(\"{}\"),", key, value);
             print!("\n");
         }*/
-        for (key, value) in &macos_sysctl_key_value_pairs {
+        for (key, value) in &macos_sysctl_key_value_map {
             // print fmt-Macro from derive_more-Display-macro-impl-magic :)
             // see here https://crates.io/crates/derive_more
 
@@ -112,7 +118,7 @@ fn main() {
         println!("    /// the output of `$ sysctl -a`");
         println!("    pub fn name(&self) -> &'static str {{");
         println!("        match self {{");
-        for (key, value) in &macos_sysctl_key_value_pairs {
+        for (key, value) in &macos_sysctl_key_value_map {
             print!("            ");
             print!("{}::{} => \"{}\",", SYSCTL_KEYS_ENUM_GEN_NAME, key, value);
             print!("\n");
@@ -128,7 +134,7 @@ fn main() {
         println!("    /// Returns a vector containing all Enum elements.");
         println!("    pub fn list() -> Vec<{}> {{", SYSCTL_KEYS_ENUM_GEN_NAME);
         println!("        vec![");
-        for (key, _value) in &macos_sysctl_key_value_pairs {
+        for (key, _value) in &macos_sysctl_key_value_map {
             print!("            ");
             print!("{}::{},", SYSCTL_KEYS_ENUM_GEN_NAME, key);
             print!("\n");
