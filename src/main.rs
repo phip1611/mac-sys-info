@@ -26,7 +26,7 @@ SOFTWARE.
 
 use mac_sys_info::get_mac_sys_info;
 use std::process::exit;
-use mac_sys_info::structs::mac_sysinfo::MacSysInfo;
+use mac_sys_info::structs::MacSysInfo;
 
 enum Action {
     ShowHelp,
