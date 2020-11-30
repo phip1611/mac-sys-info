@@ -36,14 +36,14 @@ use crate::generated_sysctl_keys::SysctlKey;
 #[display(fmt = "MemoryInfo (\n\
 \x20    total_memory: {},\n\
 )", total_memory)]
-pub struct MemoryInfo {
+pub struct MemInfo {
     total_memory: usize,
 }
 
-impl MemoryInfo {
+impl MemInfo {
     /// Constructor.
     pub(crate) fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
-        let info = MemoryInfo {
+        let info = MemInfo {
             total_memory: parse_sysctl_value(
                 "total_memory",
                 SysctlKey::HwMemsize,

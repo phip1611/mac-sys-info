@@ -3,13 +3,13 @@ CLI + Library to get detailed information about your Mac system. Including CPU, 
 The library is a wrapper around all information that the `$ sysctl -a` command outputs
 on Mac.
 
-## Usage
-### Library
+## Usage as Lib or as CLI
+### As Library
 **Cargo.toml:**
 ```toml
 # please check if this is the latest version
 # maybe I forget to update the README sometime
-mac-sys-info = "0.1.6"
+mac-sys-info = "0.1.8"
 ```
 **Code:**
 ```rust
@@ -41,7 +41,7 @@ fn main() {
     println!("System has {} GB of RAM", info.mem_info().total_memory_mb())
 }
 ```
-### run/install CLI
+### Run/install as CLI
 ```
 $ cargo install mac-sys-info
 $ mac-sys-info      # simple

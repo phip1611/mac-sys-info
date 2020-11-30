@@ -24,25 +24,26 @@ SOFTWARE.
 
 //! The main struct that encapsulated all other info structs.
 
-// use derive_more::Display as DeriveMoreDisplay;
+use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
 use std::collections::BTreeMap;
 use crate::structs::cpu_info::CpuInfo;
 use crate::structs::os_info::OsInfo;
-use crate::structs::mem_info::MemoryInfo;
+use crate::structs::mem_info::MemInfo;
 use crate::error::MacSysInfoError;
 use crate::structs::cpu_features_info::CpuFeaturesInfo;
 
 /// Abstraction over MacOS system info.
 /// Allows raw access to all obtained system configuration as
 /// well as convenient abstractions over them.
-#[derive(Debug, Serialize)]
-// #[derive(Debug, Serialize, DeriveMoreDisplay)]
-// BTreeMap doesn't implement display :(
-/*#[display(fmt = "MacSysInfo (\
-\x20    all_keys: {},\
-\x20    cpu_features: {},\
-)", all_keys, cache_info, cpu_features)]*/
+#[derive(Debug, Serialize, DeriveMoreDisplay)]
+#[display(fmt = "MacSysInfo (\n\
+\x20    all_keys: <Map>,\n\
+\x20    cpu_info: <CpuInfo>,\n\
+\x20    cpu_features: <CpuFeaturesInfo>,\n\
+\x20    os_info: <OsInfo>,\n\
+\x20    mem_info: <MemoryInfo>,\n\
+)")]
 pub struct MacSysInfo {
     /// Raw presentation of all keys that `$ sysctl -a` outputs in alphabetically order.
     /// You can use `.name()` on any enum variant of
@@ -58,7 +59,7 @@ pub struct MacSysInfo {
     /// Software info.
     os_info: OsInfo,
     /// Memory info.
-    mem_info: MemoryInfo,
+    mem_info: MemInfo,
 }
 
 impl MacSysInfo {
@@ -68,7 +69,7 @@ impl MacSysInfo {
             cpu_info: CpuInfo::new(&all_keys)?,
             cpu_features: CpuFeaturesInfo::new(&all_keys)?,
             os_info: OsInfo::new(&all_keys)?,
-            mem_info: MemoryInfo::new(&all_keys)?,
+            mem_info: MemInfo::new(&all_keys)?,
             all_keys,
         };
         Ok(x)
@@ -95,7 +96,7 @@ impl MacSysInfo {
     }
 
     /// Getter for [`crate::structs::MemoryInfo`].
-    pub fn mem_info(&self) -> &MemoryInfo {
+    pub fn mem_info(&self) -> &MemInfo {
         &self.mem_info
     }
 

@@ -40,7 +40,7 @@ use crate::structs::cpu_architecture_info::CpuArchitectureInfo;
 \x20    phys_cores: {},\n\
 \x20    logic_cores: {},\n\
 \x20    num_cores: {},\n\
-\x20    cache_info: <nested structure; print directly>,\n\
+\x20    cache_info: <CacheInfo>,\n\
 \x20    brand_string: {},\n\
 \x20    frequency: {},\n\
 \x20    min_frequency: {},\n\
