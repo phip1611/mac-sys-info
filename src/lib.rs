@@ -39,10 +39,12 @@ pub mod generated_sysctl_keys;
 mod parse;
 pub mod structs;
 
+/// Executes the "sysctl" binary with the "-a" option in a child process
+/// and captures it's output.
 fn fetch_info_from_sysctl() -> Result<Vec<(String, String)>, MacSysInfoError> {
     let res = fork_exec_and_catch("sysctl", vec!["sysctl", "-a"], OCatchStrategy::StdSeparately)
         .map_err(|_| MacSysInfoError::CantFetchData)?;
-    let res = res.stdout_lines().unwrap();
+    let res = res.stdout_lines().ok_or(MacSysInfoError::CantFetchData);
     let res = res.iter().map(|s| s.as_str()).collect::<Vec<&str>>();
     let key_value_vector = res.iter()
         .map(|s| parse_sysctl_line(s))

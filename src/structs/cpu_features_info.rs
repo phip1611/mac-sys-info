@@ -22,6 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+//! CPU-Features info. More detailed/in-depth functionality about the CPU
+//! like specific instructions like AVX on x86.
+
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
 use std::collections::BTreeMap;
@@ -30,21 +33,26 @@ use crate::parse::{parse_sysctl_value, ParseAsType};
 use crate::generated_sysctl_keys::SysctlKey;
 use crate::structs::cpu_architecture_info::CpuArchitectureInfo;
 
+/// Encapsulates the CPU features for the current processor.
 #[derive(Debug, Serialize, DeriveMoreDisplay)]
 #[allow(non_camel_case_types)]
 pub enum CpuFeaturesInfo {
+    /// Apple Silicon
     // #[display(fmt = "AppleSi(\n{}\n)", _0)]
     AppleSi(AppleSiCpuFeaturesInfo),
     // #[display(fmt = "X86(\n{}\n)", _0)]
-    X86_64(X86_64CpuFeaturesInfo),
+    /// x86_64
+    x86_64(X86_64CpuFeaturesInfo),
 }
 
 impl CpuFeaturesInfo {
-    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
+
+    /// Constructor.
+    pub(crate) fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let arch = CpuArchitectureInfo::determine_architecture(sysinfo)?;
         if arch.is_x86_64() {
             Ok(
-                CpuFeaturesInfo::X86_64(
+                CpuFeaturesInfo::x86_64(
                     X86_64CpuFeaturesInfo::new(sysinfo)?
                 )
             )
@@ -57,17 +65,7 @@ impl CpuFeaturesInfo {
         }
     }
 
-    pub fn is_apple_si(&self) -> bool {
-        match self {
-            CpuFeaturesInfo::AppleSi(_) => { true }
-            CpuFeaturesInfo::X86_64(_) => { false }
-        }
-    }
-
-    pub fn is_x86(&self) -> bool {
-        !self.is_apple_si()
-    }
-
+    /// Unwraps the cpu features of the Apple Silicon CPU.
     pub fn get_apple_si_features(self) -> AppleSiCpuFeaturesInfo {
         if let CpuFeaturesInfo::AppleSi(val) = self {
             val
@@ -76,8 +74,9 @@ impl CpuFeaturesInfo {
         }
     }
 
+    /// Unwraps the cpu features of the x86_64 CPU.
     pub fn get_x86_features(self) -> X86_64CpuFeaturesInfo {
-        if let CpuFeaturesInfo::X86_64(val) = self {
+        if let CpuFeaturesInfo::x86_64(val) = self {
             val
         } else {
             panic!("Not x86!")
@@ -88,11 +87,13 @@ impl CpuFeaturesInfo {
 /// Apple silicon specific CPU features.
 #[derive(Debug, Serialize, DeriveMoreDisplay)]
 pub struct AppleSiCpuFeaturesInfo {
-    // TODO, anyone got one? :D
+    // TODO, I need a M1 Macbook to check this :)
 }
 
 impl AppleSiCpuFeaturesInfo {
-    pub fn new(_sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
+
+    /// Constructor.
+    pub(crate) fn new(_sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         Ok(AppleSiCpuFeaturesInfo {})
     }
 }
@@ -139,7 +140,8 @@ pub struct X86_64CpuFeaturesInfo {
 
 impl X86_64CpuFeaturesInfo {
 
-    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
+    /// Constructor.
+    pub(crate) fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let x = X86_64CpuFeaturesInfo {
             mmx: parse_sysctl_value(
                 "mmx",
@@ -241,51 +243,67 @@ impl X86_64CpuFeaturesInfo {
         Ok(x)
     }
 
+    /// Getter for the x86_64 CPU feature `mmx`.
     pub fn mmx(&self) -> bool {
         self.mmx
     }
+    /// Getter for the x86_64 CPU feature `sse`.
     pub fn sse(&self) -> bool {
         self.sse
     }
+    /// Getter for the x86_64 CPU feature `sse2`.
     pub fn sse2(&self) -> bool {
         self.sse2
     }
+    /// Getter for the x86_64 CPU feature `sse3`.
     pub fn sse3(&self) -> bool {
         self.sse3
     }
+    /// Getter for the x86_64 CPU feature `sse4_1`.
     pub fn sse4_1(&self) -> bool {
         self.sse4_1
     }
+    /// Getter for the x86_64 CPU feature `sse4_2`.
     pub fn sse4_2(&self) -> bool {
         self.sse4_2
     }
+    /// Getter for the x86_64 CPU feature `aes`.
     pub fn aes(&self) -> bool {
         self.aes
     }
+    /// Getter for the x86_64 CPU feature `avx1_0`.
     pub fn avx1_0(&self) -> bool {
         self.avx1_0
     }
+    /// Getter for the x86_64 CPU feature `avx2_0`.
     pub fn avx2_0(&self) -> bool {
         self.avx2_0
     }
+    /// Getter for the x86_64 CPU feature `avx512f`.
     pub fn avx512f(&self) -> bool {
         self.avx512f
     }
+    /// Getter for the x86_64 CPU feature `avx512cd`.
     pub fn avx512cd(&self) -> bool {
         self.avx512cd
     }
+    /// Getter for the x86_64 CPU feature `avx512dq`.
     pub fn avx512dq(&self) -> bool {
         self.avx512dq
     }
+    /// Getter for the x86_64 CPU feature `avx512bw`.
     pub fn avx512bw(&self) -> bool {
         self.avx512bw
     }
+    /// Getter for the x86_64 CPU feature `avx512vl`.
     pub fn avx512vl(&self) -> bool {
         self.avx512vl
     }
+    /// Getter for the x86_64 CPU feature `avx512ifma`.
     pub fn avx512ifma(&self) -> bool {
         self.avx512ifma
     }
+    /// Getter for the x86_64 CPU feature `avx512vbmi`.
     pub fn avx512vbmi(&self) -> bool {
         self.avx512vbmi
     }

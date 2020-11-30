@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+//! The main struct that encapsulated all other info structs.
+
 // use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
 use std::collections::BTreeMap;
@@ -49,14 +51,19 @@ pub struct MacSysInfo {
     /// that even if `$ sysctl -a` outputs more keys than known
     /// (e.g. on newer AppleSi Macbooks), all keys can be accessed.
     all_keys: BTreeMap<String, String>,
+    /// Basic CPU info including Cache info.
     cpu_info: CpuInfo,
+    /// Advanced CPU info.
     cpu_features: CpuFeaturesInfo,
+    /// Software info.
     os_info: OsInfo,
+    /// Memory info.
     mem_info: MemoryInfo,
 }
 
 impl MacSysInfo {
-    pub fn new(all_keys: BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
+    /// Constructor.
+    pub(crate) fn new(all_keys: BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let x = MacSysInfo {
             cpu_info: CpuInfo::new(&all_keys)?,
             cpu_features: CpuFeaturesInfo::new(&all_keys)?,
@@ -67,22 +74,27 @@ impl MacSysInfo {
         Ok(x)
     }
 
+    /// Getter for `all_keys`.
     pub fn all_keys(&self) -> &BTreeMap<String, String> {
         &self.all_keys
     }
 
+    /// Getter for `cpu_features`.
     pub fn cpu_features(&self) -> &CpuFeaturesInfo {
         &self.cpu_features
     }
 
+    /// Getter for `cpu_info`.
     pub fn cpu_info(&self) -> &CpuInfo {
         &self.cpu_info
     }
 
+    /// Getter for `os_info`.
     pub fn os_info(&self) -> &OsInfo {
         &self.os_info
     }
 
+    /// Getter for `mem_info`.
     pub fn mem_info(&self) -> &MemoryInfo {
         &self.mem_info
     }

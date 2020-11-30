@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+//! Basic info about CPU.
+
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
 use std::collections::BTreeMap;
@@ -69,7 +71,8 @@ pub struct CpuInfo {
 
 impl CpuInfo {
 
-    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
+    /// Constructor.
+    pub(crate) fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let x = CpuInfo {
             phys_cores: parse_sysctl_value(
                 "phys_cores",
@@ -119,43 +122,55 @@ impl CpuInfo {
         Ok(x)
     }
 
+    /// Getter for the field `phys_cores`.
     pub fn phys_cores(&self) -> usize {
         self.phys_cores
     }
 
+    /// Getter for the field `logic_cores`.
     pub fn logic_cores(&self) -> usize {
         self.logic_cores
     }
 
+    /// Getter for the field `num_cores`.
     pub fn num_cores(&self) -> usize {
         self.num_cores
     }
 
+    /// Getter for the field `cache_info`.
     pub fn cache_info(&self) -> &CacheInfo {
         &self.cache_info
     }
+    /// Getter for the field `brand_string`.
     pub fn brand_string(&self) -> &str {
         &self.brand_string
     }
+    /// Getter for the field `frequency`.
     pub fn frequency(&self) -> usize {
         self.frequency
     }
+    /// Getter for the field `min_frequency`.
     pub fn min_frequency(&self) -> usize {
         self.min_frequency
     }
+    /// Getter for the field `max_frequency`.
     pub fn max_frequency(&self) -> usize {
         self.max_frequency
     }
+    /// Getter for the field `frequency` in Ghz.
     pub fn frequency_ghz(&self) -> f64 {
         self.frequency as f64 / (1E9 as f64)
     }
+    /// Getter for the field `min_frequency` in Ghz.
     pub fn min_frequency_ghz(&self) -> f64 {
         self.min_frequency as f64 / (1E9 as f64)
     }
+    /// Getter for the field `max_frequency` in Ghz.
     pub fn max_frequency_ghz(&self) -> f64 {
         self.max_frequency as f64 / (1E9 as f64)
     }
 
+    /// Getter for the field `architecture`.
     pub fn architecture(&self) -> &CpuArchitectureInfo {
         &self.architecture
     }

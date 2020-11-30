@@ -29,15 +29,18 @@ use std::collections::BTreeMap;
 use crate::generated_sysctl_keys::SysctlKey;
 use derive_more::Display;
 
+/// The type that the string value should be parsed as.
 #[derive(Debug, PartialEq, Display)]
 #[allow(dead_code)]
 pub(crate) enum ParseAsType {
     String,
     Isize,
     Usize,
+    /// "0" is false and "1" is true
     Bool,
 }
 
+/// Contains the parsed value.
 #[derive(Debug, PartialEq)]
 pub(crate) enum ParsedValue {
     String(String),
@@ -48,6 +51,7 @@ pub(crate) enum ParsedValue {
 
 #[allow(dead_code)]
 impl ParsedValue {
+    /// Convenient function to unwrap.
     pub(crate) fn get_string(self) -> String {
         if let ParsedValue::String(val) = self {
             val
@@ -55,6 +59,7 @@ impl ParsedValue {
             panic!("Not ParseTarget::String")
         }
     }
+    /// Convenient function to unwrap.
     pub(crate) fn get_isize(self) -> isize {
         if let ParsedValue::Isize(val) = self {
             val
@@ -62,6 +67,7 @@ impl ParsedValue {
             panic!("Not ParseTarget::Isize")
         }
     }
+    /// Convenient function to unwrap.
     pub(crate) fn get_usize(self) -> usize {
         if let ParsedValue::Usize(val) = self {
             val
@@ -69,6 +75,7 @@ impl ParsedValue {
             panic!("Not ParseTarget::Usize")
         }
     }
+    /// Convenient function to unwrap.
     pub(crate) fn get_bool(self) -> bool {
         if let ParsedValue::Bool(val) = self {
             val
@@ -78,8 +85,8 @@ impl ParsedValue {
     }
 }
 
-
-
+/// Parsed a string value from "sysctl -a" output as
+/// a specific type.
 pub(crate) fn parse_sysctl_value(field_name: &str,
                                  key: SysctlKey,
                                  raw_values: &BTreeMap<String, String>,

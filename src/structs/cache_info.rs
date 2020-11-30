@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+//! Cache-Info (L1, L2, L3).
+
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
 use std::collections::BTreeMap;
@@ -29,6 +31,7 @@ use crate::error::MacSysInfoError;
 use crate::parse::{parse_sysctl_value, ParseAsType};
 use crate::generated_sysctl_keys::SysctlKey;
 
+/// Info about L1 (I & D), L2, and L3 cache.
 #[derive(Debug, Serialize, DeriveMoreDisplay)]
 #[display(fmt = "CacheInfo (\n\
 \x20    l1i_cache_size: {},\n\
@@ -49,7 +52,7 @@ pub struct CacheInfo {
 
 impl CacheInfo {
 
-    pub fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
+    pub(crate) fn new(sysinfo: &BTreeMap<String, String>) -> Result<Self, MacSysInfoError> {
         let x = CacheInfo {
             l1i_cache_size: parse_sysctl_value(
                 "l1i_cache_size",

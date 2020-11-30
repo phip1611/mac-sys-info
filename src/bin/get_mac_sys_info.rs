@@ -30,7 +30,7 @@ fn main() {
     // even if IDE shows that the Display trait is missing:
     // it is there. It gets implemented during compile time
     // by "derive_macro" crate.
-    println!("{}", info.cpu_info());
+    println!("{}", info.cpu_info().architecture());
     println!("{}", info.cpu_info().cache_info());
     println!("{}", info.cpu_features());
     println!("{}", info.os_info());

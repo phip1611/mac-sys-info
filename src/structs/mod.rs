@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+//! This module contains all structs thar hold information about the system.
+
 pub mod cache_info;
 pub mod cpu_features_info;
 pub mod cpu_architecture_info;

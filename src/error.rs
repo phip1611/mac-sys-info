@@ -21,10 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+//! Contains all error-related structs and functions that can occur in this library.
 
 use crate::generated_sysctl_keys::SysctlKey;
 use derive_more::Display;
 
+/// Errors that can happen inside the library.
 #[derive(Debug, Display)]
 pub enum MacSysInfoError {
     #[display(fmt = "Can't fetch system data.")]
@@ -33,6 +35,4 @@ pub enum MacSysInfoError {
     ParseError{field_name: String, sysctl_key: SysctlKey, err_msg: String},
     #[display(fmt = "The key '{}' can't be found in \"sysctl -a\" output.", _0)]
     KeyNotFound(SysctlKey),
-    #[display(fmt = "Unknown error occurred.")]
-    Unknown,
 }
