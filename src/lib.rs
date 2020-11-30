@@ -31,7 +31,7 @@ extern crate log;
 use crate::error::MacSysInfoError;
 use unix_exec_output_catcher::{fork_exec_and_catch, OCatchStrategy};
 use crate::parse::{parse_sysctl_line};
-use crate::structs::mac_sysinfo::MacSysInfo;
+use crate::structs::MacSysInfo;
 use std::collections::{BTreeMap};
 
 pub mod error;

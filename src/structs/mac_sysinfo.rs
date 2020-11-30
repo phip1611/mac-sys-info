@@ -27,11 +27,11 @@ SOFTWARE.
 use derive_more::Display as DeriveMoreDisplay;
 use serde::{Serialize};
 use std::collections::BTreeMap;
-use crate::structs::cpu_info::CpuInfo;
-use crate::structs::os_info::OsInfo;
-use crate::structs::mem_info::MemInfo;
+use crate::structs::CpuInfo;
+use crate::structs::OsInfo;
+use crate::structs::MemInfo;
+use crate::structs::CpuFeaturesInfo;
 use crate::error::MacSysInfoError;
-use crate::structs::cpu_features_info::CpuFeaturesInfo;
 
 /// Abstraction over MacOS system info.
 /// Allows raw access to all obtained system configuration as

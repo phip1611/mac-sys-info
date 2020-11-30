@@ -24,10 +24,18 @@ SOFTWARE.
 
 //! This module contains all structs thar hold information about the system.
 
-pub mod cache_info;
-pub mod cpu_features_info;
-pub mod cpu_architecture_info;
-pub mod cpu_info;
-pub mod mem_info;
-pub mod mac_sysinfo;
-pub mod os_info;
+mod cache_info;
+mod cpu_features_info;
+mod cpu_architecture_info;
+mod cpu_info;
+mod mem_info;
+mod mac_sysinfo;
+mod os_info;
+
+pub use cache_info::*;
+pub use cpu_features_info::*;
+pub use cpu_architecture_info::*;
+pub use cpu_info::*;
+pub use mem_info::*;
+pub use mac_sysinfo::*;
+pub use os_info::*;

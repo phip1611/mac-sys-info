@@ -29,9 +29,9 @@ use serde::{Serialize};
 use std::collections::BTreeMap;
 use crate::error::MacSysInfoError;
 use crate::generated_sysctl_keys::SysctlKey;
-use crate::structs::cache_info::CacheInfo;
+use crate::structs::CacheInfo;
+use crate::structs::CpuArchitectureInfo;
 use crate::parse::{parse_sysctl_value, ParseAsType};
-use crate::structs::cpu_architecture_info::CpuArchitectureInfo;
 
 
 /// General CPU info.

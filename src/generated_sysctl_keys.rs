@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-//! Raw mappings to the sysctl features.
+//! Raw mappings to the sysctl values/keys. (The output of `$ sysctl -a`)
 //! Last updated: 2020-11-26 on intel Macbook Pro on
 //! MacOS Catalina 10.15.7
 //!

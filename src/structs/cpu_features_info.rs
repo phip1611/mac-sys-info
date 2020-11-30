@@ -31,7 +31,7 @@ use std::collections::BTreeMap;
 use crate::error::MacSysInfoError;
 use crate::parse::{parse_sysctl_value, ParseAsType};
 use crate::generated_sysctl_keys::SysctlKey;
-use crate::structs::cpu_architecture_info::CpuArchitectureInfo;
+use crate::structs::CpuArchitectureInfo;
 
 /// Encapsulates the CPU features for the current processor.
 #[derive(Debug, Serialize, DeriveMoreDisplay)]
