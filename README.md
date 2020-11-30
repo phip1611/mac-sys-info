@@ -7,9 +7,7 @@ on Mac.
 ### As Library
 **Cargo.toml:**
 ```toml
-# please check if this is the latest version
-# maybe I forget to update the README sometime
-mac-sys-info = "0.1.8"
+mac-sys-info = "<insert latest version>"
 ```
 **Code:**
 ```rust
