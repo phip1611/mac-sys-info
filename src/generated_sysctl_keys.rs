@@ -29,7 +29,7 @@ SOFTWARE.
 //! Execute the binary `sysctl_output_keys_to_rust_code.rs` and copy
 //! the output of this command to renew this code.
 //!
-//! This code uses `[derive_more::Display]`. If each enum variant
+//! This code uses [`derive_more::Display`]. If each enum variant
 //! differs from the default impl (and has its own `#[display(fmt = "...")]`-macro
 //! the build time takes up to one minute for the thousand of enum variants.
 //! This is currently not the case but maybe in the future. The code

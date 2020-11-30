@@ -46,7 +46,7 @@ use crate::structs::cpu_features_info::CpuFeaturesInfo;
 pub struct MacSysInfo {
     /// Raw presentation of all keys that `$ sysctl -a` outputs in alphabetically order.
     /// You can use `.name()` on any enum variant of
-    /// `[crate::generated_sysctl_keys::SysctlKey]` to access
+    /// [`crate::generated_sysctl_keys::SysctlKey`] to access
     /// this. The key is a string and not `SysctlKey` in order to guarantee,
     /// that even if `$ sysctl -a` outputs more keys than known
     /// (e.g. on newer AppleSi Macbooks), all keys can be accessed.
@@ -79,22 +79,22 @@ impl MacSysInfo {
         &self.all_keys
     }
 
-    /// Getter for `cpu_features`.
+    /// Getter for [`crate::structs::CpuFeaturesInfo`].
     pub fn cpu_features(&self) -> &CpuFeaturesInfo {
         &self.cpu_features
     }
 
-    /// Getter for `cpu_info`.
+    /// Getter for [`crate::structs::CpuInfo`].
     pub fn cpu_info(&self) -> &CpuInfo {
         &self.cpu_info
     }
 
-    /// Getter for `os_info`.
+    /// Getter for [`crate::structs::OsInfo`].
     pub fn os_info(&self) -> &OsInfo {
         &self.os_info
     }
 
-    /// Getter for `mem_info`.
+    /// Getter for [`crate::structs::MemoryInfo`].
     pub fn mem_info(&self) -> &MemoryInfo {
         &self.mem_info
     }

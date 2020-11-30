@@ -137,7 +137,7 @@ impl CpuInfo {
         self.num_cores
     }
 
-    /// Getter for the field `cache_info`.
+    /// Getter for [`crate::structs::CacheInfo`].
     pub fn cache_info(&self) -> &CacheInfo {
         &self.cache_info
     }
