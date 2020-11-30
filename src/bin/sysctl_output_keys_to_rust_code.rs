@@ -80,7 +80,7 @@ fn main() {
             print!("{}(\"{}\"),", key, value);
             print!("\n");
         }*/
-        for (key, _value) in &macos_sysctl_key_value_pairs {
+        for (key, value) in &macos_sysctl_key_value_pairs {
             // print fmt-Macro from derive_more-Display-macro-impl-magic :)
             // see here https://crates.io/crates/derive_more
 
@@ -89,11 +89,14 @@ fn main() {
             // as this equals to the default value the code generation uses
             // we can remove it
 
-            /*print!("    ");
-            print!("#[display(fmt = \"{}\")]", key);
-            print!("\n");*/
-
             // print actual enum variant
+            print!("    ");
+            print!("/// Key for '{}'", value);
+            print!("\n");
+            // this increases the build time extremely
+            /*print!("    ");
+            print!("#[display(fmt = \"{}\")]", value);
+            print!("\n");*/
             print!("    ");
             print!("{},", key);
             print!("\n");

@@ -48,1337 +48,2691 @@ use derive_more::Display;
 #[derive(Debug, Display, PartialEq, Copy, Clone, Eq, Hash)]
 #[allow(non_camel_case_types)]
 pub enum SysctlKey {
+    /// Key for 'user.cs_path'
     UserCs_path,
+    /// Key for 'user.bc_base_max'
     UserBc_base_max,
+    /// Key for 'user.bc_dim_max'
     UserBc_dim_max,
+    /// Key for 'user.bc_scale_max'
     UserBc_scale_max,
+    /// Key for 'user.bc_string_max'
     UserBc_string_max,
+    /// Key for 'user.coll_weights_max'
     UserColl_weights_max,
+    /// Key for 'user.expr_nest_max'
     UserExpr_nest_max,
+    /// Key for 'user.line_max'
     UserLine_max,
+    /// Key for 'user.re_dup_max'
     UserRe_dup_max,
+    /// Key for 'user.posix2_version'
     UserPosix2_version,
+    /// Key for 'user.posix2_c_bind'
     UserPosix2_c_bind,
+    /// Key for 'user.posix2_c_dev'
     UserPosix2_c_dev,
+    /// Key for 'user.posix2_char_term'
     UserPosix2_char_term,
+    /// Key for 'user.posix2_fort_dev'
     UserPosix2_fort_dev,
+    /// Key for 'user.posix2_fort_run'
     UserPosix2_fort_run,
+    /// Key for 'user.posix2_localedef'
     UserPosix2_localedef,
+    /// Key for 'user.posix2_sw_dev'
     UserPosix2_sw_dev,
+    /// Key for 'user.posix2_upe'
     UserPosix2_upe,
+    /// Key for 'user.stream_max'
     UserStream_max,
+    /// Key for 'user.tzname_max'
     UserTzname_max,
+    /// Key for 'kern.ostype'
     KernOstype,
+    /// Key for 'kern.osrelease'
     KernOsrelease,
+    /// Key for 'kern.osrevision'
     KernOsrevision,
+    /// Key for 'kern.version'
     KernVersion,
+    /// Key for 'kern.maxvnodes'
     KernMaxvnodes,
+    /// Key for 'kern.maxproc'
     KernMaxproc,
+    /// Key for 'kern.maxfiles'
     KernMaxfiles,
+    /// Key for 'kern.argmax'
     KernArgmax,
+    /// Key for 'kern.securelevel'
     KernSecurelevel,
+    /// Key for 'kern.hostname'
     KernHostname,
+    /// Key for 'kern.hostid'
     KernHostid,
+    /// Key for 'kern.clockrate'
     KernClockrate,
+    /// Key for 'kern.posix1version'
     KernPosix1version,
+    /// Key for 'kern.ngroups'
     KernNgroups,
+    /// Key for 'kern.job_control'
     KernJob_control,
+    /// Key for 'kern.saved_ids'
     KernSaved_ids,
+    /// Key for 'kern.boottime'
     KernBoottime,
+    /// Key for 'kern.nisdomainname'
     KernNisdomainname,
+    /// Key for 'kern.maxfilesperproc'
     KernMaxfilesperproc,
+    /// Key for 'kern.maxprocperuid'
     KernMaxprocperuid,
+    /// Key for 'kern.ipc.maxsockbuf'
     KernIpcMaxsockbuf,
+    /// Key for 'kern.ipc.sockbuf_waste_factor'
     KernIpcSockbuf_waste_factor,
+    /// Key for 'kern.ipc.somaxconn'
     KernIpcSomaxconn,
+    /// Key for 'kern.ipc.nmbclusters'
     KernIpcNmbclusters,
+    /// Key for 'kern.ipc.soqlimitcompat'
     KernIpcSoqlimitcompat,
+    /// Key for 'kern.ipc.mleak_sample_factor'
     KernIpcMleak_sample_factor,
+    /// Key for 'kern.ipc.mb_normalized'
     KernIpcMb_normalized,
+    /// Key for 'kern.ipc.mb_watchdog'
     KernIpcMb_watchdog,
+    /// Key for 'kern.ipc.mb_drain_force'
     KernIpcMb_drain_force,
+    /// Key for 'kern.ipc.mb_drain_maxint'
     KernIpcMb_drain_maxint,
+    /// Key for 'kern.ipc.socket_debug'
     KernIpcSocket_debug,
+    /// Key for 'kern.ipc.sodefunct_calls'
     KernIpcSodefunct_calls,
+    /// Key for 'kern.ipc.sosendminchain'
     KernIpcSosendminchain,
+    /// Key for 'kern.ipc.sorecvmincopy'
     KernIpcSorecvmincopy,
+    /// Key for 'kern.ipc.sosendjcl'
     KernIpcSosendjcl,
+    /// Key for 'kern.ipc.sosendjcl_ignore_capab'
     KernIpcSosendjcl_ignore_capab,
+    /// Key for 'kern.ipc.sosendbigcl_ignore_capab'
     KernIpcSosendbigcl_ignore_capab,
+    /// Key for 'kern.ipc.sodefunctlog'
     KernIpcSodefunctlog,
+    /// Key for 'kern.ipc.sothrottlelog'
     KernIpcSothrottlelog,
+    /// Key for 'kern.ipc.sorestrictrecv'
     KernIpcSorestrictrecv,
+    /// Key for 'kern.ipc.sorestrictsend'
     KernIpcSorestrictsend,
+    /// Key for 'kern.ipc.soreserveheadroom'
     KernIpcSoreserveheadroom,
+    /// Key for 'kern.ipc.maxextbkidleperproc'
     KernIpcMaxextbkidleperproc,
+    /// Key for 'kern.ipc.extbkidletime'
     KernIpcExtbkidletime,
+    /// Key for 'kern.ipc.extbkidlercvhiwat'
     KernIpcExtbkidlercvhiwat,
+    /// Key for 'kern.ipc.sotcdb'
     KernIpcSotcdb,
+    /// Key for 'kern.ipc.throttle_best_effort'
     KernIpcThrottle_best_effort,
+    /// Key for 'kern.ipc.njcl'
     KernIpcNjcl,
+    /// Key for 'kern.ipc.njclbytes'
     KernIpcNjclbytes,
+    /// Key for 'kern.ipc.soqlencomp'
     KernIpcSoqlencomp,
+    /// Key for 'kern.ipc.sbmb_cnt'
     KernIpcSbmb_cnt,
+    /// Key for 'kern.ipc.sbmb_cnt_peak'
     KernIpcSbmb_cnt_peak,
+    /// Key for 'kern.ipc.sbmb_cnt_floor'
     KernIpcSbmb_cnt_floor,
+    /// Key for 'kern.ipc.sbmb_limreached'
     KernIpcSbmb_limreached,
+    /// Key for 'kern.ipc.io_policy.log'
     KernIpcIo_policyLog,
+    /// Key for 'kern.ipc.io_policy.uuid'
     KernIpcIo_policyUuid,
+    /// Key for 'kern.ipc.maxsendmsgx'
     KernIpcMaxsendmsgx,
+    /// Key for 'kern.ipc.maxrecvmsgx'
     KernIpcMaxrecvmsgx,
+    /// Key for 'kern.usrstack'
     KernUsrstack,
+    /// Key for 'kern.netboot'
     KernNetboot,
+    /// Key for 'kern.sysv.shmmax'
     KernSysvShmmax,
+    /// Key for 'kern.sysv.shmmin'
     KernSysvShmmin,
+    /// Key for 'kern.sysv.shmmni'
     KernSysvShmmni,
+    /// Key for 'kern.sysv.shmseg'
     KernSysvShmseg,
+    /// Key for 'kern.sysv.shmall'
     KernSysvShmall,
+    /// Key for 'kern.sysv.semmni'
     KernSysvSemmni,
+    /// Key for 'kern.sysv.semmns'
     KernSysvSemmns,
+    /// Key for 'kern.sysv.semmnu'
     KernSysvSemmnu,
+    /// Key for 'kern.sysv.semmsl'
     KernSysvSemmsl,
+    /// Key for 'kern.sysv.semume'
     KernSysvSemume,
+    /// Key for 'kern.aiomax'
     KernAiomax,
+    /// Key for 'kern.aioprocmax'
     KernAioprocmax,
+    /// Key for 'kern.aiothreads'
     KernAiothreads,
+    /// Key for 'kern.corefile'
     KernCorefile,
+    /// Key for 'kern.coredump'
     KernCoredump,
+    /// Key for 'kern.sugid_coredump'
     KernSugid_coredump,
+    /// Key for 'kern.delayterm'
     KernDelayterm,
+    /// Key for 'kern.shreg_private'
     KernShreg_private,
+    /// Key for 'kern.posix.sem.max'
     KernPosixSemMax,
+    /// Key for 'kern.usrstack64'
     KernUsrstack64,
+    /// Key for 'kern.tfp.policy'
     KernTfpPolicy,
+    /// Key for 'kern.procname'
     KernProcname,
+    /// Key for 'kern.speculative_reads_disabled'
     KernSpeculative_reads_disabled,
+    /// Key for 'kern.osversion'
     KernOsversion,
+    /// Key for 'kern.safeboot'
     KernSafeboot,
+    /// Key for 'kern.rage_vnode'
     KernRage_vnode,
+    /// Key for 'kern.tty.ptmx_max'
     KernTtyPtmx_max,
+    /// Key for 'kern.check_openevt'
     KernCheck_openevt,
+    /// Key for 'kern.threadname'
     KernThreadname,
+    /// Key for 'kern.dtrace.err_verbose'
     KernDtraceErr_verbose,
+    /// Key for 'kern.dtrace.buffer_memory_maxsize'
     KernDtraceBuffer_memory_maxsize,
+    /// Key for 'kern.dtrace.buffer_memory_inuse'
     KernDtraceBuffer_memory_inuse,
+    /// Key for 'kern.dtrace.difo_maxsize'
     KernDtraceDifo_maxsize,
+    /// Key for 'kern.dtrace.dof_maxsize'
     KernDtraceDof_maxsize,
+    /// Key for 'kern.dtrace.global_maxsize'
     KernDtraceGlobal_maxsize,
+    /// Key for 'kern.dtrace.provide_private_probes'
     KernDtraceProvide_private_probes,
+    /// Key for 'kern.dtrace.dof_mode'
     KernDtraceDof_mode,
+    /// Key for 'kern.dtrace.ignore_fbt_blacklist'
     KernDtraceIgnore_fbt_blacklist,
+    /// Key for 'kern.nbuf'
     KernNbuf,
+    /// Key for 'kern.maxnbuf'
     KernMaxnbuf,
+    /// Key for 'kern.monotonic.supported'
     KernMonotonicSupported,
+    /// Key for 'kern.monotonic.pmis'
     KernMonotonicPmis,
+    /// Key for 'kern.monotonic.retrograde_updates'
     KernMonotonicRetrograde_updates,
+    /// Key for 'kern.monotonic.task_thread_counting'
     KernMonotonicTask_thread_counting,
+    /// Key for 'kern.flush_cache_on_write'
     KernFlush_cache_on_write,
+    /// Key for 'kern.wq_stalled_window_usecs'
     KernWq_stalled_window_usecs,
+    /// Key for 'kern.wq_reduce_pool_window_usecs'
     KernWq_reduce_pool_window_usecs,
+    /// Key for 'kern.wq_max_timer_interval_usecs'
     KernWq_max_timer_interval_usecs,
+    /// Key for 'kern.wq_max_threads'
     KernWq_max_threads,
+    /// Key for 'kern.wq_max_constrained_threads'
     KernWq_max_constrained_threads,
+    /// Key for 'kern.kdbg.experimental_continuous'
     KernKdbgExperimental_continuous,
+    /// Key for 'kern.kdbg.debug'
     KernKdbgDebug,
+    /// Key for 'kern.kdbg.oldest_time'
     KernKdbgOldest_time,
+    /// Key for 'kern.ds_supgroups_supported'
     KernDs_supgroups_supported,
+    /// Key for 'kern.sugid_scripts'
     KernSugid_scripts,
+    /// Key for 'kern.zleak.active'
     KernZleakActive,
+    /// Key for 'kern.zleak.max_zonemap_size'
     KernZleakMax_zonemap_size,
+    /// Key for 'kern.zleak.global_threshold'
     KernZleakGlobal_threshold,
+    /// Key for 'kern.zleak.zone_threshold'
     KernZleakZone_threshold,
+    /// Key for 'kern.uuid'
     KernUuid,
+    /// Key for 'kern.osproductversion'
     KernOsproductversion,
+    /// Key for 'kern.iossupportversion'
     KernIossupportversion,
+    /// Key for 'kern.bootargs'
     KernBootargs,
+    /// Key for 'kern.kernelcacheuuid'
     KernKernelcacheuuid,
+    /// Key for 'kern.num_files'
     KernNum_files,
+    /// Key for 'kern.num_vnodes'
     KernNum_vnodes,
+    /// Key for 'kern.num_tasks'
     KernNum_tasks,
+    /// Key for 'kern.num_threads'
     KernNum_threads,
+    /// Key for 'kern.num_taskthreads'
     KernNum_taskthreads,
+    /// Key for 'kern.num_recycledvnodes'
     KernNum_recycledvnodes,
+    /// Key for 'kern.namecache_disabled'
     KernNamecache_disabled,
+    /// Key for 'kern.sched_enable_smt'
     KernSched_enable_smt,
+    /// Key for 'kern.sched_allow_NO_SMT_threads'
     KernSched_allow_NO_SMT_threads,
+    /// Key for 'kern.preheat_max_bytes'
     KernPreheat_max_bytes,
+    /// Key for 'kern.preheat_min_bytes'
     KernPreheat_min_bytes,
+    /// Key for 'kern.speculative_prefetch_max'
     KernSpeculative_prefetch_max,
+    /// Key for 'kern.speculative_prefetch_max_iosize'
     KernSpeculative_prefetch_max_iosize,
+    /// Key for 'kern.vm_page_free_target'
     KernVm_page_free_target,
+    /// Key for 'kern.vm_page_free_min'
     KernVm_page_free_min,
+    /// Key for 'kern.vm_page_free_reserved'
     KernVm_page_free_reserved,
+    /// Key for 'kern.vm_page_speculative_percentage'
     KernVm_page_speculative_percentage,
+    /// Key for 'kern.vm_page_speculative_q_age_ms'
     KernVm_page_speculative_q_age_ms,
+    /// Key for 'kern.vm_max_delayed_work_limit'
     KernVm_max_delayed_work_limit,
+    /// Key for 'kern.vm_max_batch'
     KernVm_max_batch,
+    /// Key for 'kern.bootsessionuuid'
     KernBootsessionuuid,
+    /// Key for 'kern.timer.coalescing_enabled'
     KernTimerCoalescing_enabled,
+    /// Key for 'kern.timer.deadline_tracking_bin_1'
     KernTimerDeadline_tracking_bin_1,
+    /// Key for 'kern.timer.deadline_tracking_bin_2'
     KernTimerDeadline_tracking_bin_2,
+    /// Key for 'kern.timer.longterm.threshold'
     KernTimerLongtermThreshold,
+    /// Key for 'kern.timer.longterm.scan_limit'
     KernTimerLongtermScan_limit,
+    /// Key for 'kern.timer.longterm.scan_interval'
     KernTimerLongtermScan_interval,
+    /// Key for 'kern.timer.longterm.qlen'
     KernTimerLongtermQlen,
+    /// Key for 'kern.timer.longterm.scan_pauses'
     KernTimerLongtermScan_pauses,
+    /// Key for 'kern.vfsnspace'
     KernVfsnspace,
+    /// Key for 'kern.singleuser'
     KernSingleuser,
+    /// Key for 'kern.minimalboot'
     KernMinimalboot,
+    /// Key for 'kern.affinity_sets_enabled'
     KernAffinity_sets_enabled,
+    /// Key for 'kern.affinity_sets_mapping'
     KernAffinity_sets_mapping,
+    /// Key for 'kern.slide'
     KernSlide,
+    /// Key for 'kern.ipc_voucher_trace_contents'
     KernIpc_voucher_trace_contents,
+    /// Key for 'kern.stack_size'
     KernStack_size,
+    /// Key for 'kern.stack_depth_max'
     KernStack_depth_max,
+    /// Key for 'kern.kern_feature_overrides'
     KernKern_feature_overrides,
+    /// Key for 'kern.ipc_portbt'
     KernIpc_portbt,
+    /// Key for 'kern.sched'
     KernSched,
+    /// Key for 'kern.timer_coalesce_bg_scale'
     KernTimer_coalesce_bg_scale,
+    /// Key for 'kern.timer_resort_threshold_ns'
     KernTimer_resort_threshold_ns,
+    /// Key for 'kern.timer_coalesce_bg_ns_max'
     KernTimer_coalesce_bg_ns_max,
+    /// Key for 'kern.timer_coalesce_kt_scale'
     KernTimer_coalesce_kt_scale,
+    /// Key for 'kern.timer_coalesce_kt_ns_max'
     KernTimer_coalesce_kt_ns_max,
+    /// Key for 'kern.timer_coalesce_fp_scale'
     KernTimer_coalesce_fp_scale,
+    /// Key for 'kern.timer_coalesce_fp_ns_max'
     KernTimer_coalesce_fp_ns_max,
+    /// Key for 'kern.timer_coalesce_ts_scale'
     KernTimer_coalesce_ts_scale,
+    /// Key for 'kern.timer_coalesce_ts_ns_max'
     KernTimer_coalesce_ts_ns_max,
+    /// Key for 'kern.timer_coalesce_tier0_scale'
     KernTimer_coalesce_tier0_scale,
+    /// Key for 'kern.timer_coalesce_tier0_ns_max'
     KernTimer_coalesce_tier0_ns_max,
+    /// Key for 'kern.timer_coalesce_tier1_scale'
     KernTimer_coalesce_tier1_scale,
+    /// Key for 'kern.timer_coalesce_tier1_ns_max'
     KernTimer_coalesce_tier1_ns_max,
+    /// Key for 'kern.timer_coalesce_tier2_scale'
     KernTimer_coalesce_tier2_scale,
+    /// Key for 'kern.timer_coalesce_tier2_ns_max'
     KernTimer_coalesce_tier2_ns_max,
+    /// Key for 'kern.timer_coalesce_tier3_scale'
     KernTimer_coalesce_tier3_scale,
+    /// Key for 'kern.timer_coalesce_tier3_ns_max'
     KernTimer_coalesce_tier3_ns_max,
+    /// Key for 'kern.timer_coalesce_tier4_scale'
     KernTimer_coalesce_tier4_scale,
+    /// Key for 'kern.timer_coalesce_tier4_ns_max'
     KernTimer_coalesce_tier4_ns_max,
+    /// Key for 'kern.timer_coalesce_tier5_scale'
     KernTimer_coalesce_tier5_scale,
+    /// Key for 'kern.timer_coalesce_tier5_ns_max'
     KernTimer_coalesce_tier5_ns_max,
+    /// Key for 'kern.hv_support'
     KernHv_support,
+    /// Key for 'kern.thread_groups_supported'
     KernThread_groups_supported,
+    /// Key for 'kern.memorystatus_sysprocs_idle_delay_time'
     KernMemorystatus_sysprocs_idle_delay_time,
+    /// Key for 'kern.memorystatus_apps_idle_delay_time'
     KernMemorystatus_apps_idle_delay_time,
+    /// Key for 'kern.jetsam_aging_policy'
     KernJetsam_aging_policy,
+    /// Key for 'kern.memorystatus_purge_on_warning'
     KernMemorystatus_purge_on_warning,
+    /// Key for 'kern.memorystatus_purge_on_urgent'
     KernMemorystatus_purge_on_urgent,
+    /// Key for 'kern.memorystatus_purge_on_critical'
     KernMemorystatus_purge_on_critical,
+    /// Key for 'kern.msgbuf'
     KernMsgbuf,
+    /// Key for 'kern.task_exc_guard_default'
     KernTask_exc_guard_default,
+    /// Key for 'kern.ulock_adaptive_spin_usecs'
     KernUlock_adaptive_spin_usecs,
+    /// Key for 'kern.eventhandler.debug'
     KernEventhandlerDebug,
+    /// Key for 'kern.secure_kernel'
     KernSecure_kernel,
+    /// Key for 'kern.skywalk.ring_stat_enable'
     KernSkywalkRing_stat_enable,
+    /// Key for 'kern.skywalk.flowswitch.ip_reass'
     KernSkywalkFlowswitchIp_reass,
+    /// Key for 'kern.skywalk.flowswitch.ipfm_frag_ttl'
     KernSkywalkFlowswitchIpfm_frag_ttl,
+    /// Key for 'kern.skywalk.flowswitch.ipfm_timeout_tcall_ival'
     KernSkywalkFlowswitchIpfm_timeout_tcall_ival,
+    /// Key for 'kern.skywalk.flowswitch.flow_route_expire'
     KernSkywalkFlowswitchFlow_route_expire,
+    /// Key for 'kern.skywalk.flowswitch.en0.ipfm.frag_limit'
     KernSkywalkFlowswitchEn0IpfmFrag_limit,
+    /// Key for 'kern.skywalk.flowswitch.en0.ipfm.frag_count'
     KernSkywalkFlowswitchEn0IpfmFrag_count,
+    /// Key for 'kern.skywalk.flowswitch.en0.ipfm.queue_limit'
     KernSkywalkFlowswitchEn0IpfmQueue_limit,
+    /// Key for 'kern.skywalk.flowswitch.en0.ipfm.queue_count'
     KernSkywalkFlowswitchEn0IpfmQueue_count,
+    /// Key for 'kern.skywalk.flowswitch.en1.ipfm.frag_limit'
     KernSkywalkFlowswitchEn1IpfmFrag_limit,
+    /// Key for 'kern.skywalk.flowswitch.en1.ipfm.frag_count'
     KernSkywalkFlowswitchEn1IpfmFrag_count,
+    /// Key for 'kern.skywalk.flowswitch.en1.ipfm.queue_limit'
     KernSkywalkFlowswitchEn1IpfmQueue_limit,
+    /// Key for 'kern.skywalk.flowswitch.en1.ipfm.queue_count'
     KernSkywalkFlowswitchEn1IpfmQueue_count,
+    /// Key for 'kern.skywalk.flowswitch.en2.ipfm.frag_limit'
     KernSkywalkFlowswitchEn2IpfmFrag_limit,
+    /// Key for 'kern.skywalk.flowswitch.en2.ipfm.frag_count'
     KernSkywalkFlowswitchEn2IpfmFrag_count,
+    /// Key for 'kern.skywalk.flowswitch.en2.ipfm.queue_limit'
     KernSkywalkFlowswitchEn2IpfmQueue_limit,
+    /// Key for 'kern.skywalk.flowswitch.en2.ipfm.queue_count'
     KernSkywalkFlowswitchEn2IpfmQueue_count,
+    /// Key for 'kern.skywalk.flowswitch.awdl0.ipfm.frag_limit'
     KernSkywalkFlowswitchAwdl0IpfmFrag_limit,
+    /// Key for 'kern.skywalk.flowswitch.awdl0.ipfm.frag_count'
     KernSkywalkFlowswitchAwdl0IpfmFrag_count,
+    /// Key for 'kern.skywalk.flowswitch.awdl0.ipfm.queue_limit'
     KernSkywalkFlowswitchAwdl0IpfmQueue_limit,
+    /// Key for 'kern.skywalk.flowswitch.awdl0.ipfm.queue_count'
     KernSkywalkFlowswitchAwdl0IpfmQueue_count,
+    /// Key for 'kern.skywalk.netif.default_drop'
     KernSkywalkNetifDefault_drop,
+    /// Key for 'kern.interrupt_timer_coalescing_enabled'
     KernInterrupt_timer_coalescing_enabled,
+    /// Key for 'kern.timer_coalesce_idle_entry_hard_deadline_max'
     KernTimer_coalesce_idle_entry_hard_deadline_max,
+    /// Key for 'kern.pmtimeout'
     KernPmtimeout,
+    /// Key for 'kern.wake_abs_time'
     KernWake_abs_time,
+    /// Key for 'kern.sleep_abs_time'
     KernSleep_abs_time,
+    /// Key for 'kern.useractive_abs_time'
     KernUseractive_abs_time,
+    /// Key for 'kern.userinactive_abs_time'
     KernUserinactive_abs_time,
+    /// Key for 'kern.sleeptime'
     KernSleeptime,
+    /// Key for 'kern.waketime'
     KernWaketime,
+    /// Key for 'kern.willshutdown'
     KernWillshutdown,
+    /// Key for 'kern.iokittest'
     KernIokittest,
+    /// Key for 'kern.progressmeterenable'
     KernProgressmeterenable,
+    /// Key for 'kern.progressmeter'
     KernProgressmeter,
+    /// Key for 'kern.wakereason'
     KernWakereason,
+    /// Key for 'kern.consoleoptions'
     KernConsoleoptions,
+    /// Key for 'kern.aotmode'
     KernAotmode,
+    /// Key for 'kern.aotmodebits'
     KernAotmodebits,
+    /// Key for 'kern.hibernatefile'
     KernHibernatefile,
+    /// Key for 'kern.bootsignature'
     KernBootsignature,
+    /// Key for 'kern.hibernatemode'
     KernHibernatemode,
+    /// Key for 'kern.hibernategraphicsready'
     KernHibernategraphicsready,
+    /// Key for 'kern.hibernatewakenotification'
     KernHibernatewakenotification,
+    /// Key for 'kern.hibernatelockscreenready'
     KernHibernatelockscreenready,
+    /// Key for 'kern.hibernatehidready'
     KernHibernatehidready,
+    /// Key for 'kern.pthread_mutex_default_policy'
     KernPthread_mutex_default_policy,
+    /// Key for 'kern.hv.vmx_mitigations'
     KernHvVmx_mitigations,
+    /// Key for 'kern.hv.vmx_supported_mitigations'
     KernHvVmx_supported_mitigations,
+    /// Key for 'vm.loadavg'
     VmLoadavg,
+    /// Key for 'vm.swapusage'
     VmSwapusage,
+    /// Key for 'vm.cs_force_kill'
     VmCs_force_kill,
+    /// Key for 'vm.cs_force_hard'
     VmCs_force_hard,
+    /// Key for 'vm.cs_debug'
     VmCs_debug,
+    /// Key for 'vm.cs_debug_fail_on_unsigned_code'
     VmCs_debug_fail_on_unsigned_code,
+    /// Key for 'vm.cs_debug_unsigned_exec_failures'
     VmCs_debug_unsigned_exec_failures,
+    /// Key for 'vm.cs_debug_unsigned_mmap_failures'
     VmCs_debug_unsigned_mmap_failures,
+    /// Key for 'vm.cs_all_vnodes'
     VmCs_all_vnodes,
+    /// Key for 'vm.cs_system_enforcement'
     VmCs_system_enforcement,
+    /// Key for 'vm.cs_process_enforcement'
     VmCs_process_enforcement,
+    /// Key for 'vm.cs_enforcement_panic'
     VmCs_enforcement_panic,
+    /// Key for 'vm.cs_library_validation'
     VmCs_library_validation,
+    /// Key for 'vm.global_user_wire_limit'
     VmGlobal_user_wire_limit,
+    /// Key for 'vm.user_wire_limit'
     VmUser_wire_limit,
+    /// Key for 'vm.global_no_user_wire_amount'
     VmGlobal_no_user_wire_amount,
+    /// Key for 'vm.vm_copy_src_not_internal'
     VmVm_copy_src_not_internal,
+    /// Key for 'vm.vm_copy_src_not_symmetric'
     VmVm_copy_src_not_symmetric,
+    /// Key for 'vm.vm_copy_src_large'
     VmVm_copy_src_large,
+    /// Key for 'vm.vm_page_external_count'
     VmVm_page_external_count,
+    /// Key for 'vm.vm_page_filecache_min'
     VmVm_page_filecache_min,
+    /// Key for 'vm.vm_page_xpmapped_min'
     VmVm_page_xpmapped_min,
+    /// Key for 'vm.compressor_input_bytes'
     VmCompressor_input_bytes,
+    /// Key for 'vm.compressor_compressed_bytes'
     VmCompressor_compressed_bytes,
+    /// Key for 'vm.compressor_bytes_used'
     VmCompressor_bytes_used,
+    /// Key for 'vm.compressor_mode'
     VmCompressor_mode,
+    /// Key for 'vm.compressor_is_active'
     VmCompressor_is_active,
+    /// Key for 'vm.compressor_swapout_target_age'
     VmCompressor_swapout_target_age,
+    /// Key for 'vm.compressor_available'
     VmCompressor_available,
+    /// Key for 'vm.compressor_min_csegs_per_major_compaction'
     VmCompressor_min_csegs_per_major_compaction,
+    /// Key for 'vm.vm_ripe_target_age_in_secs'
     VmVm_ripe_target_age_in_secs,
+    /// Key for 'vm.compressor_eval_period_in_msecs'
     VmCompressor_eval_period_in_msecs,
+    /// Key for 'vm.compressor_sample_min_in_msecs'
     VmCompressor_sample_min_in_msecs,
+    /// Key for 'vm.compressor_sample_max_in_msecs'
     VmCompressor_sample_max_in_msecs,
+    /// Key for 'vm.compressor_thrashing_threshold_per_10msecs'
     VmCompressor_thrashing_threshold_per_10msecs,
+    /// Key for 'vm.compressor_thrashing_min_per_10msecs'
     VmCompressor_thrashing_min_per_10msecs,
+    /// Key for 'vm.swapfileprefix'
     VmSwapfileprefix,
+    /// Key for 'vm.compressor_timing_enabled'
     VmCompressor_timing_enabled,
+    /// Key for 'vm.lz4_compressions'
     VmLz4_compressions,
+    /// Key for 'vm.lz4_compression_failures'
     VmLz4_compression_failures,
+    /// Key for 'vm.lz4_compressed_bytes'
     VmLz4_compressed_bytes,
+    /// Key for 'vm.lz4_wk_compression_delta'
     VmLz4_wk_compression_delta,
+    /// Key for 'vm.lz4_wk_compression_negative_delta'
     VmLz4_wk_compression_negative_delta,
+    /// Key for 'vm.lz4_decompressions'
     VmLz4_decompressions,
+    /// Key for 'vm.lz4_decompressed_bytes'
     VmLz4_decompressed_bytes,
+    /// Key for 'vm.uc_decompressions'
     VmUc_decompressions,
+    /// Key for 'vm.wk_compressions'
     VmWk_compressions,
+    /// Key for 'vm.wk_catime'
     VmWk_catime,
+    /// Key for 'vm.wkh_catime'
     VmWkh_catime,
+    /// Key for 'vm.wkh_compressions'
     VmWkh_compressions,
+    /// Key for 'vm.wks_catime'
     VmWks_catime,
+    /// Key for 'vm.wks_compressions'
     VmWks_compressions,
+    /// Key for 'vm.wk_compressions_exclusive'
     VmWk_compressions_exclusive,
+    /// Key for 'vm.wk_sv_compressions'
     VmWk_sv_compressions,
+    /// Key for 'vm.wk_mzv_compressions'
     VmWk_mzv_compressions,
+    /// Key for 'vm.wk_compression_failures'
     VmWk_compression_failures,
+    /// Key for 'vm.wk_compressed_bytes_exclusive'
     VmWk_compressed_bytes_exclusive,
+    /// Key for 'vm.wk_compressed_bytes_total'
     VmWk_compressed_bytes_total,
+    /// Key for 'vm.wks_compressed_bytes'
     VmWks_compressed_bytes,
+    /// Key for 'vm.wks_compression_failures'
     VmWks_compression_failures,
+    /// Key for 'vm.wks_sv_compressions'
     VmWks_sv_compressions,
+    /// Key for 'vm.wk_decompressions'
     VmWk_decompressions,
+    /// Key for 'vm.wk_datime'
     VmWk_datime,
+    /// Key for 'vm.wkh_datime'
     VmWkh_datime,
+    /// Key for 'vm.wkh_decompressions'
     VmWkh_decompressions,
+    /// Key for 'vm.wks_datime'
     VmWks_datime,
+    /// Key for 'vm.wks_decompressions'
     VmWks_decompressions,
+    /// Key for 'vm.wk_decompressed_bytes'
     VmWk_decompressed_bytes,
+    /// Key for 'vm.wk_sv_decompressions'
     VmWk_sv_decompressions,
+    /// Key for 'vm.lz4_threshold'
     VmLz4_threshold,
+    /// Key for 'vm.wkdm_reeval_threshold'
     VmWkdm_reeval_threshold,
+    /// Key for 'vm.lz4_max_failure_skips'
     VmLz4_max_failure_skips,
+    /// Key for 'vm.lz4_max_failure_run_length'
     VmLz4_max_failure_run_length,
+    /// Key for 'vm.lz4_max_preselects'
     VmLz4_max_preselects,
+    /// Key for 'vm.lz4_run_preselection_threshold'
     VmLz4_run_preselection_threshold,
+    /// Key for 'vm.lz4_run_continue_bytes'
     VmLz4_run_continue_bytes,
+    /// Key for 'vm.lz4_profitable_bytes'
     VmLz4_profitable_bytes,
+    /// Key for 'vm.vm_page_background_mode'
     VmVm_page_background_mode,
+    /// Key for 'vm.vm_page_background_exclude_external'
     VmVm_page_background_exclude_external,
+    /// Key for 'vm.vm_page_background_target'
     VmVm_page_background_target,
+    /// Key for 'vm.vm_page_background_count'
     VmVm_page_background_count,
+    /// Key for 'vm.vm_page_background_internal_count'
     VmVm_page_background_internal_count,
+    /// Key for 'vm.vm_page_background_external_count'
     VmVm_page_background_external_count,
+    /// Key for 'vm.vm_page_background_promoted_count'
     VmVm_page_background_promoted_count,
+    /// Key for 'vm.vm_pageout_considered_bq_internal'
     VmVm_pageout_considered_bq_internal,
+    /// Key for 'vm.vm_pageout_considered_bq_external'
     VmVm_pageout_considered_bq_external,
+    /// Key for 'vm.vm_pageout_rejected_bq_internal'
     VmVm_pageout_rejected_bq_internal,
+    /// Key for 'vm.vm_pageout_rejected_bq_external'
     VmVm_pageout_rejected_bq_external,
+    /// Key for 'vm.darkwake_mode'
     VmDarkwake_mode,
+    /// Key for 'vm.cs_blob_count'
     VmCs_blob_count,
+    /// Key for 'vm.cs_blob_size'
     VmCs_blob_size,
+    /// Key for 'vm.cs_blob_count_peak'
     VmCs_blob_count_peak,
+    /// Key for 'vm.cs_blob_size_peak'
     VmCs_blob_size_peak,
+    /// Key for 'vm.cs_blob_size_max'
     VmCs_blob_size_max,
+    /// Key for 'vm.vm_do_collapse_compressor'
     VmVm_do_collapse_compressor,
+    /// Key for 'vm.vm_do_collapse_compressor_pages'
     VmVm_do_collapse_compressor_pages,
+    /// Key for 'vm.vm_do_collapse_terminate'
     VmVm_do_collapse_terminate,
+    /// Key for 'vm.vm_do_collapse_terminate_failure'
     VmVm_do_collapse_terminate_failure,
+    /// Key for 'vm.vm_should_cow_but_wired'
     VmVm_should_cow_but_wired,
+    /// Key for 'vm.vm_create_upl_extra_cow'
     VmVm_create_upl_extra_cow,
+    /// Key for 'vm.vm_create_upl_extra_cow_pages'
     VmVm_create_upl_extra_cow_pages,
+    /// Key for 'vm.vm_create_upl_lookup_failure_write'
     VmVm_create_upl_lookup_failure_write,
+    /// Key for 'vm.vm_create_upl_lookup_failure_copy'
     VmVm_create_upl_lookup_failure_copy,
+    /// Key for 'vm.vm_debug_events'
     VmVm_debug_events,
+    /// Key for 'vm.shared_region_unnest_logging'
     VmShared_region_unnest_logging,
+    /// Key for 'vm.shared_region_trace_level'
     VmShared_region_trace_level,
+    /// Key for 'vm.shared_region_version'
     VmShared_region_version,
+    /// Key for 'vm.shared_region_persistence'
     VmShared_region_persistence,
+    /// Key for 'vm.pagesize'
     VmPagesize,
+    /// Key for 'vm.vm_page_free_target'
     VmVm_page_free_target,
+    /// Key for 'vm.memory_pressure'
     VmMemory_pressure,
+    /// Key for 'vm.page_free_wanted'
     VmPage_free_wanted,
+    /// Key for 'vm.page_purgeable_count'
     VmPage_purgeable_count,
+    /// Key for 'vm.page_purgeable_wired_count'
     VmPage_purgeable_wired_count,
+    /// Key for 'vm.kern_lpage_count'
     VmKern_lpage_count,
+    /// Key for 'vm.madvise_free_debug'
     VmMadvise_free_debug,
+    /// Key for 'vm.page_reusable_count'
     VmPage_reusable_count,
+    /// Key for 'vm.reusable_success'
     VmReusable_success,
+    /// Key for 'vm.reusable_failure'
     VmReusable_failure,
+    /// Key for 'vm.reusable_pages_shared'
     VmReusable_pages_shared,
+    /// Key for 'vm.all_reusable_calls'
     VmAll_reusable_calls,
+    /// Key for 'vm.partial_reusable_calls'
     VmPartial_reusable_calls,
+    /// Key for 'vm.reuse_success'
     VmReuse_success,
+    /// Key for 'vm.reuse_failure'
     VmReuse_failure,
+    /// Key for 'vm.all_reuse_calls'
     VmAll_reuse_calls,
+    /// Key for 'vm.partial_reuse_calls'
     VmPartial_reuse_calls,
+    /// Key for 'vm.can_reuse_success'
     VmCan_reuse_success,
+    /// Key for 'vm.can_reuse_failure'
     VmCan_reuse_failure,
+    /// Key for 'vm.reusable_reclaimed'
     VmReusable_reclaimed,
+    /// Key for 'vm.reusable_nonwritable'
     VmReusable_nonwritable,
+    /// Key for 'vm.reusable_shared'
     VmReusable_shared,
+    /// Key for 'vm.free_shared'
     VmFree_shared,
+    /// Key for 'vm.page_free_count'
     VmPage_free_count,
+    /// Key for 'vm.page_speculative_count'
     VmPage_speculative_count,
+    /// Key for 'vm.page_cleaned_count'
     VmPage_cleaned_count,
+    /// Key for 'vm.page_pageable_internal_count'
     VmPage_pageable_internal_count,
+    /// Key for 'vm.page_pageable_external_count'
     VmPage_pageable_external_count,
+    /// Key for 'vm.pageout_inactive_clean'
     VmPageout_inactive_clean,
+    /// Key for 'vm.pageout_inactive_used'
     VmPageout_inactive_used,
+    /// Key for 'vm.pageout_inactive_dirty_internal'
     VmPageout_inactive_dirty_internal,
+    /// Key for 'vm.pageout_inactive_dirty_external'
     VmPageout_inactive_dirty_external,
+    /// Key for 'vm.pageout_speculative_clean'
     VmPageout_speculative_clean,
+    /// Key for 'vm.pageout_freed_external'
     VmPageout_freed_external,
+    /// Key for 'vm.pageout_freed_speculative'
     VmPageout_freed_speculative,
+    /// Key for 'vm.pageout_freed_cleaned'
     VmPageout_freed_cleaned,
+    /// Key for 'vm.prefault_nb_pages'
     VmPrefault_nb_pages,
+    /// Key for 'vm.prefault_nb_bailout'
     VmPrefault_nb_bailout,
+    /// Key for 'vm.vm_clump_promote_threshold'
     VmVm_clump_promote_threshold,
+    /// Key for 'vm.vm_min_kernel_address'
     VmVm_min_kernel_address,
+    /// Key for 'vm.vm_max_kernel_address'
     VmVm_max_kernel_address,
+    /// Key for 'vm.pages'
     VmPages,
+    /// Key for 'vm.page_busy_absent_skipped'
     VmPage_busy_absent_skipped,
+    /// Key for 'vm.upl_pages_tainted'
     VmUpl_pages_tainted,
+    /// Key for 'vm.iopl_pages_tainted'
     VmIopl_pages_tainted,
+    /// Key for 'vm.corpse_footprint_count'
     VmCorpse_footprint_count,
+    /// Key for 'vm.corpse_footprint_size_avg'
     VmCorpse_footprint_size_avg,
+    /// Key for 'vm.corpse_footprint_size_max'
     VmCorpse_footprint_size_max,
+    /// Key for 'vm.corpse_footprint_full'
     VmCorpse_footprint_full,
+    /// Key for 'vm.corpse_footprint_no_buf'
     VmCorpse_footprint_no_buf,
+    /// Key for 'vm.shared_region_pager_copied'
     VmShared_region_pager_copied,
+    /// Key for 'vm.shared_region_pager_slid'
     VmShared_region_pager_slid,
+    /// Key for 'vm.shared_region_pager_slid_error'
     VmShared_region_pager_slid_error,
+    /// Key for 'vm.shared_region_pager_reclaimed'
     VmShared_region_pager_reclaimed,
+    /// Key for 'vm.protect_privileged_from_untrusted'
     VmProtect_privileged_from_untrusted,
+    /// Key for 'vm.copied_on_read'
     VmCopied_on_read,
+    /// Key for 'vfs.generic.maxtypenum'
     VfsGenericMaxtypenum,
+    /// Key for 'vfs.generic.nfs.client.initialdowndelay'
     VfsGenericNfsClientInitialdowndelay,
+    /// Key for 'vfs.generic.nfs.client.nextdowndelay'
     VfsGenericNfsClientNextdowndelay,
+    /// Key for 'vfs.generic.nfs.client.iosize'
     VfsGenericNfsClientIosize,
+    /// Key for 'vfs.generic.nfs.client.access_cache_timeout'
     VfsGenericNfsClientAccess_cache_timeout,
+    /// Key for 'vfs.generic.nfs.client.allow_async'
     VfsGenericNfsClientAllow_async,
+    /// Key for 'vfs.generic.nfs.client.statfs_rate_limit'
     VfsGenericNfsClientStatfs_rate_limit,
+    /// Key for 'vfs.generic.nfs.client.nfsiod_thread_max'
     VfsGenericNfsClientNfsiod_thread_max,
+    /// Key for 'vfs.generic.nfs.client.nfsiod_thread_count'
     VfsGenericNfsClientNfsiod_thread_count,
+    /// Key for 'vfs.generic.nfs.client.lockd_mounts'
     VfsGenericNfsClientLockd_mounts,
+    /// Key for 'vfs.generic.nfs.client.max_async_writes'
     VfsGenericNfsClientMax_async_writes,
+    /// Key for 'vfs.generic.nfs.client.access_delete'
     VfsGenericNfsClientAccess_delete,
+    /// Key for 'vfs.generic.nfs.client.access_dotzfs'
     VfsGenericNfsClientAccess_dotzfs,
+    /// Key for 'vfs.generic.nfs.client.access_for_getattr'
     VfsGenericNfsClientAccess_for_getattr,
+    /// Key for 'vfs.generic.nfs.client.idmap_ctrl'
     VfsGenericNfsClientIdmap_ctrl,
+    /// Key for 'vfs.generic.nfs.client.callback_port'
     VfsGenericNfsClientCallback_port,
+    /// Key for 'vfs.generic.nfs.client.is_mobile'
     VfsGenericNfsClientIs_mobile,
+    /// Key for 'vfs.generic.nfs.client.squishy_flags'
     VfsGenericNfsClientSquishy_flags,
+    /// Key for 'vfs.generic.nfs.client.debug_ctl'
     VfsGenericNfsClientDebug_ctl,
+    /// Key for 'vfs.generic.nfs.client.readlink_nocache'
     VfsGenericNfsClientReadlink_nocache,
+    /// Key for 'vfs.generic.nfs.client.root_steals_gss_context'
     VfsGenericNfsClientRoot_steals_gss_context,
+    /// Key for 'vfs.generic.nfs.client.default_nfs4domain'
     VfsGenericNfsClientDefault_nfs4domain,
+    /// Key for 'vfs.generic.nfs.server.wg_delay'
     VfsGenericNfsServerWg_delay,
+    /// Key for 'vfs.generic.nfs.server.wg_delay_v3'
     VfsGenericNfsServerWg_delay_v3,
+    /// Key for 'vfs.generic.nfs.server.require_resv_port'
     VfsGenericNfsServerRequire_resv_port,
+    /// Key for 'vfs.generic.nfs.server.async'
     VfsGenericNfsServerAsync,
+    /// Key for 'vfs.generic.nfs.server.export_hash_size'
     VfsGenericNfsServerExport_hash_size,
+    /// Key for 'vfs.generic.nfs.server.reqcache_size'
     VfsGenericNfsServerReqcache_size,
+    /// Key for 'vfs.generic.nfs.server.request_queue_length'
     VfsGenericNfsServerRequest_queue_length,
+    /// Key for 'vfs.generic.nfs.server.user_stats'
     VfsGenericNfsServerUser_stats,
+    /// Key for 'vfs.generic.nfs.server.gss_context_ttl'
     VfsGenericNfsServerGss_context_ttl,
+    /// Key for 'vfs.generic.nfs.server.fsevents'
     VfsGenericNfsServerFsevents,
+    /// Key for 'vfs.generic.nfs.server.nfsd_thread_max'
     VfsGenericNfsServerNfsd_thread_max,
+    /// Key for 'vfs.generic.nfs.server.nfsd_thread_count'
     VfsGenericNfsServerNfsd_thread_count,
+    /// Key for 'vfs.generic.nfs.server.nfsd_sock_idle_timeout'
     VfsGenericNfsServerNfsd_sock_idle_timeout,
+    /// Key for 'vfs.generic.nfs.server.nfsd_tcp_connections'
     VfsGenericNfsServerNfsd_tcp_connections,
+    /// Key for 'vfs.generic.nfs.server.use_upcall_svc'
     VfsGenericNfsServerUse_upcall_svc,
+    /// Key for 'vfs.generic.nfs.server.upcall_queue_limit'
     VfsGenericNfsServerUpcall_queue_limit,
+    /// Key for 'vfs.generic.nfs.server.upcall_queue_max_seen'
     VfsGenericNfsServerUpcall_queue_max_seen,
+    /// Key for 'vfs.generic.nfs.server.upcall_queue_count'
     VfsGenericNfsServerUpcall_queue_count,
+    /// Key for 'vfs.generic.sync_timeout'
     VfsGenericSync_timeout,
+    /// Key for 'vfs.generic.root_unmounted_cleanly'
     VfsGenericRoot_unmounted_cleanly,
+    /// Key for 'vfs.generic.hfs.kdebug.allocation'
     VfsGenericHfsKdebugAllocation,
+    /// Key for 'vfs.generic.hfs.jnl.trim_flush'
     VfsGenericHfsJnlTrim_flush,
+    /// Key for 'vfs.generic.hfs.jnl.kdebug.trim'
     VfsGenericHfsJnlKdebugTrim,
+    /// Key for 'vfs.generic.hfs.allocated'
     VfsGenericHfsAllocated,
+    /// Key for 'vfs.generic.always_do_fullfsync'
     VfsGenericAlways_do_fullfsync,
+    /// Key for 'vfs.generic.apfs.fusion_rc_promotion_size_limit_mb'
     VfsGenericApfsFusion_rc_promotion_size_limit_mb,
+    /// Key for 'vfs.generic.apfs.fusion_rc_flags'
     VfsGenericApfsFusion_rc_flags,
+    /// Key for 'vfs.generic.apfs.fusion_w2rc_filled_ratio_threshold'
     VfsGenericApfsFusion_w2rc_filled_ratio_threshold,
+    /// Key for 'vfs.generic.apfs.fusion_lc_rc_promotion_threshold_mult'
     VfsGenericApfsFusion_lc_rc_promotion_threshold_mult,
+    /// Key for 'vfs.generic.apfs.fusion_rc_promotion_threshold_mult'
     VfsGenericApfsFusion_rc_promotion_threshold_mult,
+    /// Key for 'vfs.generic.apfs.fusion_wbc_buffersize'
     VfsGenericApfsFusion_wbc_buffersize,
+    /// Key for 'vfs.generic.apfs.fusion_verbosity_flags'
     VfsGenericApfsFusion_verbosity_flags,
+    /// Key for 'vfs.generic.apfs.fusion_paranoia_level'
     VfsGenericApfsFusion_paranoia_level,
+    /// Key for 'vfs.generic.apfs.fusion_swapfile_backoff'
     VfsGenericApfsFusion_swapfile_backoff,
+    /// Key for 'vfs.generic.apfs.fusion_slow_io_threshold'
     VfsGenericApfsFusion_slow_io_threshold,
+    /// Key for 'vfs.generic.apfs.fusion_elevator_throttle'
     VfsGenericApfsFusion_elevator_throttle,
+    /// Key for 'vfs.generic.apfs.fusion_promoter_throttle'
     VfsGenericApfsFusion_promoter_throttle,
+    /// Key for 'vfs.generic.apfs.fusion_promoter_queue_limit'
     VfsGenericApfsFusion_promoter_queue_limit,
+    /// Key for 'vfs.generic.apfs.fusion_wbc_elevator_wmk'
     VfsGenericApfsFusion_wbc_elevator_wmk,
+    /// Key for 'vfs.generic.apfs.fusion_wbc_backoff_wmk_reenable'
     VfsGenericApfsFusion_wbc_backoff_wmk_reenable,
+    /// Key for 'vfs.generic.apfs.fusion_wbc_backoff_wmk_med'
     VfsGenericApfsFusion_wbc_backoff_wmk_med,
+    /// Key for 'vfs.generic.apfs.fusion_wbc_backoff_wmk_low'
     VfsGenericApfsFusion_wbc_backoff_wmk_low,
+    /// Key for 'vfs.generic.apfs.allocated'
     VfsGenericApfsAllocated,
+    /// Key for 'vfs.generic.autofs.vnode_recycle_on_inactive'
     VfsGenericAutofsVnode_recycle_on_inactive,
+    /// Key for 'vfs.nummntops'
     VfsNummntops,
+    /// Key for 'vfs.nspace.resolver'
     VfsNspaceResolver,
+    /// Key for 'vfs.nspace.prevent_materialization'
     VfsNspacePrevent_materialization,
+    /// Key for 'vfs.nspace.thread_prevent_materialization'
     VfsNspaceThread_prevent_materialization,
+    /// Key for 'net.local.stream.sendspace'
     NetLocalStreamSendspace,
+    /// Key for 'net.local.stream.recvspace'
     NetLocalStreamRecvspace,
+    /// Key for 'net.local.stream.tracemdns'
     NetLocalStreamTracemdns,
+    /// Key for 'net.local.dgram.maxdgram'
     NetLocalDgramMaxdgram,
+    /// Key for 'net.local.dgram.recvspace'
     NetLocalDgramRecvspace,
+    /// Key for 'net.local.inflight'
     NetLocalInflight,
+    /// Key for 'net.inet.ip.portrange.lowfirst'
     NetInetIpPortrangeLowfirst,
+    /// Key for 'net.inet.ip.portrange.lowlast'
     NetInetIpPortrangeLowlast,
+    /// Key for 'net.inet.ip.portrange.first'
     NetInetIpPortrangeFirst,
+    /// Key for 'net.inet.ip.portrange.last'
     NetInetIpPortrangeLast,
+    /// Key for 'net.inet.ip.portrange.hifirst'
     NetInetIpPortrangeHifirst,
+    /// Key for 'net.inet.ip.portrange.hilast'
     NetInetIpPortrangeHilast,
+    /// Key for 'net.inet.ip.forwarding'
     NetInetIpForwarding,
+    /// Key for 'net.inet.ip.redirect'
     NetInetIpRedirect,
+    /// Key for 'net.inet.ip.ttl'
     NetInetIpTtl,
+    /// Key for 'net.inet.ip.rtexpire'
     NetInetIpRtexpire,
+    /// Key for 'net.inet.ip.rtminexpire'
     NetInetIpRtminexpire,
+    /// Key for 'net.inet.ip.rtmaxcache'
     NetInetIpRtmaxcache,
+    /// Key for 'net.inet.ip.sourceroute'
     NetInetIpSourceroute,
+    /// Key for 'net.inet.ip.accept_sourceroute'
     NetInetIpAccept_sourceroute,
+    /// Key for 'net.inet.ip.gifttl'
     NetInetIpGifttl,
+    /// Key for 'net.inet.ip.subnets_are_local'
     NetInetIpSubnets_are_local,
+    /// Key for 'net.inet.ip.mcast.maxgrpsrc'
     NetInetIpMcastMaxgrpsrc,
+    /// Key for 'net.inet.ip.mcast.maxsocksrc'
     NetInetIpMcastMaxsocksrc,
+    /// Key for 'net.inet.ip.mcast.loop'
     NetInetIpMcastLoop,
+    /// Key for 'net.inet.ip.dummynet.hash_size'
     NetInetIpDummynetHash_size,
+    /// Key for 'net.inet.ip.dummynet.curr_time'
     NetInetIpDummynetCurr_time,
+    /// Key for 'net.inet.ip.dummynet.ready_heap'
     NetInetIpDummynetReady_heap,
+    /// Key for 'net.inet.ip.dummynet.extract_heap'
     NetInetIpDummynetExtract_heap,
+    /// Key for 'net.inet.ip.dummynet.searches'
     NetInetIpDummynetSearches,
+    /// Key for 'net.inet.ip.dummynet.search_steps'
     NetInetIpDummynetSearch_steps,
+    /// Key for 'net.inet.ip.dummynet.expire'
     NetInetIpDummynetExpire,
+    /// Key for 'net.inet.ip.dummynet.max_chain_len'
     NetInetIpDummynetMax_chain_len,
+    /// Key for 'net.inet.ip.dummynet.red_lookup_depth'
     NetInetIpDummynetRed_lookup_depth,
+    /// Key for 'net.inet.ip.dummynet.red_avg_pkt_size'
     NetInetIpDummynetRed_avg_pkt_size,
+    /// Key for 'net.inet.ip.dummynet.red_max_pkt_size'
     NetInetIpDummynetRed_max_pkt_size,
+    /// Key for 'net.inet.ip.dummynet.debug'
     NetInetIpDummynetDebug,
+    /// Key for 'net.inet.ip.random_id_statistics'
     NetInetIpRandom_id_statistics,
+    /// Key for 'net.inet.ip.random_id_collisions'
     NetInetIpRandom_id_collisions,
+    /// Key for 'net.inet.ip.random_id_total'
     NetInetIpRandom_id_total,
+    /// Key for 'net.inet.ip.sendsourcequench'
     NetInetIpSendsourcequench,
+    /// Key for 'net.inet.ip.maxfragpackets'
     NetInetIpMaxfragpackets,
+    /// Key for 'net.inet.ip.fragpackets'
     NetInetIpFragpackets,
+    /// Key for 'net.inet.ip.maxfragsperpacket'
     NetInetIpMaxfragsperpacket,
+    /// Key for 'net.inet.ip.adj_clear_hwcksum'
     NetInetIpAdj_clear_hwcksum,
+    /// Key for 'net.inet.ip.adj_partial_sum'
     NetInetIpAdj_partial_sum,
+    /// Key for 'net.inet.ip.check_interface'
     NetInetIpCheck_interface,
+    /// Key for 'net.inet.ip.checkinterface_debug'
     NetInetIpCheckinterface_debug,
+    /// Key for 'net.inet.ip.rx_chaining'
     NetInetIpRx_chaining,
+    /// Key for 'net.inet.ip.rx_chainsz'
     NetInetIpRx_chainsz,
+    /// Key for 'net.inet.ip.linklocal.in.allowbadttl'
     NetInetIpLinklocalInAllowbadttl,
+    /// Key for 'net.inet.ip.random_id'
     NetInetIpRandom_id,
+    /// Key for 'net.inet.ip.maxchainsent'
     NetInetIpMaxchainsent,
+    /// Key for 'net.inet.ip.select_srcif_debug'
     NetInetIpSelect_srcif_debug,
+    /// Key for 'net.inet.ip.output_perf'
     NetInetIpOutput_perf,
+    /// Key for 'net.inet.ip.output_perf_bins'
     NetInetIpOutput_perf_bins,
+    /// Key for 'net.inet.ip.rfc6864'
     NetInetIpRfc6864,
+    /// Key for 'net.inet.icmp.maskrepl'
     NetInetIcmpMaskrepl,
+    /// Key for 'net.inet.icmp.icmplim'
     NetInetIcmpIcmplim,
+    /// Key for 'net.inet.icmp.timestamp'
     NetInetIcmpTimestamp,
+    /// Key for 'net.inet.icmp.drop_redirect'
     NetInetIcmpDrop_redirect,
+    /// Key for 'net.inet.icmp.log_redirect'
     NetInetIcmpLog_redirect,
+    /// Key for 'net.inet.icmp.bmcastecho'
     NetInetIcmpBmcastecho,
+    /// Key for 'net.inet.igmp.recvifkludge'
     NetInetIgmpRecvifkludge,
+    /// Key for 'net.inet.igmp.sendra'
     NetInetIgmpSendra,
+    /// Key for 'net.inet.igmp.sendlocal'
     NetInetIgmpSendlocal,
+    /// Key for 'net.inet.igmp.v1enable'
     NetInetIgmpV1enable,
+    /// Key for 'net.inet.igmp.v2enable'
     NetInetIgmpV2enable,
+    /// Key for 'net.inet.igmp.legacysupp'
     NetInetIgmpLegacysupp,
+    /// Key for 'net.inet.igmp.default_version'
     NetInetIgmpDefault_version,
+    /// Key for 'net.inet.igmp.gsrdelay'
     NetInetIgmpGsrdelay,
+    /// Key for 'net.inet.igmp.debug'
     NetInetIgmpDebug,
+    /// Key for 'net.inet.tcp.rfc1644'
     NetInetTcpRfc1644,
+    /// Key for 'net.inet.tcp.mssdflt'
     NetInetTcpMssdflt,
+    /// Key for 'net.inet.tcp.keepidle'
     NetInetTcpKeepidle,
+    /// Key for 'net.inet.tcp.keepintvl'
     NetInetTcpKeepintvl,
+    /// Key for 'net.inet.tcp.sendspace'
     NetInetTcpSendspace,
+    /// Key for 'net.inet.tcp.recvspace'
     NetInetTcpRecvspace,
+    /// Key for 'net.inet.tcp.keepinit'
     NetInetTcpKeepinit,
+    /// Key for 'net.inet.tcp.v6mssdflt'
     NetInetTcpV6mssdflt,
+    /// Key for 'net.inet.tcp.backoff_maximum'
     NetInetTcpBackoff_maximum,
+    /// Key for 'net.inet.tcp.ecn_timeout'
     NetInetTcpEcn_timeout,
+    /// Key for 'net.inet.tcp.disable_tcp_heuristics'
     NetInetTcpDisable_tcp_heuristics,
+    /// Key for 'net.inet.tcp.clear_tfocache'
     NetInetTcpClear_tfocache,
+    /// Key for 'net.inet.tcp.log_in_vain'
     NetInetTcpLog_in_vain,
+    /// Key for 'net.inet.tcp.blackhole'
     NetInetTcpBlackhole,
+    /// Key for 'net.inet.tcp.delayed_ack'
     NetInetTcpDelayed_ack,
+    /// Key for 'net.inet.tcp.tcp_lq_overflow'
     NetInetTcpTcp_lq_overflow,
+    /// Key for 'net.inet.tcp.recvbg'
     NetInetTcpRecvbg,
+    /// Key for 'net.inet.tcp.drop_synfin'
     NetInetTcpDrop_synfin,
+    /// Key for 'net.inet.tcp.reass.overflows'
     NetInetTcpReassOverflows,
+    /// Key for 'net.inet.tcp.slowlink_wsize'
     NetInetTcpSlowlink_wsize,
+    /// Key for 'net.inet.tcp.maxseg_unacked'
     NetInetTcpMaxseg_unacked,
+    /// Key for 'net.inet.tcp.rfc3465'
     NetInetTcpRfc3465,
+    /// Key for 'net.inet.tcp.rfc3465_lim2'
     NetInetTcpRfc3465_lim2,
+    /// Key for 'net.inet.tcp.recv_allowed_iaj'
     NetInetTcpRecv_allowed_iaj,
+    /// Key for 'net.inet.tcp.doautorcvbuf'
     NetInetTcpDoautorcvbuf,
+    /// Key for 'net.inet.tcp.autotunereorder'
     NetInetTcpAutotunereorder,
+    /// Key for 'net.inet.tcp.autorcvbufmax'
     NetInetTcpAutorcvbufmax,
+    /// Key for 'net.inet.tcp.lro'
     NetInetTcpLro,
+    /// Key for 'net.inet.tcp.lrodbg'
     NetInetTcpLrodbg,
+    /// Key for 'net.inet.tcp.lro_startcnt'
     NetInetTcpLro_startcnt,
+    /// Key for 'net.inet.tcp.disable_access_to_stats'
     NetInetTcpDisable_access_to_stats,
+    /// Key for 'net.inet.tcp.challengeack_limit'
     NetInetTcpChallengeack_limit,
+    /// Key for 'net.inet.tcp.do_rfc5961'
     NetInetTcpDo_rfc5961,
+    /// Key for 'net.inet.tcp.rcvsspktcnt'
     NetInetTcpRcvsspktcnt,
+    /// Key for 'net.inet.tcp.rexmt_thresh'
     NetInetTcpRexmt_thresh,
+    /// Key for 'net.inet.tcp.path_mtu_discovery'
     NetInetTcpPath_mtu_discovery,
+    /// Key for 'net.inet.tcp.slowstart_flightsize'
     NetInetTcpSlowstart_flightsize,
+    /// Key for 'net.inet.tcp.local_slowstart_flightsize'
     NetInetTcpLocal_slowstart_flightsize,
+    /// Key for 'net.inet.tcp.tso'
     NetInetTcpTso,
+    /// Key for 'net.inet.tcp.ecn_setup_percentage'
     NetInetTcpEcn_setup_percentage,
+    /// Key for 'net.inet.tcp.ecn_initiate_out'
     NetInetTcpEcn_initiate_out,
+    /// Key for 'net.inet.tcp.ecn_negotiate_in'
     NetInetTcpEcn_negotiate_in,
+    /// Key for 'net.inet.tcp.packetchain'
     NetInetTcpPacketchain,
+    /// Key for 'net.inet.tcp.socket_unlocked_on_output'
     NetInetTcpSocket_unlocked_on_output,
+    /// Key for 'net.inet.tcp.rfc3390'
     NetInetTcpRfc3390,
+    /// Key for 'net.inet.tcp.min_iaj_win'
     NetInetTcpMin_iaj_win,
+    /// Key for 'net.inet.tcp.acc_iaj_react_limit'
     NetInetTcpAcc_iaj_react_limit,
+    /// Key for 'net.inet.tcp.doautosndbuf'
     NetInetTcpDoautosndbuf,
+    /// Key for 'net.inet.tcp.autosndbufinc'
     NetInetTcpAutosndbufinc,
+    /// Key for 'net.inet.tcp.autosndbufmax'
     NetInetTcpAutosndbufmax,
+    /// Key for 'net.inet.tcp.ack_prioritize'
     NetInetTcpAck_prioritize,
+    /// Key for 'net.inet.tcp.rtt_recvbg'
     NetInetTcpRtt_recvbg,
+    /// Key for 'net.inet.tcp.recv_throttle_minwin'
     NetInetTcpRecv_throttle_minwin,
+    /// Key for 'net.inet.tcp.enable_tlp'
     NetInetTcpEnable_tlp,
+    /// Key for 'net.inet.tcp.sack'
     NetInetTcpSack,
+    /// Key for 'net.inet.tcp.sack_maxholes'
     NetInetTcpSack_maxholes,
+    /// Key for 'net.inet.tcp.sack_globalmaxholes'
     NetInetTcpSack_globalmaxholes,
+    /// Key for 'net.inet.tcp.sack_globalholes'
     NetInetTcpSack_globalholes,
+    /// Key for 'net.inet.tcp.fastopen_backlog'
     NetInetTcpFastopen_backlog,
+    /// Key for 'net.inet.tcp.fastopen'
     NetInetTcpFastopen,
+    /// Key for 'net.inet.tcp.now_init'
     NetInetTcpNow_init,
+    /// Key for 'net.inet.tcp.microuptime_init'
     NetInetTcpMicrouptime_init,
+    /// Key for 'net.inet.tcp.minmss'
     NetInetTcpMinmss,
+    /// Key for 'net.inet.tcp.do_tcpdrain'
     NetInetTcpDo_tcpdrain,
+    /// Key for 'net.inet.tcp.pcbcount'
     NetInetTcpPcbcount,
+    /// Key for 'net.inet.tcp.tw_pcbcount'
     NetInetTcpTw_pcbcount,
+    /// Key for 'net.inet.tcp.icmp_may_rst'
     NetInetTcpIcmp_may_rst,
+    /// Key for 'net.inet.tcp.rtt_min'
     NetInetTcpRtt_min,
+    /// Key for 'net.inet.tcp.rexmt_slop'
     NetInetTcpRexmt_slop,
+    /// Key for 'net.inet.tcp.randomize_ports'
     NetInetTcpRandomize_ports,
+    /// Key for 'net.inet.tcp.win_scale_factor'
     NetInetTcpWin_scale_factor,
+    /// Key for 'net.inet.tcp.init_rtt_from_cache'
     NetInetTcpInit_rtt_from_cache,
+    /// Key for 'net.inet.tcp.tcbhashsize'
     NetInetTcpTcbhashsize,
+    /// Key for 'net.inet.tcp.keepcnt'
     NetInetTcpKeepcnt,
+    /// Key for 'net.inet.tcp.msl'
     NetInetTcpMsl,
+    /// Key for 'net.inet.tcp.max_persist_timeout'
     NetInetTcpMax_persist_timeout,
+    /// Key for 'net.inet.tcp.always_keepalive'
     NetInetTcpAlways_keepalive,
+    /// Key for 'net.inet.tcp.timer_fastmode_idlemax'
     NetInetTcpTimer_fastmode_idlemax,
+    /// Key for 'net.inet.tcp.broken_peer_syn_rexmit_thres'
     NetInetTcpBroken_peer_syn_rexmit_thres,
+    /// Key for 'net.inet.tcp.tcp_timer_advanced'
     NetInetTcpTcp_timer_advanced,
+    /// Key for 'net.inet.tcp.tcp_resched_timerlist'
     NetInetTcpTcp_resched_timerlist,
+    /// Key for 'net.inet.tcp.pmtud_blackhole_detection'
     NetInetTcpPmtud_blackhole_detection,
+    /// Key for 'net.inet.tcp.pmtud_blackhole_mss'
     NetInetTcpPmtud_blackhole_mss,
+    /// Key for 'net.inet.tcp.cc_debug'
     NetInetTcpCc_debug,
+    /// Key for 'net.inet.tcp.newreno_sockets'
     NetInetTcpNewreno_sockets,
+    /// Key for 'net.inet.tcp.background_sockets'
     NetInetTcpBackground_sockets,
+    /// Key for 'net.inet.tcp.cubic_sockets'
     NetInetTcpCubic_sockets,
+    /// Key for 'net.inet.tcp.use_newreno'
     NetInetTcpUse_newreno,
+    /// Key for 'net.inet.tcp.cubic_tcp_friendliness'
     NetInetTcpCubic_tcp_friendliness,
+    /// Key for 'net.inet.tcp.cubic_fast_convergence'
     NetInetTcpCubic_fast_convergence,
+    /// Key for 'net.inet.tcp.cubic_use_minrtt'
     NetInetTcpCubic_use_minrtt,
+    /// Key for 'net.inet.tcp.lro_sz'
     NetInetTcpLro_sz,
+    /// Key for 'net.inet.tcp.lro_time'
     NetInetTcpLro_time,
+    /// Key for 'net.inet.tcp.bg_target_qdelay'
     NetInetTcpBg_target_qdelay,
+    /// Key for 'net.inet.tcp.bg_allowed_increase'
     NetInetTcpBg_allowed_increase,
+    /// Key for 'net.inet.tcp.bg_tether_shift'
     NetInetTcpBg_tether_shift,
+    /// Key for 'net.inet.tcp.bg_ss_fltsz'
     NetInetTcpBg_ss_fltsz,
+    /// Key for 'net.inet.tcp.log.level_info'
     NetInetTcpLogLevel_info,
+    /// Key for 'net.inet.tcp.log.enable'
     NetInetTcpLogEnable,
+    /// Key for 'net.inet.tcp.log.enable_usage'
     NetInetTcpLogEnable_usage,
+    /// Key for 'net.inet.tcp.log.rtt_port'
     NetInetTcpLogRtt_port,
+    /// Key for 'net.inet.tcp.log.thflags_if_family'
     NetInetTcpLogThflags_if_family,
+    /// Key for 'net.inet.tcp.log.privacy'
     NetInetTcpLogPrivacy,
+    /// Key for 'net.inet.tcp.log.rate_limit'
     NetInetTcpLogRate_limit,
+    /// Key for 'net.inet.tcp.log.rate_duration'
     NetInetTcpLogRate_duration,
+    /// Key for 'net.inet.tcp.log.rate_max'
     NetInetTcpLogRate_max,
+    /// Key for 'net.inet.tcp.log.rate_exceeded_total'
     NetInetTcpLogRate_exceeded_total,
+    /// Key for 'net.inet.tcp.log.rate_current'
     NetInetTcpLogRate_current,
+    /// Key for 'net.inet.udp.checksum'
     NetInetUdpChecksum,
+    /// Key for 'net.inet.udp.maxdgram'
     NetInetUdpMaxdgram,
+    /// Key for 'net.inet.udp.recvspace'
     NetInetUdpRecvspace,
+    /// Key for 'net.inet.udp.log_in_vain'
     NetInetUdpLog_in_vain,
+    /// Key for 'net.inet.udp.blackhole'
     NetInetUdpBlackhole,
+    /// Key for 'net.inet.udp.pcbcount'
     NetInetUdpPcbcount,
+    /// Key for 'net.inet.udp.randomize_ports'
     NetInetUdpRandomize_ports,
+    /// Key for 'net.inet.ipsec.def_policy'
     NetInetIpsecDef_policy,
+    /// Key for 'net.inet.ipsec.esp_trans_deflev'
     NetInetIpsecEsp_trans_deflev,
+    /// Key for 'net.inet.ipsec.esp_net_deflev'
     NetInetIpsecEsp_net_deflev,
+    /// Key for 'net.inet.ipsec.ah_trans_deflev'
     NetInetIpsecAh_trans_deflev,
+    /// Key for 'net.inet.ipsec.ah_net_deflev'
     NetInetIpsecAh_net_deflev,
+    /// Key for 'net.inet.ipsec.ah_cleartos'
     NetInetIpsecAh_cleartos,
+    /// Key for 'net.inet.ipsec.ah_offsetmask'
     NetInetIpsecAh_offsetmask,
+    /// Key for 'net.inet.ipsec.dfbit'
     NetInetIpsecDfbit,
+    /// Key for 'net.inet.ipsec.ecn'
     NetInetIpsecEcn,
+    /// Key for 'net.inet.ipsec.debug'
     NetInetIpsecDebug,
+    /// Key for 'net.inet.ipsec.esp_randpad'
     NetInetIpsecEsp_randpad,
+    /// Key for 'net.inet.ipsec.bypass'
     NetInetIpsecBypass,
+    /// Key for 'net.inet.ipsec.esp_port'
     NetInetIpsecEsp_port,
+    /// Key for 'net.inet.log_restricted'
     NetInetLog_restricted,
+    /// Key for 'net.inet.raw.maxdgram'
     NetInetRawMaxdgram,
+    /// Key for 'net.inet.raw.recvspace'
     NetInetRawRecvspace,
+    /// Key for 'net.inet.raw.pcbcount'
     NetInetRawPcbcount,
+    /// Key for 'net.inet.mptcp.enable'
     NetInetMptcpEnable,
+    /// Key for 'net.inet.mptcp.mptcp_cap_retr'
     NetInetMptcpMptcp_cap_retr,
+    /// Key for 'net.inet.mptcp.dss_csum'
     NetInetMptcpDss_csum,
+    /// Key for 'net.inet.mptcp.fail'
     NetInetMptcpFail,
+    /// Key for 'net.inet.mptcp.keepalive'
     NetInetMptcpKeepalive,
+    /// Key for 'net.inet.mptcp.rtthist_thresh'
     NetInetMptcpRtthist_thresh,
+    /// Key for 'net.inet.mptcp.userto'
     NetInetMptcpUserto,
+    /// Key for 'net.inet.mptcp.rto_thresh'
     NetInetMptcpRto_thresh,
+    /// Key for 'net.inet.mptcp.probeto'
     NetInetMptcpProbeto,
+    /// Key for 'net.inet.mptcp.probecnt'
     NetInetMptcpProbecnt,
+    /// Key for 'net.inet.mptcp.dbg_area'
     NetInetMptcpDbg_area,
+    /// Key for 'net.inet.mptcp.dbg_level'
     NetInetMptcpDbg_level,
+    /// Key for 'net.inet.mptcp.pcbcount'
     NetInetMptcpPcbcount,
+    /// Key for 'net.inet.mptcp.alternate_port'
     NetInetMptcpAlternate_port,
+    /// Key for 'net.inet.mptcp.allow_aggregate'
     NetInetMptcpAllow_aggregate,
+    /// Key for 'net.inet.mptcp.expected_progress_headstart'
     NetInetMptcpExpected_progress_headstart,
+    /// Key for 'net.inet.mptcp.rto'
     NetInetMptcpRto,
+    /// Key for 'net.inet.mptcp.nrto'
     NetInetMptcpNrto,
+    /// Key for 'net.inet.mptcp.tw'
     NetInetMptcpTw,
+    /// Key for 'net.link.generic.system.ifcount'
     NetLinkGenericSystemIfcount,
+    /// Key for 'net.link.generic.system.if_verbose'
     NetLinkGenericSystemIf_verbose,
+    /// Key for 'net.link.generic.system.dlil_verbose'
     NetLinkGenericSystemDlil_verbose,
+    /// Key for 'net.link.generic.system.sndq_maxlen'
     NetLinkGenericSystemSndq_maxlen,
+    /// Key for 'net.link.generic.system.rcvq_maxlen'
     NetLinkGenericSystemRcvq_maxlen,
+    /// Key for 'net.link.generic.system.rxpoll_decay'
     NetLinkGenericSystemRxpoll_decay,
+    /// Key for 'net.link.generic.system.rxpoll_freeze_time'
     NetLinkGenericSystemRxpoll_freeze_time,
+    /// Key for 'net.link.generic.system.rxpoll_sample_time'
     NetLinkGenericSystemRxpoll_sample_time,
+    /// Key for 'net.link.generic.system.rxpoll_interval_time'
     NetLinkGenericSystemRxpoll_interval_time,
+    /// Key for 'net.link.generic.system.rxpoll_interval_pkts'
     NetLinkGenericSystemRxpoll_interval_pkts,
+    /// Key for 'net.link.generic.system.rxpoll_wakeups_lowat'
     NetLinkGenericSystemRxpoll_wakeups_lowat,
+    /// Key for 'net.link.generic.system.rxpoll_wakeups_hiwat'
     NetLinkGenericSystemRxpoll_wakeups_hiwat,
+    /// Key for 'net.link.generic.system.rxpoll_max'
     NetLinkGenericSystemRxpoll_max,
+    /// Key for 'net.link.generic.system.rxpoll'
     NetLinkGenericSystemRxpoll,
+    /// Key for 'net.link.generic.system.dlil_input_threads'
     NetLinkGenericSystemDlil_input_threads,
+    /// Key for 'net.link.generic.system.dlil_input_sanity_check'
     NetLinkGenericSystemDlil_input_sanity_check,
+    /// Key for 'net.link.generic.system.flow_advisory'
     NetLinkGenericSystemFlow_advisory,
+    /// Key for 'net.link.generic.system.delaybased_queue'
     NetLinkGenericSystemDelaybased_queue,
+    /// Key for 'net.link.generic.system.hwcksum_in_invalidated'
     NetLinkGenericSystemHwcksum_in_invalidated,
+    /// Key for 'net.link.generic.system.hwcksum_dbg'
     NetLinkGenericSystemHwcksum_dbg,
+    /// Key for 'net.link.generic.system.start_delayed'
     NetLinkGenericSystemStart_delayed,
+    /// Key for 'net.link.generic.system.start_delay_disabled'
     NetLinkGenericSystemStart_delay_disabled,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_mode'
     NetLinkGenericSystemHwcksum_dbg_mode,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_partial_forced'
     NetLinkGenericSystemHwcksum_dbg_partial_forced,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_partial_forced_bytes'
     NetLinkGenericSystemHwcksum_dbg_partial_forced_bytes,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_partial_rxoff_forced'
     NetLinkGenericSystemHwcksum_dbg_partial_rxoff_forced,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_partial_rxoff_adj'
     NetLinkGenericSystemHwcksum_dbg_partial_rxoff_adj,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_verified'
     NetLinkGenericSystemHwcksum_dbg_verified,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_bad_cksum'
     NetLinkGenericSystemHwcksum_dbg_bad_cksum,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_bad_rxoff'
     NetLinkGenericSystemHwcksum_dbg_bad_rxoff,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_adjusted'
     NetLinkGenericSystemHwcksum_dbg_adjusted,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_finalized_hdr'
     NetLinkGenericSystemHwcksum_dbg_finalized_hdr,
+    /// Key for 'net.link.generic.system.hwcksum_dbg_finalized_data'
     NetLinkGenericSystemHwcksum_dbg_finalized_data,
+    /// Key for 'net.link.generic.system.hwcksum_tx'
     NetLinkGenericSystemHwcksum_tx,
+    /// Key for 'net.link.generic.system.hwcksum_rx'
     NetLinkGenericSystemHwcksum_rx,
+    /// Key for 'net.link.generic.system.tx_chain_len_count'
     NetLinkGenericSystemTx_chain_len_count,
+    /// Key for 'net.link.generic.system.threshold_notify'
     NetLinkGenericSystemThreshold_notify,
+    /// Key for 'net.link.generic.system.threshold_interval'
     NetLinkGenericSystemThreshold_interval,
+    /// Key for 'net.link.generic.system.enable_netagent'
     NetLinkGenericSystemEnable_netagent,
+    /// Key for 'net.link.generic.system.port_used.entry_count'
     NetLinkGenericSystemPort_usedEntry_count,
+    /// Key for 'net.link.generic.system.port_used.entry_gen'
     NetLinkGenericSystemPort_usedEntry_gen,
+    /// Key for 'net.link.generic.system.port_used.verbose'
     NetLinkGenericSystemPort_usedVerbose,
+    /// Key for 'net.link.generic.system.port_used.wakeuuid_not_set_count'
     NetLinkGenericSystemPort_usedWakeuuid_not_set_count,
+    /// Key for 'net.link.generic.system.port_used.wakeuuid_not_set_last_time'
     NetLinkGenericSystemPort_usedWakeuuid_not_set_last_time,
+    /// Key for 'net.link.generic.system.port_used.wakeuuid_not_set_last_if'
     NetLinkGenericSystemPort_usedWakeuuid_not_set_last_if,
+    /// Key for 'net.link.ether.inet.prune_intvl'
     NetLinkEtherInetPrune_intvl,
+    /// Key for 'net.link.ether.inet.probe_intvl'
     NetLinkEtherInetProbe_intvl,
+    /// Key for 'net.link.ether.inet.max_age'
     NetLinkEtherInetMax_age,
+    /// Key for 'net.link.ether.inet.host_down_time'
     NetLinkEtherInetHost_down_time,
+    /// Key for 'net.link.ether.inet.arp_llreach_base'
     NetLinkEtherInetArp_llreach_base,
+    /// Key for 'net.link.ether.inet.arp_unicast_lim'
     NetLinkEtherInetArp_unicast_lim,
+    /// Key for 'net.link.ether.inet.maxtries'
     NetLinkEtherInetMaxtries,
+    /// Key for 'net.link.ether.inet.maxhold'
     NetLinkEtherInetMaxhold,
+    /// Key for 'net.link.ether.inet.useloopback'
     NetLinkEtherInetUseloopback,
+    /// Key for 'net.link.ether.inet.proxyall'
     NetLinkEtherInetProxyall,
+    /// Key for 'net.link.ether.inet.sendllconflict'
     NetLinkEtherInetSendllconflict,
+    /// Key for 'net.link.ether.inet.log_arp_warnings'
     NetLinkEtherInetLog_arp_warnings,
+    /// Key for 'net.link.ether.inet.keep_announcements'
     NetLinkEtherInetKeep_announcements,
+    /// Key for 'net.link.ether.inet.send_conflicting_probes'
     NetLinkEtherInetSend_conflicting_probes,
+    /// Key for 'net.link.ether.inet.verbose'
     NetLinkEtherInetVerbose,
+    /// Key for 'net.link.ether.inet.maxhold_total'
     NetLinkEtherInetMaxhold_total,
+    /// Key for 'net.link.bridge.inherit_mac'
     NetLinkBridgeInherit_mac,
+    /// Key for 'net.link.bridge.rtable_prune_period'
     NetLinkBridgeRtable_prune_period,
+    /// Key for 'net.link.bridge.rtable_hash_size_max'
     NetLinkBridgeRtable_hash_size_max,
+    /// Key for 'net.link.bridge.txstart'
     NetLinkBridgeTxstart,
+    /// Key for 'net.link.bridge.debug'
     NetLinkBridgeDebug,
+    /// Key for 'net.link.loopback.max_dequeue'
     NetLinkLoopbackMax_dequeue,
+    /// Key for 'net.link.loopback.sched_model'
     NetLinkLoopbackSched_model,
+    /// Key for 'net.link.loopback.dequeue_sc'
     NetLinkLoopbackDequeue_sc,
+    /// Key for 'net.link.fake.txstart'
     NetLinkFakeTxstart,
+    /// Key for 'net.link.fake.hwcsum'
     NetLinkFakeHwcsum,
+    /// Key for 'net.link.fake.nxattach'
     NetLinkFakeNxattach,
+    /// Key for 'net.link.fake.bsd_mode'
     NetLinkFakeBsd_mode,
+    /// Key for 'net.link.fake.debug'
     NetLinkFakeDebug,
+    /// Key for 'net.link.fake.wmm_mode'
     NetLinkFakeWmm_mode,
+    /// Key for 'net.link.fake.multibuflet'
     NetLinkFakeMultibuflet,
+    /// Key for 'net.link.fake.copypkt_mode'
     NetLinkFakeCopypkt_mode,
+    /// Key for 'net.link.fake.tx_headroom'
     NetLinkFakeTx_headroom,
+    /// Key for 'net.link.fake.max_mtu'
     NetLinkFakeMax_mtu,
+    /// Key for 'net.link.fake.buflet_size'
     NetLinkFakeBuflet_size,
+    /// Key for 'net.link.fake.user_access'
     NetLinkFakeUser_access,
+    /// Key for 'net.link.fake.if_adv_intvl'
     NetLinkFakeIf_adv_intvl,
+    /// Key for 'net.link.fake.tx_drops'
     NetLinkFakeTx_drops,
+    /// Key for 'net.link.bond.debug'
     NetLinkBondDebug,
+    /// Key for 'net.link.iptap.total_tap_count'
     NetLinkIptapTotal_tap_count,
+    /// Key for 'net.link.iptap.log'
     NetLinkIptapLog,
+    /// Key for 'net.link.pktap.total_tap_count'
     NetLinkPktapTotal_tap_count,
+    /// Key for 'net.link.pktap.count_unknown_if_type'
     NetLinkPktapCount_unknown_if_type,
+    /// Key for 'net.link.pktap.log'
     NetLinkPktapLog,
+    /// Key for 'net.key.debug'
     NetKeyDebug,
+    /// Key for 'net.key.spi_trycnt'
     NetKeySpi_trycnt,
+    /// Key for 'net.key.spi_minval'
     NetKeySpi_minval,
+    /// Key for 'net.key.spi_maxval'
     NetKeySpi_maxval,
+    /// Key for 'net.key.int_random'
     NetKeyInt_random,
+    /// Key for 'net.key.larval_lifetime'
     NetKeyLarval_lifetime,
+    /// Key for 'net.key.blockacq_count'
     NetKeyBlockacq_count,
+    /// Key for 'net.key.blockacq_lifetime'
     NetKeyBlockacq_lifetime,
+    /// Key for 'net.key.esp_keymin'
     NetKeyEsp_keymin,
+    /// Key for 'net.key.esp_auth'
     NetKeyEsp_auth,
+    /// Key for 'net.key.ah_keymin'
     NetKeyAh_keymin,
+    /// Key for 'net.key.prefered_oldsa'
     NetKeyPrefered_oldsa,
+    /// Key for 'net.key.natt_keepalive_interval'
     NetKeyNatt_keepalive_interval,
+    /// Key for 'net.inet6.ip6.forwarding'
     NetInet6Ip6Forwarding,
+    /// Key for 'net.inet6.ip6.redirect'
     NetInet6Ip6Redirect,
+    /// Key for 'net.inet6.ip6.hlim'
     NetInet6Ip6Hlim,
+    /// Key for 'net.inet6.ip6.maxfragpackets'
     NetInet6Ip6Maxfragpackets,
+    /// Key for 'net.inet6.ip6.accept_rtadv'
     NetInet6Ip6Accept_rtadv,
+    /// Key for 'net.inet6.ip6.keepfaith'
     NetInet6Ip6Keepfaith,
+    /// Key for 'net.inet6.ip6.log_interval'
     NetInet6Ip6Log_interval,
+    /// Key for 'net.inet6.ip6.hdrnestlimit'
     NetInet6Ip6Hdrnestlimit,
+    /// Key for 'net.inet6.ip6.dad_count'
     NetInet6Ip6Dad_count,
+    /// Key for 'net.inet6.ip6.auto_flowlabel'
     NetInet6Ip6Auto_flowlabel,
+    /// Key for 'net.inet6.ip6.defmcasthlim'
     NetInet6Ip6Defmcasthlim,
+    /// Key for 'net.inet6.ip6.gifhlim'
     NetInet6Ip6Gifhlim,
+    /// Key for 'net.inet6.ip6.kame_version'
     NetInet6Ip6Kame_version,
+    /// Key for 'net.inet6.ip6.use_deprecated'
     NetInet6Ip6Use_deprecated,
+    /// Key for 'net.inet6.ip6.rr_prune'
     NetInet6Ip6Rr_prune,
+    /// Key for 'net.inet6.ip6.v6only'
     NetInet6Ip6V6only,
+    /// Key for 'net.inet6.ip6.rtexpire'
     NetInet6Ip6Rtexpire,
+    /// Key for 'net.inet6.ip6.rtminexpire'
     NetInet6Ip6Rtminexpire,
+    /// Key for 'net.inet6.ip6.rtmaxcache'
     NetInet6Ip6Rtmaxcache,
+    /// Key for 'net.inet6.ip6.use_tempaddr'
     NetInet6Ip6Use_tempaddr,
+    /// Key for 'net.inet6.ip6.temppltime'
     NetInet6Ip6Temppltime,
+    /// Key for 'net.inet6.ip6.tempvltime'
     NetInet6Ip6Tempvltime,
+    /// Key for 'net.inet6.ip6.auto_linklocal'
     NetInet6Ip6Auto_linklocal,
+    /// Key for 'net.inet6.ip6.prefer_tempaddr'
     NetInet6Ip6Prefer_tempaddr,
+    /// Key for 'net.inet6.ip6.use_defaultzone'
     NetInet6Ip6Use_defaultzone,
+    /// Key for 'net.inet6.ip6.maxfrags'
     NetInet6Ip6Maxfrags,
+    /// Key for 'net.inet6.ip6.mcast_pmtu'
     NetInet6Ip6Mcast_pmtu,
+    /// Key for 'net.inet6.ip6.neighborgcthresh'
     NetInet6Ip6Neighborgcthresh,
+    /// Key for 'net.inet6.ip6.maxifprefixes'
     NetInet6Ip6Maxifprefixes,
+    /// Key for 'net.inet6.ip6.maxifdefrouters'
     NetInet6Ip6Maxifdefrouters,
+    /// Key for 'net.inet6.ip6.maxdynroutes'
     NetInet6Ip6Maxdynroutes,
+    /// Key for 'net.inet6.ip6.fragpackets'
     NetInet6Ip6Fragpackets,
+    /// Key for 'net.inet6.ip6.adj_clear_hwcksum'
     NetInet6Ip6Adj_clear_hwcksum,
+    /// Key for 'net.inet6.ip6.adj_partial_sum'
     NetInet6Ip6Adj_partial_sum,
+    /// Key for 'net.inet6.ip6.input_perf'
     NetInet6Ip6Input_perf,
+    /// Key for 'net.inet6.ip6.input_perf_bins'
     NetInet6Ip6Input_perf_bins,
+    /// Key for 'net.inet6.ip6.check_interface'
     NetInet6Ip6Check_interface,
+    /// Key for 'net.inet6.ip6.checkinterface_debug'
     NetInet6Ip6Checkinterface_debug,
+    /// Key for 'net.inet6.ip6.output_perf'
     NetInet6Ip6Output_perf,
+    /// Key for 'net.inet6.ip6.output_perf_bins'
     NetInet6Ip6Output_perf_bins,
+    /// Key for 'net.inet6.ip6.select_srcif_debug'
     NetInet6Ip6Select_srcif_debug,
+    /// Key for 'net.inet6.ip6.select_srcaddr_debug'
     NetInet6Ip6Select_srcaddr_debug,
+    /// Key for 'net.inet6.ip6.select_src_expensive_secondary_if'
     NetInet6Ip6Select_src_expensive_secondary_if,
+    /// Key for 'net.inet6.ip6.select_src_strong_end'
     NetInet6Ip6Select_src_strong_end,
+    /// Key for 'net.inet6.ip6.mcast.maxgrpsrc'
     NetInet6Ip6McastMaxgrpsrc,
+    /// Key for 'net.inet6.ip6.mcast.maxsocksrc'
     NetInet6Ip6McastMaxsocksrc,
+    /// Key for 'net.inet6.ip6.mcast.loop'
     NetInet6Ip6McastLoop,
+    /// Key for 'net.inet6.ip6.only_allow_rfc4193_prefixes'
     NetInet6Ip6Only_allow_rfc4193_prefixes,
+    /// Key for 'net.inet6.ip6.clat_debug'
     NetInet6Ip6Clat_debug,
+    /// Key for 'net.inet6.ip6.maxchainsent'
     NetInet6Ip6Maxchainsent,
+    /// Key for 'net.inet6.ip6.dad_enhanced'
     NetInet6Ip6Dad_enhanced,
+    /// Key for 'net.inet6.ipsec6.def_policy'
     NetInet6Ipsec6Def_policy,
+    /// Key for 'net.inet6.ipsec6.esp_trans_deflev'
     NetInet6Ipsec6Esp_trans_deflev,
+    /// Key for 'net.inet6.ipsec6.esp_net_deflev'
     NetInet6Ipsec6Esp_net_deflev,
+    /// Key for 'net.inet6.ipsec6.ah_trans_deflev'
     NetInet6Ipsec6Ah_trans_deflev,
+    /// Key for 'net.inet6.ipsec6.ah_net_deflev'
     NetInet6Ipsec6Ah_net_deflev,
+    /// Key for 'net.inet6.ipsec6.ecn'
     NetInet6Ipsec6Ecn,
+    /// Key for 'net.inet6.ipsec6.debug'
     NetInet6Ipsec6Debug,
+    /// Key for 'net.inet6.ipsec6.esp_randpad'
     NetInet6Ipsec6Esp_randpad,
+    /// Key for 'net.inet6.icmp6.rediraccept'
     NetInet6Icmp6Rediraccept,
+    /// Key for 'net.inet6.icmp6.redirtimeout'
     NetInet6Icmp6Redirtimeout,
+    /// Key for 'net.inet6.icmp6.nd6_prune'
     NetInet6Icmp6Nd6_prune,
+    /// Key for 'net.inet6.icmp6.nd6_delay'
     NetInet6Icmp6Nd6_delay,
+    /// Key for 'net.inet6.icmp6.nd6_umaxtries'
     NetInet6Icmp6Nd6_umaxtries,
+    /// Key for 'net.inet6.icmp6.nd6_mmaxtries'
     NetInet6Icmp6Nd6_mmaxtries,
+    /// Key for 'net.inet6.icmp6.nd6_useloopback'
     NetInet6Icmp6Nd6_useloopback,
+    /// Key for 'net.inet6.icmp6.nodeinfo'
     NetInet6Icmp6Nodeinfo,
+    /// Key for 'net.inet6.icmp6.errppslimit'
     NetInet6Icmp6Errppslimit,
+    /// Key for 'net.inet6.icmp6.nd6_debug'
     NetInet6Icmp6Nd6_debug,
+    /// Key for 'net.inet6.icmp6.nd6_accept_6to4'
     NetInet6Icmp6Nd6_accept_6to4,
+    /// Key for 'net.inet6.icmp6.nd6_optimistic_dad'
     NetInet6Icmp6Nd6_optimistic_dad,
+    /// Key for 'net.inet6.icmp6.nd6_onlink_ns_rfc4861'
     NetInet6Icmp6Nd6_onlink_ns_rfc4861,
+    /// Key for 'net.inet6.icmp6.nd6_prune_lazy'
     NetInet6Icmp6Nd6_prune_lazy,
+    /// Key for 'net.inet6.icmp6.rappslimit'
     NetInet6Icmp6Rappslimit,
+    /// Key for 'net.inet6.icmp6.nd6_llreach_base'
     NetInet6Icmp6Nd6_llreach_base,
+    /// Key for 'net.inet6.icmp6.nd6_maxsolstgt'
     NetInet6Icmp6Nd6_maxsolstgt,
+    /// Key for 'net.inet6.icmp6.nd6_maxproxiedsol'
     NetInet6Icmp6Nd6_maxproxiedsol,
+    /// Key for 'net.inet6.icmp6.prproxy_cnt'
     NetInet6Icmp6Prproxy_cnt,
+    /// Key for 'net.inet6.mld.gsrdelay'
     NetInet6MldGsrdelay,
+    /// Key for 'net.inet6.mld.v1enable'
     NetInet6MldV1enable,
+    /// Key for 'net.inet6.mld.v2enable'
     NetInet6MldV2enable,
+    /// Key for 'net.inet6.mld.use_allow'
     NetInet6MldUse_allow,
+    /// Key for 'net.inet6.mld.debug'
     NetInet6MldDebug,
+    /// Key for 'net.inet6.send.opmode'
     NetInet6SendOpmode,
+    /// Key for 'net.inet6.send.opstate'
     NetInet6SendOpstate,
+    /// Key for 'net.systm.kctl.autorcvbufmax'
     NetSystmKctlAutorcvbufmax,
+    /// Key for 'net.systm.kctl.autorcvbufhigh'
     NetSystmKctlAutorcvbufhigh,
+    /// Key for 'net.systm.kctl.debug'
     NetSystmKctlDebug,
+    /// Key for 'net.ndrv_multi_max_count'
     NetNdrv_multi_max_count,
+    /// Key for 'net.statistics_privcheck'
     NetStatistics_privcheck,
+    /// Key for 'net.stats.debug'
     NetStatsDebug,
+    /// Key for 'net.stats.sendspace'
     NetStatsSendspace,
+    /// Key for 'net.stats.recvspace'
     NetStatsRecvspace,
+    /// Key for 'net.utun.max_pending_input'
     NetUtunMax_pending_input,
+    /// Key for 'net.utun.ring_size'
     NetUtunRing_size,
+    /// Key for 'net.utun.tx_fsw_ring_size'
     NetUtunTx_fsw_ring_size,
+    /// Key for 'net.utun.rx_fsw_ring_size'
     NetUtunRx_fsw_ring_size,
+    /// Key for 'net.ipsec.verify_interface_creation'
     NetIpsecVerify_interface_creation,
+    /// Key for 'net.ipsec.max_pending_input'
     NetIpsecMax_pending_input,
+    /// Key for 'net.ipsec.ring_size'
     NetIpsecRing_size,
+    /// Key for 'net.ipsec.tx_fsw_ring_size'
     NetIpsecTx_fsw_ring_size,
+    /// Key for 'net.ipsec.rx_fsw_ring_size'
     NetIpsecRx_fsw_ring_size,
+    /// Key for 'net.ipsec.debug'
     NetIpsecDebug,
+    /// Key for 'net.necp.drop_all_level'
     NetNecpDrop_all_level,
+    /// Key for 'net.necp.debug'
     NetNecpDebug,
+    /// Key for 'net.necp.pass_loopback'
     NetNecpPass_loopback,
+    /// Key for 'net.necp.pass_keepalives'
     NetNecpPass_keepalives,
+    /// Key for 'net.necp.socket_policy_count'
     NetNecpSocket_policy_count,
+    /// Key for 'net.necp.socket_non_app_policy_count'
     NetNecpSocket_non_app_policy_count,
+    /// Key for 'net.necp.ip_policy_count'
     NetNecpIp_policy_count,
+    /// Key for 'net.necp.session_count'
     NetNecpSession_count,
+    /// Key for 'net.necp.client_fd_count'
     NetNecpClient_fd_count,
+    /// Key for 'net.necp.client_count'
     NetNecpClient_count,
+    /// Key for 'net.necp.arena_count'
     NetNecpArena_count,
+    /// Key for 'net.necp.nexus_flow_count'
     NetNecpNexus_flow_count,
+    /// Key for 'net.necp.socket_flow_count'
     NetNecpSocket_flow_count,
+    /// Key for 'net.necp.if_flow_count'
     NetNecpIf_flow_count,
+    /// Key for 'net.necp.observer_fd_count'
     NetNecpObserver_fd_count,
+    /// Key for 'net.necp.observer_message_limit'
     NetNecpObserver_message_limit,
+    /// Key for 'net.necp.sysctl_arena_count'
     NetNecpSysctl_arena_count,
+    /// Key for 'net.necp.drop_unentitled_level'
     NetNecpDrop_unentitled_level,
+    /// Key for 'net.necp.pass_interpose'
     NetNecpPass_interpose,
+    /// Key for 'net.necp.drop_dest_debug'
     NetNecpDrop_dest_debug,
+    /// Key for 'net.netagent.debug'
     NetNetagentDebug,
+    /// Key for 'net.netagent.registered_count'
     NetNetagentRegistered_count,
+    /// Key for 'net.netagent.active_count'
     NetNetagentActive_count,
+    /// Key for 'net.cfil.log'
     NetCfilLog,
+    /// Key for 'net.cfil.debug'
     NetCfilDebug,
+    /// Key for 'net.cfil.sock_attached_count'
     NetCfilSock_attached_count,
+    /// Key for 'net.cfil.active_count'
     NetCfilActive_count,
+    /// Key for 'net.cfil.close_wait_timeout'
     NetCfilClose_wait_timeout,
+    /// Key for 'net.cfil.sbtrim'
     NetCfilSbtrim,
+    /// Key for 'net.restricted_port.enforced'
     NetRestricted_portEnforced,
+    /// Key for 'net.restricted_port.verbose'
     NetRestricted_portVerbose,
+    /// Key for 'net.classq.verbose'
     NetClassqVerbose,
+    /// Key for 'net.classq.sfb.holdtime'
     NetClassqSfbHoldtime,
+    /// Key for 'net.classq.sfb.pboxtime'
     NetClassqSfbPboxtime,
+    /// Key for 'net.classq.sfb.hinterval'
     NetClassqSfbHinterval,
+    /// Key for 'net.classq.sfb.increment'
     NetClassqSfbIncrement,
+    /// Key for 'net.classq.sfb.decrement'
     NetClassqSfbDecrement,
+    /// Key for 'net.classq.sfb.allocation'
     NetClassqSfbAllocation,
+    /// Key for 'net.classq.sfb.ratelimit'
     NetClassqSfbRatelimit,
+    /// Key for 'net.classq.target_qdelay'
     NetClassqTarget_qdelay,
+    /// Key for 'net.classq.update_interval'
     NetClassqUpdate_interval,
+    /// Key for 'net.pktsched.verbose'
     NetPktschedVerbose,
+    /// Key for 'net.qos.reset_dscp_to_wifi_ac_map'
     NetQosReset_dscp_to_wifi_ac_map,
+    /// Key for 'net.qos.verbose'
     NetQosVerbose,
+    /// Key for 'net.qos.policy.restricted'
     NetQosPolicyRestricted,
+    /// Key for 'net.qos.policy.restrict_avapps'
     NetQosPolicyRestrict_avapps,
+    /// Key for 'net.qos.policy.wifi_enabled'
     NetQosPolicyWifi_enabled,
+    /// Key for 'net.qos.policy.capable_enabled'
     NetQosPolicyCapable_enabled,
+    /// Key for 'net.mpklog.enabled'
     NetMpklogEnabled,
+    /// Key for 'net.mpklog.type'
     NetMpklogType,
+    /// Key for 'net.mpklog.version'
     NetMpklogVersion,
+    /// Key for 'net.alf.loglevel'
     NetAlfLoglevel,
+    /// Key for 'net.alf.perm'
     NetAlfPerm,
+    /// Key for 'net.alf.defaultaction'
     NetAlfDefaultaction,
+    /// Key for 'net.alf.mqcount'
     NetAlfMqcount,
+    /// Key for 'net.smb.fs.version'
+    NetSmbFsVersion,
+    /// Key for 'net.smb.fs.loglevel'
+    NetSmbFsLoglevel,
+    /// Key for 'net.smb.fs.kern_deadtimer'
+    NetSmbFsKern_deadtimer,
+    /// Key for 'net.smb.fs.kern_hard_deadtimer'
+    NetSmbFsKern_hard_deadtimer,
+    /// Key for 'net.smb.fs.kern_soft_deadtimer'
+    NetSmbFsKern_soft_deadtimer,
+    /// Key for 'net.smb.fs.tcpsndbuf'
+    NetSmbFsTcpsndbuf,
+    /// Key for 'net.smb.fs.tcprcvbuf'
+    NetSmbFsTcprcvbuf,
+    /// Key for 'net.smb.fs.maxwrite'
+    NetSmbFsMaxwrite,
+    /// Key for 'net.smb.fs.maxread'
+    NetSmbFsMaxread,
+    /// Key for 'net.smb.fs.maxsegreadsize'
+    NetSmbFsMaxsegreadsize,
+    /// Key for 'net.smb.fs.maxsegwritesize'
+    NetSmbFsMaxsegwritesize,
+    /// Key for 'debug.lowpri_throttle_max_iosize'
     DebugLowpri_throttle_max_iosize,
+    /// Key for 'debug.lowpri_throttle_tier1_window_msecs'
     DebugLowpri_throttle_tier1_window_msecs,
+    /// Key for 'debug.lowpri_throttle_tier2_window_msecs'
     DebugLowpri_throttle_tier2_window_msecs,
+    /// Key for 'debug.lowpri_throttle_tier3_window_msecs'
     DebugLowpri_throttle_tier3_window_msecs,
+    /// Key for 'debug.lowpri_throttle_tier1_io_period_msecs'
     DebugLowpri_throttle_tier1_io_period_msecs,
+    /// Key for 'debug.lowpri_throttle_tier2_io_period_msecs'
     DebugLowpri_throttle_tier2_io_period_msecs,
+    /// Key for 'debug.lowpri_throttle_tier3_io_period_msecs'
     DebugLowpri_throttle_tier3_io_period_msecs,
+    /// Key for 'debug.lowpri_throttle_tier1_io_period_ssd_msecs'
     DebugLowpri_throttle_tier1_io_period_ssd_msecs,
+    /// Key for 'debug.lowpri_throttle_tier2_io_period_ssd_msecs'
     DebugLowpri_throttle_tier2_io_period_ssd_msecs,
+    /// Key for 'debug.lowpri_throttle_tier3_io_period_ssd_msecs'
     DebugLowpri_throttle_tier3_io_period_ssd_msecs,
+    /// Key for 'debug.lowpri_throttle_enabled'
     DebugLowpri_throttle_enabled,
+    /// Key for 'debug.bpf_bufsize'
     DebugBpf_bufsize,
+    /// Key for 'debug.bpf_maxbufsize'
     DebugBpf_maxbufsize,
+    /// Key for 'debug.bpf_maxdevices'
     DebugBpf_maxdevices,
+    /// Key for 'debug.bpf_wantpktap'
     DebugBpf_wantpktap,
+    /// Key for 'debug.bpf_debug'
     DebugBpf_debug,
+    /// Key for 'debug.sched'
     DebugSched,
+    /// Key for 'debug.toggle_address_reuse'
     DebugToggle_address_reuse,
+    /// Key for 'debug.kextlog'
     DebugKextlog,
+    /// Key for 'debug.iotrace'
     DebugIotrace,
+    /// Key for 'debug.noidle'
     DebugNoidle,
+    /// Key for 'debug.darkwake'
     DebugDarkwake,
+    /// Key for 'debug.swd_panic'
     DebugSwd_panic,
+    /// Key for 'debug.swd_timeout'
     DebugSwd_timeout,
+    /// Key for 'debug.swd_wake_timeout'
     DebugSwd_wake_timeout,
+    /// Key for 'debug.swd_sleep_timeout'
     DebugSwd_sleep_timeout,
+    /// Key for 'debug.acpi_flags'
     DebugAcpi_flags,
+    /// Key for 'debug.acpi_layer'
     DebugAcpi_layer,
+    /// Key for 'debug.acpi_level'
     DebugAcpi_level,
+    /// Key for 'debug.iokit'
     DebugIokit,
+    /// Key for 'debug.batman'
     DebugBatman,
+    /// Key for 'debug.brcmfirewirelog'
     DebugBrcmfirewirelog,
+    /// Key for 'debug.brcmlinkdebug'
     DebugBrcmlinkdebug,
+    /// Key for 'debug.brcmlogging'
     DebugBrcmlogging,
+    /// Key for 'debug.ioppf'
     DebugIoppf,
+    /// Key for 'debug.intelfb.graphicsTracePointEnable'
     DebugIntelfbGraphicsTracePointEnable,
+    /// Key for 'debug.intelfb.IGInterruptControl'
     DebugIntelfbIGInterruptControl,
+    /// Key for 'debug.intelfb.fLastRequestedPState'
     DebugIntelfbFLastRequestedPState,
+    /// Key for 'debug.intelfb.forceSlicesGTx'
     DebugIntelfbForceSlicesGTx,
+    /// Key for 'debug.intelfb.sliceInfo'
     DebugIntelfbSliceInfo,
+    /// Key for 'debug.intelfb.EUCount'
     DebugIntelfbEUCount,
+    /// Key for 'debug.intelfb.testCase'
     DebugIntelfbTestCase,
+    /// Key for 'debug.intelfb.temp0'
     DebugIntelfbTemp0,
+    /// Key for 'debug.intelfb.temp1'
     DebugIntelfbTemp1,
+    /// Key for 'debug.intelfb.temp2'
     DebugIntelfbTemp2,
+    /// Key for 'debug.intelfb.temp3'
     DebugIntelfbTemp3,
+    /// Key for 'debug.intelfb.temp4'
     DebugIntelfbTemp4,
+    /// Key for 'debug.intelfb.FakeType2Dongle'
     DebugIntelfbFakeType2Dongle,
+    /// Key for 'debug.intel.kdctlVersion'
     DebugIntelKdctlVersion,
+    /// Key for 'debug.intel.graphicsTracePointEnable'
     DebugIntelGraphicsTracePointEnable,
+    /// Key for 'debug.intel.IGInterruptControl'
     DebugIntelIGInterruptControl,
+    /// Key for 'debug.intel.perfEventEnable'
     DebugIntelPerfEventEnable,
+    /// Key for 'debug.intel.dtraceEnable'
     DebugIntelDtraceEnable,
+    /// Key for 'debug.intel.oaEnable'
     DebugIntelOaEnable,
+    /// Key for 'debug.intel.gpuUsageEnables'
     DebugIntelGpuUsageEnables,
+    /// Key for 'debug.intel.gpuUsageEnablesCheck'
     DebugIntelGpuUsageEnablesCheck,
+    /// Key for 'debug.intel.flipCount'
     DebugIntelFlipCount,
+    /// Key for 'debug.intel.swapCount'
     DebugIntelSwapCount,
+    /// Key for 'debug.intel.ringTakeSample'
     DebugIntelRingTakeSample,
+    /// Key for 'debug.intel.ringOnSample'
     DebugIntelRingOnSample,
+    /// Key for 'debug.intel.GlobalUsageTotal_Busy_nSec'
     DebugIntelGlobalUsageTotal_Busy_nSec,
+    /// Key for 'debug.intel.GlobalUsageTotal_nSec'
     DebugIntelGlobalUsageTotal_nSec,
+    /// Key for 'debug.intel.ringMainUsage'
     DebugIntelRingMainUsage,
+    /// Key for 'debug.intel.ringMediaUsage'
     DebugIntelRingMediaUsage,
+    /// Key for 'debug.intel.ringBlitUsage'
     DebugIntelRingBlitUsage,
+    /// Key for 'debug.intel.ringVEBoxUsage'
     DebugIntelRingVEBoxUsage,
+    /// Key for 'debug.intel.ringMain_nSec'
     DebugIntelRingMain_nSec,
+    /// Key for 'debug.intel.ringMedia_nSec'
     DebugIntelRingMedia_nSec,
+    /// Key for 'debug.intel.ringBlit_nSec'
     DebugIntelRingBlit_nSec,
+    /// Key for 'debug.intel.ringVEBox_nSec'
     DebugIntelRingVEBox_nSec,
+    /// Key for 'debug.intel.mSecCalcGPUBusy'
     DebugIntelMSecCalcGPUBusy,
+    /// Key for 'debug.intel.schedPriCreditsHigh'
     DebugIntelSchedPriCreditsHigh,
+    /// Key for 'debug.intel.schedPriCreditsNormalHigh'
     DebugIntelSchedPriCreditsNormalHigh,
+    /// Key for 'debug.intel.schedPriCreditsNormal'
     DebugIntelSchedPriCreditsNormal,
+    /// Key for 'debug.intel.schedPriCreditsLow'
     DebugIntelSchedPriCreditsLow,
+    /// Key for 'debug.intel.schedPriPreemption'
     DebugIntelSchedPriPreemption,
+    /// Key for 'debug.intel.schedPriElevatePID'
     DebugIntelSchedPriElevatePID,
+    /// Key for 'debug.intel.schedEnableThrottleOverride'
     DebugIntelSchedEnableThrottleOverride,
+    /// Key for 'debug.intel.schedThrottleLowPriByVal'
     DebugIntelSchedThrottleLowPriByVal,
+    /// Key for 'debug.intel.schedThrottleNormalPriByVal'
     DebugIntelSchedThrottleNormalPriByVal,
+    /// Key for 'debug.intel.schedThrottleNormalHighPriByVal'
     DebugIntelSchedThrottleNormalHighPriByVal,
+    /// Key for 'debug.intel.schedThrottleHighPriByVal'
     DebugIntelSchedThrottleHighPriByVal,
+    /// Key for 'debug.intel.telemetryUsageReportmSec'
     DebugIntelTelemetryUsageReportmSec,
+    /// Key for 'debug.intel.telemetryVersion'
     DebugIntelTelemetryVersion,
+    /// Key for 'debug.intel.telemetryConfig'
     DebugIntelTelemetryConfig,
+    /// Key for 'debug.intel.telemetryMode'
     DebugIntelTelemetryMode,
+    /// Key for 'debug.intel.telemetrySampleLocations'
     DebugIntelTelemetrySampleLocations,
+    /// Key for 'debug.intel.telemetryStartFrame'
     DebugIntelTelemetryStartFrame,
+    /// Key for 'debug.intel.telemetryStopFrame'
     DebugIntelTelemetryStopFrame,
+    /// Key for 'debug.intel.telemetryNumFrame'
     DebugIntelTelemetryNumFrame,
+    /// Key for 'debug.intel.telemetryTestCase'
     DebugIntelTelemetryTestCase,
+    /// Key for 'debug.intel.telemetrySpot1'
     DebugIntelTelemetrySpot1,
+    /// Key for 'debug.intel.telemetryStatPasses'
     DebugIntelTelemetryStatPasses,
+    /// Key for 'debug.intel.telemetryAltConfig'
     DebugIntelTelemetryAltConfig,
+    /// Key for 'debug.intel.temp0'
     DebugIntelTemp0,
+    /// Key for 'debug.intel.temp1'
     DebugIntelTemp1,
+    /// Key for 'debug.intel.temp2'
     DebugIntelTemp2,
+    /// Key for 'debug.intel.temp3'
     DebugIntelTemp3,
+    /// Key for 'debug.intel.temp4'
     DebugIntelTemp4,
+    /// Key for 'debug.agpm.LogLevel'
     DebugAgpmLogLevel,
+    /// Key for 'debug.wlan_ll_debug'
     DebugWlan_ll_debug,
+    /// Key for 'hw.ncpu'
     HwNcpu,
+    /// Key for 'hw.byteorder'
     HwByteorder,
+    /// Key for 'hw.memsize'
     HwMemsize,
+    /// Key for 'hw.activecpu'
     HwActivecpu,
+    /// Key for 'hw.physicalcpu'
     HwPhysicalcpu,
+    /// Key for 'hw.physicalcpu_max'
     HwPhysicalcpu_max,
+    /// Key for 'hw.logicalcpu'
     HwLogicalcpu,
+    /// Key for 'hw.logicalcpu_max'
     HwLogicalcpu_max,
+    /// Key for 'hw.cputype'
     HwCputype,
+    /// Key for 'hw.cpusubtype'
     HwCpusubtype,
+    /// Key for 'hw.cpu64bit_capable'
     HwCpu64bit_capable,
+    /// Key for 'hw.cpufamily'
     HwCpufamily,
+    /// Key for 'hw.cacheconfig'
     HwCacheconfig,
+    /// Key for 'hw.cachesize'
     HwCachesize,
+    /// Key for 'hw.pagesize'
     HwPagesize,
+    /// Key for 'hw.pagesize32'
     HwPagesize32,
+    /// Key for 'hw.busfrequency'
     HwBusfrequency,
+    /// Key for 'hw.busfrequency_min'
     HwBusfrequency_min,
+    /// Key for 'hw.busfrequency_max'
     HwBusfrequency_max,
+    /// Key for 'hw.cpufrequency'
     HwCpufrequency,
+    /// Key for 'hw.cpufrequency_min'
     HwCpufrequency_min,
+    /// Key for 'hw.cpufrequency_max'
     HwCpufrequency_max,
+    /// Key for 'hw.cachelinesize'
     HwCachelinesize,
+    /// Key for 'hw.l1icachesize'
     HwL1icachesize,
+    /// Key for 'hw.l1dcachesize'
     HwL1dcachesize,
+    /// Key for 'hw.l2cachesize'
     HwL2cachesize,
+    /// Key for 'hw.l3cachesize'
     HwL3cachesize,
+    /// Key for 'hw.tbfrequency'
     HwTbfrequency,
+    /// Key for 'hw.packages'
     HwPackages,
+    /// Key for 'hw.optional.floatingpoint'
     HwOptionalFloatingpoint,
+    /// Key for 'hw.optional.mmx'
     HwOptionalMmx,
+    /// Key for 'hw.optional.sse'
     HwOptionalSse,
+    /// Key for 'hw.optional.sse2'
     HwOptionalSse2,
+    /// Key for 'hw.optional.sse3'
     HwOptionalSse3,
+    /// Key for 'hw.optional.supplementalsse3'
     HwOptionalSupplementalsse3,
+    /// Key for 'hw.optional.sse4_1'
     HwOptionalSse4_1,
+    /// Key for 'hw.optional.sse4_2'
     HwOptionalSse4_2,
+    /// Key for 'hw.optional.x86_64'
     HwOptionalX86_64,
+    /// Key for 'hw.optional.aes'
     HwOptionalAes,
+    /// Key for 'hw.optional.avx1_0'
     HwOptionalAvx1_0,
+    /// Key for 'hw.optional.rdrand'
     HwOptionalRdrand,
+    /// Key for 'hw.optional.f16c'
     HwOptionalF16c,
+    /// Key for 'hw.optional.enfstrg'
     HwOptionalEnfstrg,
+    /// Key for 'hw.optional.fma'
     HwOptionalFma,
+    /// Key for 'hw.optional.avx2_0'
     HwOptionalAvx2_0,
+    /// Key for 'hw.optional.bmi1'
     HwOptionalBmi1,
+    /// Key for 'hw.optional.bmi2'
     HwOptionalBmi2,
+    /// Key for 'hw.optional.rtm'
     HwOptionalRtm,
+    /// Key for 'hw.optional.hle'
     HwOptionalHle,
+    /// Key for 'hw.optional.adx'
     HwOptionalAdx,
+    /// Key for 'hw.optional.mpx'
     HwOptionalMpx,
+    /// Key for 'hw.optional.sgx'
     HwOptionalSgx,
+    /// Key for 'hw.optional.avx512f'
     HwOptionalAvx512f,
+    /// Key for 'hw.optional.avx512cd'
     HwOptionalAvx512cd,
+    /// Key for 'hw.optional.avx512dq'
     HwOptionalAvx512dq,
+    /// Key for 'hw.optional.avx512bw'
     HwOptionalAvx512bw,
+    /// Key for 'hw.optional.avx512vl'
     HwOptionalAvx512vl,
+    /// Key for 'hw.optional.avx512ifma'
     HwOptionalAvx512ifma,
+    /// Key for 'hw.optional.avx512vbmi'
     HwOptionalAvx512vbmi,
+    /// Key for 'hw.targettype'
     HwTargettype,
+    /// Key for 'hw.cputhreadtype'
     HwCputhreadtype,
+    /// Key for 'machdep.user_idle_level'
     MachdepUser_idle_level,
+    /// Key for 'machdep.cpu.max_basic'
     MachdepCpuMax_basic,
+    /// Key for 'machdep.cpu.max_ext'
     MachdepCpuMax_ext,
+    /// Key for 'machdep.cpu.vendor'
     MachdepCpuVendor,
+    /// Key for 'machdep.cpu.brand_string'
     MachdepCpuBrand_string,
+    /// Key for 'machdep.cpu.family'
     MachdepCpuFamily,
+    /// Key for 'machdep.cpu.model'
     MachdepCpuModel,
+    /// Key for 'machdep.cpu.extmodel'
     MachdepCpuExtmodel,
+    /// Key for 'machdep.cpu.extfamily'
     MachdepCpuExtfamily,
+    /// Key for 'machdep.cpu.stepping'
     MachdepCpuStepping,
+    /// Key for 'machdep.cpu.feature_bits'
     MachdepCpuFeature_bits,
+    /// Key for 'machdep.cpu.leaf7_feature_bits'
     MachdepCpuLeaf7_feature_bits,
+    /// Key for 'machdep.cpu.leaf7_feature_bits_edx'
     MachdepCpuLeaf7_feature_bits_edx,
+    /// Key for 'machdep.cpu.extfeature_bits'
     MachdepCpuExtfeature_bits,
+    /// Key for 'machdep.cpu.signature'
     MachdepCpuSignature,
+    /// Key for 'machdep.cpu.brand'
     MachdepCpuBrand,
+    /// Key for 'machdep.cpu.features'
     MachdepCpuFeatures,
+    /// Key for 'machdep.cpu.leaf7_features'
     MachdepCpuLeaf7_features,
+    /// Key for 'machdep.cpu.extfeatures'
     MachdepCpuExtfeatures,
+    /// Key for 'machdep.cpu.logical_per_package'
     MachdepCpuLogical_per_package,
+    /// Key for 'machdep.cpu.cores_per_package'
     MachdepCpuCores_per_package,
+    /// Key for 'machdep.cpu.microcode_version'
     MachdepCpuMicrocode_version,
+    /// Key for 'machdep.cpu.processor_flag'
     MachdepCpuProcessor_flag,
+    /// Key for 'machdep.cpu.mwait.linesize_min'
     MachdepCpuMwaitLinesize_min,
+    /// Key for 'machdep.cpu.mwait.linesize_max'
     MachdepCpuMwaitLinesize_max,
+    /// Key for 'machdep.cpu.mwait.extensions'
     MachdepCpuMwaitExtensions,
+    /// Key for 'machdep.cpu.mwait.sub_Cstates'
     MachdepCpuMwaitSub_Cstates,
+    /// Key for 'machdep.cpu.thermal.sensor'
     MachdepCpuThermalSensor,
+    /// Key for 'machdep.cpu.thermal.dynamic_acceleration'
     MachdepCpuThermalDynamic_acceleration,
+    /// Key for 'machdep.cpu.thermal.invariant_APIC_timer'
     MachdepCpuThermalInvariant_APIC_timer,
+    /// Key for 'machdep.cpu.thermal.thresholds'
     MachdepCpuThermalThresholds,
+    /// Key for 'machdep.cpu.thermal.ACNT_MCNT'
     MachdepCpuThermalACNT_MCNT,
+    /// Key for 'machdep.cpu.thermal.core_power_limits'
     MachdepCpuThermalCore_power_limits,
+    /// Key for 'machdep.cpu.thermal.fine_grain_clock_mod'
     MachdepCpuThermalFine_grain_clock_mod,
+    /// Key for 'machdep.cpu.thermal.package_thermal_intr'
     MachdepCpuThermalPackage_thermal_intr,
+    /// Key for 'machdep.cpu.thermal.hardware_feedback'
     MachdepCpuThermalHardware_feedback,
+    /// Key for 'machdep.cpu.thermal.energy_policy'
     MachdepCpuThermalEnergy_policy,
+    /// Key for 'machdep.cpu.xsave.extended_state'
     MachdepCpuXsaveExtended_state,
+    /// Key for 'machdep.cpu.xsave.extended_state1'
     MachdepCpuXsaveExtended_state1,
+    /// Key for 'machdep.cpu.arch_perf.version'
     MachdepCpuArch_perfVersion,
+    /// Key for 'machdep.cpu.arch_perf.number'
     MachdepCpuArch_perfNumber,
+    /// Key for 'machdep.cpu.arch_perf.width'
     MachdepCpuArch_perfWidth,
+    /// Key for 'machdep.cpu.arch_perf.events_number'
     MachdepCpuArch_perfEvents_number,
+    /// Key for 'machdep.cpu.arch_perf.events'
     MachdepCpuArch_perfEvents,
+    /// Key for 'machdep.cpu.arch_perf.fixed_number'
     MachdepCpuArch_perfFixed_number,
+    /// Key for 'machdep.cpu.arch_perf.fixed_width'
     MachdepCpuArch_perfFixed_width,
+    /// Key for 'machdep.cpu.cache.linesize'
     MachdepCpuCacheLinesize,
+    /// Key for 'machdep.cpu.cache.L2_associativity'
     MachdepCpuCacheL2_associativity,
+    /// Key for 'machdep.cpu.cache.size'
     MachdepCpuCacheSize,
+    /// Key for 'machdep.cpu.tlb.inst.large'
     MachdepCpuTlbInstLarge,
+    /// Key for 'machdep.cpu.tlb.data.small'
     MachdepCpuTlbDataSmall,
+    /// Key for 'machdep.cpu.tlb.data.small_level1'
     MachdepCpuTlbDataSmall_level1,
+    /// Key for 'machdep.cpu.address_bits.physical'
     MachdepCpuAddress_bitsPhysical,
+    /// Key for 'machdep.cpu.address_bits.virtual'
     MachdepCpuAddress_bitsVirtual,
+    /// Key for 'machdep.cpu.core_count'
     MachdepCpuCore_count,
+    /// Key for 'machdep.cpu.thread_count'
     MachdepCpuThread_count,
+    /// Key for 'machdep.cpu.tsc_ccc.numerator'
     MachdepCpuTsc_cccNumerator,
+    /// Key for 'machdep.cpu.tsc_ccc.denominator'
     MachdepCpuTsc_cccDenominator,
+    /// Key for 'machdep.vectors.timer'
     MachdepVectorsTimer,
+    /// Key for 'machdep.vectors.IPI'
     MachdepVectorsIPI,
+    /// Key for 'machdep.pmap.hashwalks'
     MachdepPmapHashwalks,
+    /// Key for 'machdep.pmap.hashcnts'
     MachdepPmapHashcnts,
+    /// Key for 'machdep.pmap.hashmax'
     MachdepPmapHashmax,
+    /// Key for 'machdep.pmap.kernel_text_ps'
     MachdepPmapKernel_text_ps,
+    /// Key for 'machdep.pmap.kern_pv_reserve'
     MachdepPmapKern_pv_reserve,
+    /// Key for 'machdep.memmap.Conventional'
     MachdepMemmapConventional,
+    /// Key for 'machdep.memmap.RuntimeServices'
     MachdepMemmapRuntimeServices,
+    /// Key for 'machdep.memmap.ACPIReclaim'
     MachdepMemmapACPIReclaim,
+    /// Key for 'machdep.memmap.ACPINVS'
     MachdepMemmapACPINVS,
+    /// Key for 'machdep.memmap.PalCode'
     MachdepMemmapPalCode,
+    /// Key for 'machdep.memmap.Reserved'
     MachdepMemmapReserved,
+    /// Key for 'machdep.memmap.Unusable'
     MachdepMemmapUnusable,
+    /// Key for 'machdep.memmap.Other'
     MachdepMemmapOther,
+    /// Key for 'machdep.tsc.frequency'
     MachdepTscFrequency,
+    /// Key for 'machdep.tsc.deep_idle_rebase'
     MachdepTscDeep_idle_rebase,
+    /// Key for 'machdep.tsc.at_boot'
     MachdepTscAt_boot,
+    /// Key for 'machdep.tsc.rebase_abs_time'
     MachdepTscRebase_abs_time,
+    /// Key for 'machdep.tsc.nanotime.tsc_base'
     MachdepTscNanotimeTsc_base,
+    /// Key for 'machdep.tsc.nanotime.ns_base'
     MachdepTscNanotimeNs_base,
+    /// Key for 'machdep.tsc.nanotime.scale'
     MachdepTscNanotimeScale,
+    /// Key for 'machdep.tsc.nanotime.shift'
     MachdepTscNanotimeShift,
+    /// Key for 'machdep.tsc.nanotime.generation'
     MachdepTscNanotimeGeneration,
+    /// Key for 'machdep.misc.fast_uexc_support'
     MachdepMiscFast_uexc_support,
+    /// Key for 'machdep.misc.panic_restart_timeout'
     MachdepMiscPanic_restart_timeout,
+    /// Key for 'machdep.misc.interrupt_latency_max'
     MachdepMiscInterrupt_latency_max,
+    /// Key for 'machdep.misc.timer_queue_trace'
     MachdepMiscTimer_queue_trace,
+    /// Key for 'machdep.misc.nmis'
     MachdepMiscNmis,
+    /// Key for 'machdep.xcpm.mode'
     MachdepXcpmMode,
+    /// Key for 'machdep.xcpm.pcps_mode'
     MachdepXcpmPcps_mode,
+    /// Key for 'machdep.xcpm.hard_plimit_max_100mhz_ratio'
     MachdepXcpmHard_plimit_max_100mhz_ratio,
+    /// Key for 'machdep.xcpm.hard_plimit_min_100mhz_ratio'
     MachdepXcpmHard_plimit_min_100mhz_ratio,
+    /// Key for 'machdep.xcpm.soft_plimit_max_100mhz_ratio'
     MachdepXcpmSoft_plimit_max_100mhz_ratio,
+    /// Key for 'machdep.xcpm.soft_plimit_min_100mhz_ratio'
     MachdepXcpmSoft_plimit_min_100mhz_ratio,
+    /// Key for 'machdep.xcpm.tuib_plimit_max_100mhz_ratio'
     MachdepXcpmTuib_plimit_max_100mhz_ratio,
+    /// Key for 'machdep.xcpm.tuib_plimit_min_100mhz_ratio'
     MachdepXcpmTuib_plimit_min_100mhz_ratio,
+    /// Key for 'machdep.xcpm.tuib_enabled'
     MachdepXcpmTuib_enabled,
+    /// Key for 'machdep.xcpm.power_source'
     MachdepXcpmPower_source,
+    /// Key for 'machdep.xcpm.bootplim'
     MachdepXcpmBootplim,
+    /// Key for 'machdep.xcpm.bootpst'
     MachdepXcpmBootpst,
+    /// Key for 'machdep.xcpm.tuib_ns'
     MachdepXcpmTuib_ns,
+    /// Key for 'machdep.xcpm.vectors_loaded_count'
     MachdepXcpmVectors_loaded_count,
+    /// Key for 'machdep.xcpm.ratio_change_ratelimit_ns'
     MachdepXcpmRatio_change_ratelimit_ns,
+    /// Key for 'machdep.xcpm.ratio_changes_total'
     MachdepXcpmRatio_changes_total,
+    /// Key for 'machdep.xcpm.maxbusdelay'
     MachdepXcpmMaxbusdelay,
+    /// Key for 'machdep.xcpm.maxintdelay'
     MachdepXcpmMaxintdelay,
+    /// Key for 'machdep.xcpm.mid_applications'
     MachdepXcpmMid_applications,
+    /// Key for 'machdep.xcpm.mid_relaxations'
     MachdepXcpmMid_relaxations,
+    /// Key for 'machdep.xcpm.mid_mode'
     MachdepXcpmMid_mode,
+    /// Key for 'machdep.xcpm.mid_cst_control_limit'
     MachdepXcpmMid_cst_control_limit,
+    /// Key for 'machdep.xcpm.mid_mode_active'
     MachdepXcpmMid_mode_active,
+    /// Key for 'machdep.xcpm.mbd_mode'
     MachdepXcpmMbd_mode,
+    /// Key for 'machdep.xcpm.mbd_applications'
     MachdepXcpmMbd_applications,
+    /// Key for 'machdep.xcpm.mbd_relaxations'
     MachdepXcpmMbd_relaxations,
+    /// Key for 'machdep.xcpm.forced_idle_ratio'
     MachdepXcpmForced_idle_ratio,
+    /// Key for 'machdep.xcpm.forced_idle_period'
     MachdepXcpmForced_idle_period,
+    /// Key for 'machdep.xcpm.deep_idle_log'
     MachdepXcpmDeep_idle_log,
+    /// Key for 'machdep.xcpm.qos_txfr'
     MachdepXcpmQos_txfr,
+    /// Key for 'machdep.xcpm.deep_idle_count'
     MachdepXcpmDeep_idle_count,
+    /// Key for 'machdep.xcpm.deep_idle_last_stats'
     MachdepXcpmDeep_idle_last_stats,
+    /// Key for 'machdep.xcpm.deep_idle_total_stats'
     MachdepXcpmDeep_idle_total_stats,
+    /// Key for 'machdep.xcpm.cpu_thermal_level'
     MachdepXcpmCpu_thermal_level,
+    /// Key for 'machdep.xcpm.gpu_thermal_level'
     MachdepXcpmGpu_thermal_level,
+    /// Key for 'machdep.xcpm.io_thermal_level'
     MachdepXcpmIo_thermal_level,
+    /// Key for 'machdep.xcpm.io_control_engages'
     MachdepXcpmIo_control_engages,
+    /// Key for 'machdep.xcpm.io_control_disengages'
     MachdepXcpmIo_control_disengages,
+    /// Key for 'machdep.xcpm.io_filtered_reads'
     MachdepXcpmIo_filtered_reads,
+    /// Key for 'machdep.xcpm.pcps_rt_override_mode'
     MachdepXcpmPcps_rt_override_mode,
+    /// Key for 'machdep.xcpm.io_cst_control_enabled'
     MachdepXcpmIo_cst_control_enabled,
+    /// Key for 'machdep.xcpm.ring_boost_enabled'
     MachdepXcpmRing_boost_enabled,
+    /// Key for 'machdep.xcpm.io_epp_boost_enabled'
     MachdepXcpmIo_epp_boost_enabled,
+    /// Key for 'machdep.xcpm.epp_override'
     MachdepXcpmEpp_override,
+    /// Key for 'machdep.xcpm.perf_hints'
     MachdepXcpmPerf_hints,
+    /// Key for 'machdep.xcpm.pcps_rt_override_ns'
     MachdepXcpmPcps_rt_override_ns,
+    /// Key for 'machdep.eager_timer_evaluations'
     MachdepEager_timer_evaluations,
+    /// Key for 'machdep.eager_timer_evaluation_max'
     MachdepEager_timer_evaluation_max,
+    /// Key for 'machdep.x86_fp_simd_isr_uses'
     MachdepX86_fp_simd_isr_uses,
+    /// Key for 'audit.session.superuser_set_sflags_mask'
     AuditSessionSuperuser_set_sflags_mask,
+    /// Key for 'audit.session.superuser_clear_sflags_mask'
     AuditSessionSuperuser_clear_sflags_mask,
+    /// Key for 'audit.session.member_set_sflags_mask'
     AuditSessionMember_set_sflags_mask,
+    /// Key for 'audit.session.member_clear_sflags_mask'
     AuditSessionMember_clear_sflags_mask,
+    /// Key for 'ktrace.state'
     KtraceState,
+    /// Key for 'ktrace.owning_pid'
     KtraceOwning_pid,
+    /// Key for 'ktrace.background_pid'
     KtraceBackground_pid,
+    /// Key for 'ktrace.configured_by'
     KtraceConfigured_by,
+    /// Key for 'kperf.limits.timer_min_period_ns'
     KperfLimitsTimer_min_period_ns,
+    /// Key for 'kperf.limits.timer_min_bg_period_ns'
     KperfLimitsTimer_min_bg_period_ns,
+    /// Key for 'kperf.limits.timer_min_pet_period_ns'
     KperfLimitsTimer_min_pet_period_ns,
+    /// Key for 'kperf.limits.timer_min_bg_pet_period_ns'
     KperfLimitsTimer_min_bg_pet_period_ns,
+    /// Key for 'kperf.debug_level'
     KperfDebug_level,
+    /// Key for 'security.mac.platform_exec_logging'
     SecurityMacPlatform_exec_logging,
+    /// Key for 'security.mac.max_slots'
     SecurityMacMax_slots,
+    /// Key for 'security.mac.labelvnodes'
     SecurityMacLabelvnodes,
+    /// Key for 'security.mac.vnode_label_count'
     SecurityMacVnode_label_count,
+    /// Key for 'security.mac.device_enforce'
     SecurityMacDevice_enforce,
+    /// Key for 'security.mac.pipe_enforce'
     SecurityMacPipe_enforce,
+    /// Key for 'security.mac.posixsem_enforce'
     SecurityMacPosixsem_enforce,
+    /// Key for 'security.mac.posixshm_enforce'
     SecurityMacPosixshm_enforce,
+    /// Key for 'security.mac.proc_enforce'
     SecurityMacProc_enforce,
+    /// Key for 'security.mac.socket_enforce'
     SecurityMacSocket_enforce,
+    /// Key for 'security.mac.system_enforce'
     SecurityMacSystem_enforce,
+    /// Key for 'security.mac.sysvmsg_enforce'
     SecurityMacSysvmsg_enforce,
+    /// Key for 'security.mac.sysvsem_enforce'
     SecurityMacSysvsem_enforce,
+    /// Key for 'security.mac.sysvshm_enforce'
     SecurityMacSysvshm_enforce,
+    /// Key for 'security.mac.vm_enforce'
     SecurityMacVm_enforce,
+    /// Key for 'security.mac.vnode_enforce'
     SecurityMacVnode_enforce,
+    /// Key for 'security.mac.endpointsecurity.log_level'
     SecurityMacEndpointsecurityLog_level,
+    /// Key for 'security.mac.amfi.force_policy'
     SecurityMacAmfiForce_policy,
+    /// Key for 'security.mac.amfi.verbose_logging'
     SecurityMacAmfiVerbose_logging,
+    /// Key for 'security.mac.amfi.hsp_enable'
     SecurityMacAmfiHsp_enable,
+    /// Key for 'security.mac.sandbox.audio_active'
     SecurityMacSandboxAudio_active,
+    /// Key for 'security.mac.sandbox.sentinel'
     SecurityMacSandboxSentinel,
+    /// Key for 'security.mac.qtn.sandbox_enforce'
     SecurityMacQtnSandbox_enforce,
+    /// Key for 'security.mac.qtn.user_approved_exec'
     SecurityMacQtnUser_approved_exec,
+    /// Key for 'security.mac.asp.cache_entry_count'
     SecurityMacAspCache_entry_count,
+    /// Key for 'security.mac.asp.cache_allocation_count'
     SecurityMacAspCache_allocation_count,
+    /// Key for 'security.mac.asp.cache_release_count'
     SecurityMacAspCache_release_count,
+    /// Key for 'security.mac.asp.exec_hook_work_time'
     SecurityMacAspExec_hook_work_time,
+    /// Key for 'security.mac.asp.exec_hook_sleep_time'
     SecurityMacAspExec_hook_sleep_time,
+    /// Key for 'security.mac.asp.exec_hook_count'
     SecurityMacAspExec_hook_count,
+    /// Key for 'security.mac.asp.library_hook_time'
     SecurityMacAspLibrary_hook_time,
+    /// Key for 'security.mac.asp.library_sleep_time'
     SecurityMacAspLibrary_sleep_time,
+    /// Key for 'security.mac.asp.library_hook_count'
     SecurityMacAspLibrary_hook_count,
+    /// Key for 'security.mac.asp.pending_evaluation_count'
     SecurityMacAspPending_evaluation_count,
+    /// Key for 'security.mac.asp.active_rule_version'
     SecurityMacAspActive_rule_version,
 }
 
@@ -2373,6 +3727,17 @@ impl SysctlKey {
             SysctlKey::NetAlfPerm => "net.alf.perm",
             SysctlKey::NetAlfDefaultaction => "net.alf.defaultaction",
             SysctlKey::NetAlfMqcount => "net.alf.mqcount",
+            SysctlKey::NetSmbFsVersion => "net.smb.fs.version",
+            SysctlKey::NetSmbFsLoglevel => "net.smb.fs.loglevel",
+            SysctlKey::NetSmbFsKern_deadtimer => "net.smb.fs.kern_deadtimer",
+            SysctlKey::NetSmbFsKern_hard_deadtimer => "net.smb.fs.kern_hard_deadtimer",
+            SysctlKey::NetSmbFsKern_soft_deadtimer => "net.smb.fs.kern_soft_deadtimer",
+            SysctlKey::NetSmbFsTcpsndbuf => "net.smb.fs.tcpsndbuf",
+            SysctlKey::NetSmbFsTcprcvbuf => "net.smb.fs.tcprcvbuf",
+            SysctlKey::NetSmbFsMaxwrite => "net.smb.fs.maxwrite",
+            SysctlKey::NetSmbFsMaxread => "net.smb.fs.maxread",
+            SysctlKey::NetSmbFsMaxsegreadsize => "net.smb.fs.maxsegreadsize",
+            SysctlKey::NetSmbFsMaxsegwritesize => "net.smb.fs.maxsegwritesize",
             SysctlKey::DebugLowpri_throttle_max_iosize => "debug.lowpri_throttle_max_iosize",
             SysctlKey::DebugLowpri_throttle_tier1_window_msecs => "debug.lowpri_throttle_tier1_window_msecs",
             SysctlKey::DebugLowpri_throttle_tier2_window_msecs => "debug.lowpri_throttle_tier2_window_msecs",
@@ -3712,6 +5077,17 @@ impl SysctlKey {
             SysctlKey::NetAlfPerm,
             SysctlKey::NetAlfDefaultaction,
             SysctlKey::NetAlfMqcount,
+            SysctlKey::NetSmbFsVersion,
+            SysctlKey::NetSmbFsLoglevel,
+            SysctlKey::NetSmbFsKern_deadtimer,
+            SysctlKey::NetSmbFsKern_hard_deadtimer,
+            SysctlKey::NetSmbFsKern_soft_deadtimer,
+            SysctlKey::NetSmbFsTcpsndbuf,
+            SysctlKey::NetSmbFsTcprcvbuf,
+            SysctlKey::NetSmbFsMaxwrite,
+            SysctlKey::NetSmbFsMaxread,
+            SysctlKey::NetSmbFsMaxsegreadsize,
+            SysctlKey::NetSmbFsMaxsegwritesize,
             SysctlKey::DebugLowpri_throttle_max_iosize,
             SysctlKey::DebugLowpri_throttle_tier1_window_msecs,
             SysctlKey::DebugLowpri_throttle_tier2_window_msecs,
@@ -4061,4 +5437,3 @@ impl SysctlKey {
         ]
     }
 }
-
