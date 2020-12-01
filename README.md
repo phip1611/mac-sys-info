@@ -1,7 +1,7 @@
 # mac-sys-info
 CLI + Library to get detailed information about your Mac system. Including CPU, Cache (L1, L2, L3), Memory, and more.
-The library is a wrapper around all information that the `$ sysctl -a` command outputs
-on Mac.
+The library is a wrapper around all information that the `$ sysctl -a` command outputs on Mac. It gives you structured
+access to it as well as raw access to all keys obtained from `$ sysctl -a`.
 
 ## Usage as Lib or as CLI
 ### As Library

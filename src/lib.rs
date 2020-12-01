@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-//! Library to get Mac-specific system info. The information is
-//! retrieved from the `$ sysctl -a` command.
+//! Library to get Mac-specific system info. The information is retrieved from the `$ sysctl -a`
+//! command. It gives you structured access to system info as well as raw access to all keys.
 
 #[macro_use]
 extern crate log;

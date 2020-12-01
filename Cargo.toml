@@ -1,10 +1,10 @@
 [package]
 name = "mac-sys-info"
 description = "CLI + Library to get detailed information about your Mac system. Including CPU, Cache (L1-L3), Memory, and more."
-version = "0.1.11"
+version = "0.1.12"
 authors = ["Philipp Schuster <phip1611@gmail.com>"]
 edition = "2018"
-keywords = ["mac", "system", "cpu", "cache", "memory"]
+keywords = ["mac", "system", "cpu", "info", "sysctl"]
 categories = [ "os::macos-apis", "development-tools", "command-line-utilities" ]
 readme = "README.md"
 license = "MIT"
