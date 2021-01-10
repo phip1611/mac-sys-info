@@ -41,10 +41,12 @@ fn main() {
     env_logger::init();
 
     let info = get_mac_sys_info();
-    if info.is_err() {
+    if let Err(e) = info {
         // IDE may does not find the Display trait impl, but its there
         // it gets implemented during compilation by "derive_more" crate
-        eprintln!("There was an error. Can't get system information. Error: {}", info.unwrap_err());
+        eprintln!("There was an error. Can't get system information.");
+        eprintln!("Error: {}", e);
+        // eprintln!("Source: {}", e.source().map(|e| e.to_string()).unwrap_or("<None>".to_string()));
         eprintln!("Are you running a Mac? Because this utility also compiles and runs on other UNIX platforms, like Linux distributions.");
         eprintln!("Please feel free to add a bug report here:");
         eprintln!("    https://github.com/phip1611/mac-sys-info");

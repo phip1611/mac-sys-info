@@ -25,14 +25,32 @@ SOFTWARE.
 
 use crate::generated_sysctl_keys::SysctlKey;
 use derive_more::Display;
+use std::error::Error;
+use unix_exec_output_catcher::error::UECOError;
 
 /// Errors that can happen inside the library.
 #[derive(Debug, Display)]
 pub enum MacSysInfoError {
-    #[display(fmt = "Can't fetch system data.")]
-    CantFetchData,
+    #[display(fmt = "Can't fetch system data because the library reported the error: {}", _0)]
+    CantFetchData(UECOError),
+    #[display(fmt = "Could not capture any stdout lines from `$ sysctl -a` execution. There might be an error in crate 'unix-exec-output-catcher'.")]
+    NoCapturedOutput,
     #[display(fmt = "Can't parse key '{}' for field '{}' because of: '{}'", sysctl_key, field_name, err_msg)]
     ParseError{field_name: String, sysctl_key: SysctlKey, err_msg: String},
     #[display(fmt = "The key '{}' can't be found in \"sysctl -a\" output.", _0)]
     KeyNotFound(SysctlKey),
+}
+
+// IDE might show that display is not implemented but it gets implemented
+// during build by "derive_more" crate
+impl Error for MacSysInfoError {
+
+    fn source(&self) -> Option<&(dyn Error + 'static)> {
+        match self {
+            MacSysInfoError::CantFetchData(inner) => {
+                Some(inner)
+            },
+            _ => None
+        }
+    }
 }
