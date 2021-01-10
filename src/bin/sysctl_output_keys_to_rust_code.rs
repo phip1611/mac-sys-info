@@ -34,7 +34,7 @@ fn main() {
         "sysctl",
         vec!["sysctl", "-a"],
         OCatchStrategy::StdSeparately
-    ).map_err(|_| MacSysInfoError::CantFetchData).unwrap();
+    ).map_err(|e| MacSysInfoError::CantFetchData(e)).unwrap();
 
     // list of KeyValue-Pairs. Value is the value as the key is named
     // in the output of `$ sysctl -a`. The Key is a Rust-friendly version of it.
